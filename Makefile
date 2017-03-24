@@ -5,7 +5,7 @@
 ## Login   <flavian.gontier@epitech.net>
 ##
 ## Started on  Sat Jan 21 00:04:28 2017 flavian gontier
-## Last update Fri Mar 24 15:55:40 2017 flavian gontier
+## Last update Fri Mar 24 16:45:48 2017 flavian gontier
 ##
 
 CC	=	gcc
@@ -36,6 +36,7 @@ VM_SRC	=	src/vm/lib/io/my_put.c								\
 			src/vm/lib/string/my_strsplit.c						\
 			src/vm/lib/string/my_strcontains.c					\
 			src/vm/lib/string/my_strisalphanum.c				\
+			src/vm/lib/string/my_strisnum.c						\
 			src/vm/lib/string/my_strdup.c						\
 			src/vm/lib/string/my_strndup.c						\
 			src/vm/lib/string/my_len.c							\
@@ -55,8 +56,8 @@ VM_SRC	=	src/vm/lib/io/my_put.c								\
 			src/vm/lib/list/listString/listString_insert.c		\
 			src/vm/lib/list/listString/listString_init.c		\
 			src/vm/lib/list/listString/listString_expends.c		\
-			src/input/arguments.c								\
-			src/main.c
+			src/vm/input/arguments.c								\
+			src/vm/main.c
 
 VM_OBJ     	=	$(VM_SRC:.c=.o)
 
