@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Thu Jan 19 15:25:04 2017 nathan
-** Last update Thu Mar 23 16:23:08 2017 nathan
+** Last update Fri Mar 24 17:58:35 2017 nathan
 */
 
 #ifndef _MY_STRING_
@@ -35,6 +35,7 @@ char	*str_isafter(int, char *);
 char	*my_revatoi(int);
 char	*my_gnl(const int);
 char	*my_getenv(char *);
+char	*my_epurstr(char *);
 char	**my_strtowtb_sc(char *, char);
 char	**my_strtowtb(char *);
 char	**wtb_alloc(int);

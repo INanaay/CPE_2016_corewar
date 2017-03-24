@@ -5,7 +5,7 @@
 ** Login   <astek@epitech.net>
 **
 ** Started on  Mon Mar 30 11:14:31 2009 Astek
-** Last update Tue Mar 22 16:44:20 2011 Astek
+** Last update Fri Mar 24 17:14:12 2017 nathan
 */
 
 #ifndef _OP_H_
@@ -14,14 +14,11 @@
 # define MEM_SIZE                (6*1024)
 # define IDX_MOD                 512   /* modulo of the index < */
 # define MAX_ARGS_NUMBER         4     /* this may not be changed 2^*IND_SIZE */
-
 # define COMMENT_CHAR            '#'
 # define LABEL_CHAR              ':'
 # define DIRECT_CHAR             '%'
 # define SEPARATOR_CHAR          ','
-
 # define LABEL_CHARS             "abcdefghijklmnopqrstuvwxyz_0123456789"
-
 # define NAME_CMD_STRING         ".name"
 # define COMMENT_CMD_STRING      ".comment"
 
@@ -44,7 +41,7 @@ typedef char    args_type_t;
                                    into r1 (4 bytes )) */
 # define T_LAB           8       /* LABEL */
 
-struct  op_s
+typedef struct	op_s
 {
    char         *mnemonique;
    char         nbr_args;
@@ -52,9 +49,7 @@ struct  op_s
    char         code;
    int          nbr_cycles;
    char         *comment;
-};
-
-typedef struct op_s     op_t;
+}		op_t;
 
 /*
 ** size (in bytes)
@@ -74,16 +69,15 @@ extern  op_t    op_tab[];
 # define PROG_NAME_LENGTH        128
 # define COMMENT_LENGTH          2048
 
-struct header_s
+typedef struct	header_s
 {
-   int  magic;
+   int		magic;
 # define COREWAR_EXEC_MAGIC      0xea83f3        /* why not */
-   char prog_name[PROG_NAME_LENGTH+1];
-   int  prog_size;
-   char comment[COMMENT_LENGTH+1];
-};
+   char		prog_name[PROG_NAME_LENGTH+1];
+   int		prog_size;
+   char		comment[COMMENT_LENGTH+1];
+}		header_t;
 
-typedef struct header_s header_t;
 
 /*
 ** live

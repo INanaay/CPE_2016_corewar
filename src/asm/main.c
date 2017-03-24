@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Fri Mar 24 15:07:26 2017 nathan
+** Last update Fri Mar 24 19:30:22 2017 nathan
 */
 
 #include <stdint.h>
@@ -90,20 +90,24 @@ uint8_t	check_header(char **file)
   return (SUCCESS);
 }
 
-uint8_t	main(int ac, char **av)
+uint8_t		main(int ac, char **av)
 {
-  int	is_help;
-  char	*file_c;
-  char	**file;
+  int		is_help;
+  char		*file_c;
+  char		**file;
+  t_label	**labels;
 
   is_help = check_args(ac, av);
   if (is_help != 1)
     return (is_help);
   if (file_to_arr(av[1], (&file_c)) == FAIL)
     return (FAIL);
+  file_c = my_epurstr(file_c);
+  printf("%s\n", file_c);
   if ((file = my_strtowtb_sc(file_c, '\n')) == NULL)
     return (my_puterr84(MEM_FAIL));
   if (check_header(file) == FAIL)
     return (my_puterr84(INV_FILE));
+  //  parse(file, labels);
   return (SUCCESS);
 }

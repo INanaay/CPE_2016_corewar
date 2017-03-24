@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Mon Feb 13 12:18:48 2017 nathan
-** Last update Wed Mar 22 18:35:56 2017 nathan
+** Last update Fri Mar 24 19:27:38 2017 nathan
 */
 
 #include <stdlib.h>
@@ -44,7 +44,7 @@ char	*my_realloc(char *str, int size)
   int	i;
   char	*new;
 
-  if ((new = my_calloc(sizeof (char), size + 1)) == NULL)
+  if ((new = malloc(sizeof(char) * (size + 1))) == NULL)
     return (NULL);
   if (str == NULL)
     {
