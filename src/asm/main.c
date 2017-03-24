@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Thu Mar 23 19:05:46 2017 nathan
+** Last update Fri Mar 24 15:07:26 2017 nathan
 */
 
 #include <stdint.h>
@@ -57,12 +57,23 @@ uint8_t	file_to_arr(const char *path, char **file)
   return (SUCCESS);
 }
 
+uint8_t check_headerspcs(int index, char *line)
+{
+  while (line[index] && line[index] != '"')
+    {
+      if (line[index] != '\t' && line[index] != ' ')
+	return (FAIL);
+      index++;
+    }
+  if (line[index + 1] == '"')
+    return (FAIL);
+  return (SUCCESS);
+}
+
 uint8_t	check_header(char **file)
 {
   int	values[4];
-  int	x;
 
-  x = 5;
   if (my_strtablen(file) < 2)
     return (FAIL);
   values[0] = my_strcmp(NAME_CMD_STRING, file[0]);
@@ -72,14 +83,9 @@ uint8_t	check_header(char **file)
   if (values[0] != values[1] || values[2] != values[3] ||
       my_strcontains(file[0], '"') != 2 || my_strcontains(file[1], '"') != 2)
     return (FAIL);
-  while (file[0][x] && file[0][x] != '"')
-    x++;
-  if (file[0][x + 1] == '"')
+  if (check_headerspcs(5, file[0]) == FAIL)
     return (FAIL);
-  x = 8;
-  while (file[1][x] && file[1][x] != '"')
-    x++;
-  if (file[0][x + 1] == '"')
+  if (check_headerspcs(8, file[1]) == FAIL)
     return (FAIL);
   return (SUCCESS);
 }
