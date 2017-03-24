@@ -5,7 +5,7 @@
 ## Login   <flavian.gontier@epitech.net>
 ##
 ## Started on  Sat Jan 21 00:04:28 2017 flavian gontier
-## Last update Fri Mar 24 15:36:18 2017 flavian gontier
+## Last update Fri Mar 24 15:55:40 2017 flavian gontier
 ##
 
 CC	=	gcc
@@ -58,22 +58,22 @@ VM_SRC	=	src/vm/lib/io/my_put.c								\
 			src/input/arguments.c								\
 			src/main.c
 
-OBJ     =	$(SRC:.c=.o)
+VM_OBJ     	=	$(VM_SRC:.c=.o)
 
-RM      = 	rm -f
+VM_NAME    	=	corewar
 
-NAME    =	corewar
+RM			=	rm -f
 
-all:		$(NAME)
+all:		$(VM_NAME)
 
-$(NAME):	$(OBJ)
-			$(CC) $(CFLAGS) $(LDFLAGS) -o $(NAME) $(OBJ)
+$(VM_NAME): 	$(VM_OBJ)
+				$(CC) $(CFLAGS) $(LDFLAGS) $(VM_OBJ) -o $(VM_NAME)
 
 clean:
-			$(RM) $(OBJ)
+			$(RM) $(VM_OBJ)
 
 fclean:		clean
-			$(RM) $(NAME)
+			$(RM) $(VM_NAME)
 
 re:			fclean all
 
