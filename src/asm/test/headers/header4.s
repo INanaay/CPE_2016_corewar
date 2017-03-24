@@ -1,0 +1,2 @@
+.nam		"test"
+.comment	""
