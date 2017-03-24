@@ -5,12 +5,12 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Fri Mar 24 13:57:13 2017 flavian gontier
-** Last update Fri Mar 24 17:57:01 2017 anatole zeyen
+** Last update Fri Mar 24 19:06:24 2017 flavian gontier
 */
 
 #include "virtual_machine.h"
 
-int	my_help(const char *name)
+void	my_help(const char *name)
 {
   my_putstr("USAGE\n\t");
   my_putstr(name);
@@ -27,16 +27,12 @@ int	my_help(const char *name)
   my_putstr("no address is \n\t\tspecified, optimize the addresses so that ");
   my_putstr("the processes are as far \n\t\taway from each other as possible");
   my_putstr(". The addresses are MEM_SIZE modulo\n");
-  return (0);
 }
 
 int	main(int argc, char **argv)
 {
   t_arguments	arguments;
 
-  if (argc == 1)
-    return (84);
-  if (argc == 2 && my_strcmp(argv[1], "-h") == 0)
-    return (my_help(argv[0]));
   parse_arguments(argc, argv, &arguments);
+  return (EXIT_SUCCESS);
 }
