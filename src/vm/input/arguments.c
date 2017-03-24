@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Wed Mar 22 22:33:07 2017 flavian gontier
-** Last update Fri Mar 24 19:16:13 2017 flavian gontier
+** Last update Fri Mar 24 19:21:29 2017 flavian gontier
 */
 
 #include "libmy.h"
@@ -94,7 +94,7 @@ static void	get_help(int argc, char **argv, int index)
   if (my_strcmp("-h", argv[index]) != 0)
     return ;
   my_putstr("USAGE\n\t");
-  my_putstr(name);
+  my_putstr(argv[index]);
   my_putstr(" [-dump nbr_cycle] [[-n prog_number] [-a load_address] prog_name");
   my_putstr("] ...\n\nDESCRIPTION\n\t");
   my_putstr("-dump nbr_cycle dumps the memory after the nbr_cycle execution ");

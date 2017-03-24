@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.net>
 **
 ** Started on  Fri Jan 20 20:32:15 2017 flavian gontier
-** Last update Tue Mar 21 18:50:43 2017 nathan
+** Last update Fri Mar 24 19:22:12 2017 flavian gontier
 */
 
 #ifndef LIBMY_H_
@@ -45,6 +45,7 @@ char			*my_revatoi(int);
 */
 int			my_strisalphanum(char *str);
 int                     my_strcontains(char *str, char c);
+int			my_strisnum(char *str);
 int			my_len(char *str, char c);
 int                     my_strlen(char *str);
 char			*my_strcpy(char *dest, char *src);
