@@ -5,7 +5,14 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Fri Mar 24 13:57:13 2017 flavian gontier
-** Last update Fri Mar 24 13:58:14 2017 flavian gontier
+** Last update Fri Mar 24 16:47:46 2017 flavian gontier
 */
 
+#include "virtual_machine.h"
 
+int	main(int argc, char **argv)
+{
+  t_arguments	arguments;
+
+  parse_arguments(argc, argv, &arguments);
+}
