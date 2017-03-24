@@ -5,14 +5,14 @@
 ## Login   <flavian.gontier@epitech.net>
 ##
 ## Started on  Sat Jan 21 00:04:28 2017 flavian gontier
-## Last update Fri Mar 24 15:31:08 2017 flavian gontier
+## Last update Fri Mar 24 15:36:18 2017 flavian gontier
 ##
 
 CC	=	gcc
 
 CFLAGS	+=	-I inc
 
-LDFLAGS	+=	-Wall -Wextra -g3
+LDFLAGS	+=	-Werror -Wall -Wextra -g3
 
 VM_SRC	=	src/vm/lib/io/my_put.c								\
 			src/vm/lib/io/my_putstr.c							\
@@ -55,26 +55,26 @@ VM_SRC	=	src/vm/lib/io/my_put.c								\
 			src/vm/lib/list/listString/listString_insert.c		\
 			src/vm/lib/list/listString/listString_init.c		\
 			src/vm/lib/list/listString/listString_expends.c		\
-			src/input/arguments.h								\
+			src/input/arguments.c								\
 			src/main.c
 
 OBJ     =	$(SRC:.c=.o)
 
-RM      =       rm -rf
+RM      = 	rm -f
 
-NAME    =       tetris
+NAME    =	corewar
 
 all:		$(NAME)
 
 $(NAME):	$(OBJ)
-		$(CC) $(CFLAGS) $(LDFLAGS) -o $(NAME) $(OBJ) -lncurses
+			$(CC) $(CFLAGS) $(LDFLAGS) -o $(NAME) $(OBJ)
 
 clean:
-		$(RM) $(OBJ)
+			$(RM) $(OBJ)
 
 fclean:		clean
-		$(RM) $(NAME)
+			$(RM) $(NAME)
 
-re:		fclean all
+re:			fclean all
 
 .PHONY:		all clean fclean re
