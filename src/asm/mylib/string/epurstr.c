@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Fri Mar 24 17:45:05 2017 nathan
-** Last update Fri Mar 24 19:23:09 2017 nathan
+** Last update Fri Mar 24 19:54:39 2017 nathan
 */
 #include <stdlib.h>
 #include "mylib/my_mem.h"
@@ -33,5 +33,6 @@ char	*my_epurstr(char *str)
 	new_str[y++] = str[x];
       x++;
     }
+  free(str);
   return (new_str);
 }

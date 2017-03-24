@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Fri Mar 24 19:30:22 2017 nathan
+** Last update Fri Mar 24 19:51:22 2017 nathan
 */
 
 #include <stdint.h>
@@ -102,12 +102,15 @@ uint8_t		main(int ac, char **av)
     return (is_help);
   if (file_to_arr(av[1], (&file_c)) == FAIL)
     return (FAIL);
-  file_c = my_epurstr(file_c);
-  printf("%s\n", file_c);
+  if ((file_c = my_epurstr(file_c)) == NULL)
+    return (my_puterr84(MEM_FAIL));
   if ((file = my_strtowtb_sc(file_c, '\n')) == NULL)
     return (my_puterr84(MEM_FAIL));
   if (check_header(file) == FAIL)
     return (my_puterr84(INV_FILE));
+  int x = 0;
+  while (file[x])
+    printf("%s", file[x++]);
   //  parse(file, labels);
   return (SUCCESS);
 }
