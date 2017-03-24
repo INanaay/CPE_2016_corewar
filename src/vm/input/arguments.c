@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Wed Mar 22 22:33:07 2017 flavian gontier
-** Last update Fri Mar 24 19:21:29 2017 flavian gontier
+** Last update Fri Mar 24 19:41:55 2017 flavian gontier
 */
 
 #include "libmy.h"
@@ -99,13 +99,13 @@ static void	get_help(int argc, char **argv, int index)
   my_putstr("] ...\n\nDESCRIPTION\n\t");
   my_putstr("-dump nbr_cycle dumps the memory after the nbr_cycle execution ");
   my_putstr("(if the round isn't\n\t\t");
-  my_putstr("already over) with the following format: 32 bytes/line in\n\t\t");
-  my_putstr("hexadecimal (A0BCDEFE1DD3...)\n\t");
-  my_putstr("-n prog_number sets the next program's number.  By default, ");
-  my_putstr("the first free number\n\t\tin the parameter order\n\t");
-  my_putstr("-a load_address sets the next program's loading address.  When ");
-  my_putstr("no address is \n\t\tspecified, optimize the addresses so that ");
-  my_putstr("the processes are as far \n\t\taway from each other as possible");
+  my_putstr("\talready over) with the following format: 32 bytes/line in\n\t\t");
+  my_putstr("\thexadecimal (A0BCDEFE1DD3...)\n\t");
+  my_putstr("-n prog_number \tsets the next program's number.  By default, ");
+  my_putstr("the first free number\n\t\t\tin the parameter order\n\t-a ");
+  my_putstr("load_address sets the next program's loading address.  When no");
+  my_putstr(" address is \n\t\t\tspecified, optimize the addresses so that ");
+  my_putstr("the processes are as far \n\t\t\taway from each other as possible");
   my_putstr(". The addresses are MEM_SIZE modulo\n");
   exit(EXIT_SUCCESS);
 }
