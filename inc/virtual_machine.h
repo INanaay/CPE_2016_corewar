@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Fri Mar 24 15:39:16 2017 flavian gontier
-** Last update Fri Mar 24 17:06:04 2017 flavian gontier
+** Last update Sat Mar 25 11:34:50 2017 flavian gontier
 */
 
 #include <stdint.h>
@@ -17,5 +17,10 @@ typedef struct	s_arguments
   int32_t	process_id;
   int32_t	start_address;
 }		t_arguments;
+
+typedef struct	s_instruction
+{
+
+}
 
 void		parse_arguments(int argc, char **argv, t_arguments *arguments);
