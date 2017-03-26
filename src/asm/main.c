@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Fri Mar 24 19:51:22 2017 nathan
+** Last update Mon Mar 27 01:14:10 2017 nathan
 */
 
 #include <stdint.h>
@@ -43,14 +43,14 @@ uint8_t	file_to_arr(const char *path, char **file)
   char	buff[READ_SIZE + 1];
   int	size;
 
-  if ((*file = malloc(sizeof(char) * READ_SIZE + 1)) == NULL)
+  if ((*file = my_calloc(sizeof(char), READ_SIZE + 1)) == NULL)
     return (my_puterr84(MEM_FAIL));
   if ((fd = open(path, O_RDONLY)) == -1)
     return (my_puterr84(OPEN_FAIL));
   while ((size = read(fd, buff, READ_SIZE)) > 0)
     {
       buff[size] = 0;
-      if ((*file = my_realloc(*file, my_strlen(*file) + size)) == NULL)
+      if ((*file = my_realloc(*file, my_strlen(*file) + size + 1)) == NULL)
 	return (my_puterr84(MEM_FAIL));
       my_strcat(*file, buff);
     }
@@ -90,6 +90,20 @@ uint8_t	check_header(char **file)
   return (SUCCESS);
 }
 
+char		**epur_file(char **file)
+{
+  int		x;
+
+  x = 2;
+  while (file[x] != NULL)
+    {
+      file[x] = my_epurstr(file[x]);
+      file[x] = my_remove_after(file[x], COMMENT_CHAR);
+      x++;
+    }
+  return (file);
+}
+
 uint8_t		main(int ac, char **av)
 {
   int		is_help;
@@ -102,15 +116,11 @@ uint8_t		main(int ac, char **av)
     return (is_help);
   if (file_to_arr(av[1], (&file_c)) == FAIL)
     return (FAIL);
-  if ((file_c = my_epurstr(file_c)) == NULL)
-    return (my_puterr84(MEM_FAIL));
   if ((file = my_strtowtb_sc(file_c, '\n')) == NULL)
     return (my_puterr84(MEM_FAIL));
   if (check_header(file) == FAIL)
     return (my_puterr84(INV_FILE));
-  int x = 0;
-  while (file[x])
-    printf("%s", file[x++]);
-  //  parse(file, labels);
+  file = epur_file(file);
+  parser(file);
   return (SUCCESS);
 }

@@ -5,11 +5,30 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Fri Mar 24 17:45:05 2017 nathan
-** Last update Fri Mar 24 19:54:39 2017 nathan
+** Last update Mon Mar 27 01:15:51 2017 nathan
 */
 #include <stdlib.h>
 #include "mylib/my_mem.h"
 #include "mylib/my_string.h"
+
+char	*my_remove_after(char *str, char c)
+{
+  int	x;
+
+  if (str == NULL)
+    return (NULL);
+  x = 0;
+  while (str[x])
+    {
+      if (str[x] == c)
+	{
+	  str[x] = 0;
+	  return (str);
+	}
+      x++;
+    }
+  return (str);
+}
 
 char	*my_epurstr(char *str)
 {
@@ -22,10 +41,8 @@ char	*my_epurstr(char *str)
   y = 0;
   if (str == NULL)
     return (NULL);
-  spaces = my_strcontains(str, ' ');
-  spaces += my_strcontains(str, '\t');
-  new_str = my_calloc(sizeof(char), my_strlen(str) - spaces + 1);
-  if (new_str == NULL)
+  spaces = my_strcontains(str, ' ') + my_strcontains(str, '\t');
+  if ((new_str = my_calloc(sizeof(char), my_strlen(str) - spaces + 1)) == NULL)
     return (NULL);
   while (str[x])
     {
@@ -33,6 +50,5 @@ char	*my_epurstr(char *str)
 	new_str[y++] = str[x];
       x++;
     }
-  free(str);
   return (new_str);
 }
