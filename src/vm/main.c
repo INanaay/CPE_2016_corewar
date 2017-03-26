@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Fri Mar 24 13:57:13 2017 flavian gontier
-** Last update Sat Mar 25 12:29:24 2017 flavian gontier
+** Last update Sun Mar 26 21:15:07 2017 flavian gontier
 */
 
 #include "libmy.h"
@@ -18,5 +18,6 @@ int	main(int argc, char **argv)
 
   parse_arguments(argc, argv, &arguments);
   init_virtual_machine(&arguments, &virtual_machine);
+  run_virtual_machine(&virtual_machine);
   return (EXIT_SUCCESS);
 }

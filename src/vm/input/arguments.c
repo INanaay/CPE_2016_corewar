@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Wed Mar 22 22:33:07 2017 flavian gontier
-** Last update Fri Mar 24 19:41:55 2017 flavian gontier
+** Last update Sun Mar 26 21:05:33 2017 flavian gontier
 */
 
 #include "libmy.h"
@@ -110,6 +110,28 @@ static void	get_help(int argc, char **argv, int index)
   exit(EXIT_SUCCESS);
 }
 
+void	get_champions(int argc, char **argv, int index,  t_arguments *arguments)
+{
+  int	tmp;
+  int	count;
+
+  tmp = 0;
+  count = argc - index;
+  if (count == 0)
+  {
+    my_puterr("ERROR: no champion given.\n");
+    exit(EXIT_ERROR);
+  }
+  arguments->champions = my_calloc(sizeof(char *) * (count + 1));
+  arguments->champion_count = count;
+  while (index < count)
+  {
+    arguments->champions[tmp] = my_strdup(argv[index + tmp]);
+    tmp = tmp + 1;
+    index = index + 1;
+  }
+}
+
 void	parse_arguments(int argc, char **argv, t_arguments *arguments)
 {
   int	index;
@@ -124,5 +146,5 @@ void	parse_arguments(int argc, char **argv, t_arguments *arguments)
   index += get_cycles(&argv[index], arguments);
   index += get_process(&argv[index], arguments);
   index += get_address(&argv[index], arguments);
-  arguments->name = argv[index];
+  get_champions(argc, argv, index, arguments);
 }
