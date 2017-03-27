@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Mon Mar 27 19:59:23 2017 NANAA
+** Last update Mon Mar 27 20:19:25 2017 NANAA
 */
 
 #ifndef BYTECODE_H_
@@ -46,5 +46,7 @@ int8_t		read_int8(t_stream *stream);
 void		read_bytes(t_stream *stream, size_t n);
 int		read_header(int fd, t_header *header);
 int		read_instruction_id(int fd, int *id);
+void          *my_memcpy(void *destination, void *source, size_t n);
+
 
 #endif

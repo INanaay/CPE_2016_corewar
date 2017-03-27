@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 27 15:18:06 2017 flavian gontier
-** Last update Mon Mar 27 20:01:51 2017 NANAA
+** Last update Mon Mar 27 20:24:14 2017 NANAA
 */
 
 #include "bytecode.h"
@@ -16,7 +16,7 @@ void	read_bytes(t_stream *stream, size_t n)
   int8_t	*tmp;
 
   tmp = malloc(sizeof(int8_t) * n);
-  my_memcpy(tmp, stream->data[stream->position], n);
+  my_memcpy(tmp, &stream->data[stream->position], n);
   result = reverse_bytes(tmp, n);
   stream->position += n;
   free(tmp);
