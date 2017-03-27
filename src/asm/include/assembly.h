@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:43:32 2017 nathan
-** Last update Mon Mar 27 01:08:17 2017 nathan
+** Last update Mon Mar 27 12:15:24 2017 nathan
 */
 
 #ifndef ASSEMBLY_H
@@ -16,14 +16,15 @@
 #define HELP1 "\tfile_name\tfile in assembly language to be converted into "
 #define HELP2 "file_name.cor, an\n\t\t\texecutable in the Virtual Machine).\n"
 
-typedef	struct	s_label
+typedef	struct		s_label
 {
-  char		*name;
-  char		*inst;
-  char		**args;
-  int		size;
-}		t_label;
+  char			*name;
+  char			*inst;
+  char			**args;
+  int			size;
+  struct s_label	*next;
+}			t_label;
 
-uint8_t	parser(char **);
+uint8_t	parser(char **, t_label **);
 
 #endif

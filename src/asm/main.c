@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Mon Mar 27 01:14:10 2017 nathan
+** Last update Mon Mar 27 12:14:58 2017 nathan
 */
 
 #include <stdint.h>
@@ -110,6 +110,7 @@ uint8_t		main(int ac, char **av)
   char		*file_c;
   char		**file;
   t_label	**labels;
+  int		len;
 
   is_help = check_args(ac, av);
   if (is_help != 1)
@@ -121,6 +122,13 @@ uint8_t		main(int ac, char **av)
   if (check_header(file) == FAIL)
     return (my_puterr84(INV_FILE));
   file = epur_file(file);
-  parser(file);
+  labels = malloc(sizeof(t_label *) * (len = my_strtablen(file) + 1));
+  labels[len - 1] = NULL;
+  parser(file, labels);
+  int	x = 0;
+  while (labels[x])
+    {
+      printf("%s\n", labels[x++]->inst);
+    }
   return (SUCCESS);
 }
