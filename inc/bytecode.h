@@ -5,7 +5,11 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Mon Mar 27 14:40:56 2017 flavian gontier
+<<<<<<< HEAD
+** Last update Mon Mar 27 18:37:41 2017 flavian gontier
+=======
+** Last update Mon Mar 27 17:19:59 2017 NANAA
+>>>>>>> bytecode
 */
 
 #include <stdint.h>
@@ -20,7 +24,7 @@ typedef struct	s_header
   int8_t	name[NAME_SIZE + 1];
   int32_t	size;
   int8_t	comment[COM_SIZE + 1];
-}
+}		t_header;
 
 typedef struct	s_instruct
 {
@@ -29,5 +33,21 @@ typedef struct	s_instruct
   int8_t	params[REG_SIZE * 4];
 }		t_instruct;
 
-int	read_header(int fd, t_header *header);
-int	read_instruction_id(int fd, int *id);
+typedef struct	s_stream
+{
+  int8_t	*data;
+  int32_t	data_count;
+  int32_t	position;
+}		t_stream;
+
+/*
+** Stream functions
+*/
+t_stream	*init_stream(t_stream *stream, int8_t *data, size_t n);
+int8_t		*reverse_bytes(int8_t *bytes, size_t n);
+int32_t		read_int32(t_stream *stream);
+int16_t		read_int16(t_stream *stream);
+int8_t		read_int8(t_stream *stream);
+int8_t		*read_bytes(t_stream *stream, size_t n);
+int		read_header(int fd, t_header *header);
+int		read_instruction_id(int fd, int *id);
