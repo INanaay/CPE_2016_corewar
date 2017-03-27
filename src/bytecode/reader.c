@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 09:36:10 2017 flavian gontier
-** Last update Sat Mar 25 12:08:16 2017 flavian gontier
+** Last update Mon Mar 27 10:47:20 2017 flavian gontier
 */
 
 #include "bytecode.h"
@@ -35,4 +35,12 @@ int	read_instruction_id(int fd, int *id)
   if (bytes <= 0)
     return (EXIT_ERROR);
   return (EXIT_SUCCESS);
+}
+
+int	write_instruction(int fd, t_instruct *instruction)
+{
+}
+
+int	read_instruction(int fd, t_instruct *instruction)
+{
 }
