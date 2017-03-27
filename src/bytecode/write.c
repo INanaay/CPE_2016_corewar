@@ -5,7 +5,7 @@
 ** Login   <nathan.lebon@epitech.eu>
 ** 
 ** Started on  Mon Mar 27 17:02:20 2017 NANAA
-** Last update Mon Mar 27 20:30:53 2017 NANAA
+** Last update Mon Mar 27 21:31:46 2017 flavian gontier
 */
 
 #include <unistd.h>
@@ -20,7 +20,6 @@ int8_t		write_bytes(int fd, const void *bytes, size_t n)
     return (EXIT_ERROR);
   tmp = reverse_bytes((int8_t *)bytes, n);
   count = write(fd, tmp, n);
-printf("wrote: %d\n", count);
   free(tmp);
   if (count != n)
     return (EXIT_ERROR);
