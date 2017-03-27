@@ -5,7 +5,7 @@
 ** Login   <nathan.lebon@epitech.eu>
 ** 
 ** Started on  Mon Mar 27 16:49:59 2017 NANAA
-** Last update Mon Mar 27 16:56:46 2017 NANAA
+** Last update Mon Mar 27 20:01:16 2017 NANAA
 */
 
 #include <unistd.h>
@@ -27,3 +27,4 @@ int8_t		*reverse_bytes(int8_t *bytes, size_t n)
       count = count - 1;
     }
   return (result);
+}

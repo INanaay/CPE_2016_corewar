@@ -5,8 +5,11 @@
 ** Login   <nathan.lebon@epitech.eu>
 ** 
 ** Started on  Mon Mar 27 17:02:20 2017 NANAA
-** Last update Mon Mar 27 19:18:44 2017 NANAA
+** Last update Mon Mar 27 20:02:48 2017 NANAA
 */
+
+#include <unistd.h>
+#include "bytecode.h"
 
 int8_t		write_bytes(int fd, const void *bytes, size_t n)
 {
@@ -15,7 +18,7 @@ int8_t		write_bytes(int fd, const void *bytes, size_t n)
 
   if (fd <= 0)
     return (EXIT_ERROR);
-  tmp = reverse_bytes(bytes, n);
+  tmp = reverse_bytes((int8_t *)bytes, n);
   count = write(fd, tmp, n);
   free(tmp);
   if (count != n)
