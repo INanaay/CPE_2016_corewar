@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Fri Mar 24 17:05:13 2017 nathan
-** Last update Mon Mar 27 15:25:26 2017 nathan
+** Last update Mon Mar 27 19:10:00 2017 nathan
 */
 
 #include <stdlib.h>
@@ -13,6 +13,30 @@
 #include "mylib/my_string.h"
 #include "assembly.h"
 #include "op.h"
+
+uint8_t		check_labelargs(char **args, int index)
+{
+  uint8_t	x;
+  uint8_t	len;
+
+  x = 0;
+  if ((len = my_strtablen(args)) != op_tab[index].nbr_args)
+    return (FAIL);
+  while (x < len)
+    {
+      if (args[x][0] == DIRECT_CHAR && (T_DIR &
+					op_tab[index].type[x]) != T_DIR)
+	return (FAIL);
+      else if (args[x][0] == 'r' &&
+	       (T_REG & op_tab[index].type[x]) != T_REG)
+	return (FAIL);
+      else if (args[x][0] <= '9' && args[x][0] >= '0' &&
+	       (T_IND & op_tab[index].type[x]) != T_IND)
+	return (FAIL);
+      x++;
+    }
+  return (SUCCESS);
+}
 
 uint8_t		add_tolabels(t_label **labels, char *line,
 			     char *name, int index)
@@ -26,6 +50,8 @@ uint8_t		add_tolabels(t_label **labels, char *line,
   new->name = name;
   new->inst = op_tab[index].mnemonique;
   new->args = my_strtowtb_sc(line + len, SEPARATOR_CHAR);
+  if (check_labelargs(new->args, index) == FAIL)
+    return (FAIL);
   new->size = 0;
   labels[count++] = new;
   return (SUCCESS);
@@ -35,7 +61,7 @@ uint8_t	find_inoptab(char *line)
 {
   int		len;
   int		len2;
-  int		y;
+  uint8_t	y;
 
   y = 0;
   len = my_strlen(line);
@@ -43,7 +69,11 @@ uint8_t	find_inoptab(char *line)
     {
       len2 = my_strlen(op_tab[y].mnemonique);
       if (my_strcmp(op_tab[y].mnemonique, line) == len - len2)
-	return (y);
+	{
+	  if (line[len2] == '%' || line[len2] <= '9' && line[len2] >= '0' ||
+	      line[len2] == 'r')
+	  return (y);
+	}
       y++;
     }
   return (y);
@@ -59,7 +89,7 @@ uint8_t		get_labelname(t_label **labels, char *line)
   len = my_strlen(line);
   while (line[x])
     {
-      if (line[x] == ':')
+      if (line[x] == LABEL_CHAR)
 	{
 	  line[x] = 0;
 	  break ;

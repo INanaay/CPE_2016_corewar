@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Mon Mar 27 14:58:14 2017 nathan
+** Last update Mon Mar 27 17:26:23 2017 nathan
 */
 
 #include <stdlib.h>
@@ -51,9 +51,15 @@ uint8_t		main(int ac, char **av)
   labels[len - 1] = NULL;
   parser(file, labels);
   int	x = 0;
+  int	y;
   while (labels[x])
     {
-      printf("%s\n", labels[x++]->inst);
+      y = 0;
+      printf("%s\t", labels[x]->inst);
+      while (y < my_strtablen(labels[x]->args))
+	printf("%s\t", labels[x]->args[y++]);
+      printf("\n");
+      x++;
     }
   return (SUCCESS);
 }
