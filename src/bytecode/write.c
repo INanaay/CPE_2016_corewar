@@ -5,10 +5,14 @@
 ** Login   <nathan.lebon@epitech.eu>
 ** 
 ** Started on  Mon Mar 27 17:02:20 2017 NANAA
-** Last update Mon Mar 27 17:13:35 2017 NANAA
+** Last update Mon Mar 27 18:57:32 2017 NANAA
 */
 
-int8_t		write_bytes(const int8_t fd, t_stream *stream)
+int8_t		write_bytes( int fd, const int8_t *bytes, size_t n)
 {
-  write(fd, stream->data, stream->data_count);
+  if (fd == -1)
+    return (1);
+  if (write(fd, bytes, n) == -1)
+    return (1);
+  return (0);
 }
