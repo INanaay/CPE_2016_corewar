@@ -5,28 +5,10 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 27 15:18:06 2017 flavian gontier
-** Last update Mon Mar 27 15:42:49 2017 flavian gontier
+** Last update Mon Mar 27 17:49:53 2017 NANAA
 */
 
 #include "bytecode.h"
-
-int8_t	*reverse_bytes(int8_t *bytes, size_t n)
-{
-  register int	index;
-  register int	count;
-  int8_t	*result;
-
-  index = 0;
-  count = n - 1;
-  result = malloc(sizeof(int8_t) * n);
-  while (index < n)
-  {
-    result[index] = bytes[count];
-    index = index + 1;
-    count = count - 1;
-  }
-  return (result);
-}
 
 void	read_bytes(t_stream *stream, size_t n, void *dest)
 {
@@ -40,10 +22,27 @@ void	read_bytes(t_stream *stream, size_t n, void *dest)
   free(tmp);
 }
 
-int16_t	read_int16(t_stream *stream)
+int8_t		read_int8(t_stream *stream)
+{
+  int8_t	result;
+
+  read_bytes(stream, sizeof(int8_t), &result);
+  return (result);
+}
+
+int16_t		read_int16(t_stream *stream)
 {
   int16_t	result;
 
   read_bytes(stream, sizeof(int16_t), &result);
   return (result);
 }
+
+int32_t		read_int32(t_stream *stream)
+{
+  int32_t	result;
+
+  read_bytes(stream, sizeof(int32_t), &result);
+  return (result);
+}
+
