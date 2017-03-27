@@ -5,7 +5,7 @@
 ## Login   <flavian.gontier@epitech.net>
 ##
 ## Started on  Sat Jan 21 00:04:28 2017 flavian gontier
-## Last update Sun Mar 26 21:01:39 2017 flavian gontier
+## Last update Mon Mar 27 14:11:26 2017 flavian gontier
 ##
 
 CC	=	gcc
@@ -46,6 +46,7 @@ VM_SRC	=	src/vm/lib/io/my_put.c								\
 			src/vm/lib/string/my_tabncpy.c						\
 			src/vm/lib/string/my_tabdup.c						\
 			src/vm/lib/string/my_tabelem.c						\
+			src/vm/lib/string/my_get_base.c						\
 			src/vm/lib/list/listInt32/listInt32_add.c			\
 			src/vm/lib/list/listInt32/listInt32_remove.c		\
 			src/vm/lib/list/listInt32/listInt32_insert.c		\
@@ -57,7 +58,7 @@ VM_SRC	=	src/vm/lib/io/my_put.c								\
 			src/vm/lib/list/listString/listString_init.c		\
 			src/vm/lib/list/listString/listString_expends.c		\
 			src/vm/input/arguments.c							\
-			src/vm/virtual_machine/init_virtual_machine.c		\
+			src/vm/virtual_machine/init.c						\
 			src/vm/main.c
 
 VM_OBJ     	=	$(VM_SRC:.c=.o)

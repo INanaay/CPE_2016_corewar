@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.net>
 **
 ** Started on  Fri Jan 20 20:32:15 2017 flavian gontier
-** Last update Fri Mar 24 19:22:12 2017 flavian gontier
+** Last update Mon Mar 27 13:59:54 2017 flavian gontier
 */
 
 #ifndef LIBMY_H_
@@ -16,16 +16,18 @@
 #include <stdint.h>
 #include "list.h"
 
-#define EXIT_SUCCESS 0
-#define EXIT_ERROR 84
-#define READ_SIZE 512
-#define LIST_CAPACITY 4
+# define EXIT_SUCCESS 0
+# define EXIT_ERROR 84
+# define READ_SIZE 512
+# define LIST_CAPACITY 4
+# define HEXA_BASE "0123456789ABCDEF"
+# define HEXA_SUFFIX "0x"
 
-#define my_isup(x) (x >= 'A' && x <= 'Z')
-#define my_islow(x) (x >= 'a' && x <= 'z')
-#define my_isalpha(x) (my_islow(x) || my_isup(x))
-#define my_isnum(x) (x >= '0' && x <= '9')
-#define my_isalphanum(x) (my_isalpha(x) || my_isnum(x))
+# define my_isup(x) (x >= 'A' && x <= 'Z')
+# define my_islow(x) (x >= 'a' && x <= 'z')
+# define my_isalpha(x) (my_islow(x) || my_isup(x))
+# define my_isnum(x) (x >= '0' && x <= '9')
+# define my_isalphanum(x) (my_isalpha(x) || my_isnum(x))
 
 typedef struct  s_coord
 {
@@ -61,6 +63,8 @@ char                    *my_linedup(char *str);
 char			**my_strsplit(char *str, char c);
 char                    **my_tabdup(char **);
 char			**my_tabncpy(char **dest, char **src, size_t n);
+char			*my_get_hexadecimal(int nb);
+int			my_get_decimal(char *hexadecimal);
 t_coord                 my_tabdim(char **);
 /*
 ** memory
