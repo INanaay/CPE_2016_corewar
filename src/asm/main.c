@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Mon Mar 27 17:26:23 2017 nathan
+** Last update Tue Mar 28 01:09:56 2017 nathan
 */
 
 #include <stdlib.h>
@@ -49,7 +49,8 @@ uint8_t		main(int ac, char **av)
   file = epur_file(file);
   labels = malloc(sizeof(t_label *) * (len = my_strtablen(file) + 1));
   labels[len - 1] = NULL;
-  parser(file, labels);
+  if (parser(file, labels) == FAIL)
+    return (FAIL);
   int	x = 0;
   int	y;
   while (labels[x])

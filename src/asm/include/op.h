@@ -5,7 +5,7 @@
 ** Login   <astek@epitech.net>
 **
 ** Started on  Mon Mar 30 11:14:31 2009 Astek
-** Last update Fri Mar 24 17:14:12 2017 nathan
+** Last update Tue Mar 28 01:21:12 2017 nathan
 */
 
 #ifndef _OP_H_
@@ -28,10 +28,6 @@
 
 # define REG_NUMBER      16              /* r1 <--> rx */
 
-/*
-**
-*/
-
 typedef char    args_type_t;
 
 # define T_REG           1       /* register */
@@ -41,7 +37,7 @@ typedef char    args_type_t;
                                    into r1 (4 bytes )) */
 # define T_LAB           8       /* LABEL */
 
-typedef struct	op_s
+typedef struct	s_op
 {
    char         *mnemonique;
    char         nbr_args;
@@ -49,7 +45,7 @@ typedef struct	op_s
    char         code;
    int          nbr_cycles;
    char         *comment;
-}		op_t;
+}		t_op;
 
 /*
 ** size (in bytes)
@@ -61,7 +57,7 @@ typedef struct	op_s
 /*
 ** op_tab
 */
-extern  op_t    op_tab[];
+extern  t_op    g_op_tab[];
 
 /*
 ** header
@@ -69,14 +65,14 @@ extern  op_t    op_tab[];
 # define PROG_NAME_LENGTH        128
 # define COMMENT_LENGTH          2048
 
-typedef struct	header_s
+typedef struct	s_header
 {
    int		magic;
 # define COREWAR_EXEC_MAGIC      0xea83f3        /* why not */
    char		prog_name[PROG_NAME_LENGTH+1];
    int		prog_size;
    char		comment[COMMENT_LENGTH+1];
-}		header_t;
+}		t_header;
 
 
 /*
