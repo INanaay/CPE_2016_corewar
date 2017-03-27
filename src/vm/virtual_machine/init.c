@@ -5,20 +5,11 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 12:30:23 2017 flavian gontier
-** Last update Sun Mar 26 21:55:06 2017 flavian gontier
+** Last update Mon Mar 27 13:30:06 2017 flavian gontier
 */
 
 #include "virtual_machine.h"
 #include "libmy.h"
-
-static void	write_process(t_vm *virtual_machine, t_process *process)
-{
-  int	start_address;
-
-  start_address = process->start_address;
-  my_memcpy(&virtual_machine->memory[start_address],
-	    process->bytecode, sizeof(process->bytecode));
-}
 
 static void	init_processes(t_arguments *arguments, t_vm *virtual_machine)
 {
