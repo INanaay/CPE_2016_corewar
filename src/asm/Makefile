@@ -5,7 +5,7 @@
 ## Login   <nathan.schwarz@epitech.eu@epitech.net>
 ##
 ## Started on  Thu Feb  2 20:38:34 2017 nathan
-## Last update Mon Mar 27 01:08:33 2017 nathan
+## Last update Mon Mar 27 14:56:25 2017 nathan
 ##
 
 CC	= 		gcc -g3
@@ -13,6 +13,7 @@ CC	= 		gcc -g3
 CFLAGS	+=		-I include
 
 SRC	=		utils/op.c				\
+			init.c					\
 			parser.c				\
 			main.c
 
