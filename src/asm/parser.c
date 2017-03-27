@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Fri Mar 24 17:05:13 2017 nathan
-** Last update Tue Mar 28 01:19:03 2017 nathan
+** Last update Tue Mar 28 01:25:27 2017 nathan
 */
 
 #include <stdlib.h>
@@ -28,7 +28,8 @@ uint8_t		check_labelargs(char **args, int index)
 					g_op_tab[index].type[x]) != T_DIR)
 	return (FAIL);
       else if (args[x][0] == 'r' &&
-	       (T_REG & g_op_tab[index].type[x]) != T_REG)
+	       ((T_REG & g_op_tab[index].type[x]) != T_REG ||
+		my_atoi(args[x] + 1) > REG_NUMBER))
 	return (FAIL);
       else if (args[x][0] <= '9' && args[x][0] >= '0' &&
 	       (T_IND & g_op_tab[index].type[x]) != T_IND)
