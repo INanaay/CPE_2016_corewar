@@ -5,7 +5,7 @@
 ** Login   <nathan.lebon@epitech.eu>
 ** 
 ** Started on  Mon Mar 27 16:49:59 2017 NANAA
-** Last update Mon Mar 27 16:56:46 2017 NANAA
+** Last update Mon Mar 27 20:38:22 2017 NANAA
 */
 
 #include <unistd.h>
@@ -19,11 +19,14 @@ int8_t		*reverse_bytes(int8_t *bytes, size_t n)
 
   index = 0;
   count = n - 1;
+  printf("n: %d\ncount: %d\n", n, count); 
   result = malloc(sizeof(int8_t) * n);
   while (index < n)
     {
+      printf("index: %d\nresult[%d] = %c\n", index, index, bytes[count]);
       result[index] = bytes[count];
       index = index + 1;
       count = count - 1;
     }
   return (result);
+}

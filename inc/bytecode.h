@@ -5,11 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-<<<<<<< HEAD
-** Last update Mon Mar 27 18:37:41 2017 flavian gontier
-=======
-** Last update Mon Mar 27 17:19:59 2017 NANAA
->>>>>>> bytecode
+** Last update Mon Mar 27 21:52:30 2017 flavian gontier
 */
 
 #include <stdint.h>
@@ -39,6 +35,13 @@ typedef struct	s_stream
   int32_t	data_count;
   int32_t	position;
 }		t_stream;
+
+typedef struct	s_instruct
+{
+  int8_t	id;
+  int8_t	params_type;
+  int8_t	*params;
+}
 
 /*
 ** Stream functions
