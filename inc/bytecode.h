@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Mon Mar 27 15:16:43 2017 flavian gontier
+** Last update Mon Mar 27 17:19:59 2017 NANAA
 */
 
 #include <stdint.h>
@@ -22,22 +22,21 @@ typedef struct	s_header
   int8_t	comment[COM_SIZE + 1];
 }		t_header;
 
-typedef struct	s_bigendian_stream
+typedef struct	s_stream
 {
   int8_t	*data;
   int32_t	data_count;
   int32_t	position;
-}		t_bigendian_stream;
+}		t_stream;
 
 /*
 ** Stream functions
 */
-void	init_stream(t_bigendian_stream *stream, int8_t *data, size_t n);
-int8_t	*reverse_bytes(int8_t *bytes, size_t n);
-int32_t	read_int32(t_bigendian_stream *stream);
-int16_t	read_int16(t_bigendian_stream *stream);
-int8_t	read_int8(t_bigendian_stream *stream);
-int8_t	*read_bytes(t_bigendian_stream *stream, size_t n);
-
-int	read_header(int fd, t_header *header);
-int	read_instruction_id(int fd, int *id);
+t_stream	*init_stream(t_stream *stream, int8_t *data, size_t n);
+int8_t		*reverse_bytes(int8_t *bytes, size_t n);
+int32_t		read_int32(t_stream *stream);
+int16_t		read_int16(t_stream *stream);
+int8_t		read_int8(t_stream *stream);
+int8_t		*read_bytes(t_stream *stream, size_t n);
+int		read_header(int fd, t_header *header);
+int		read_instruction_id(int fd, int *id);
