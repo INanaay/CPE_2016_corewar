@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Fri Mar 24 17:05:13 2017 nathan
-** Last update Tue Mar 28 01:25:27 2017 nathan
+** Last update Tue Mar 28 13:26:02 2017 nathan
 */
 
 #include <stdlib.h>
@@ -18,6 +18,7 @@ uint8_t		check_labelargs(char **args, int index)
 {
   uint8_t	x;
   uint8_t	len;
+  int		tmp;
 
   x = 0;
   if ((len = my_strtablen(args)) != g_op_tab[index].nbr_args)
@@ -29,7 +30,7 @@ uint8_t		check_labelargs(char **args, int index)
 	return (FAIL);
       else if (args[x][0] == 'r' &&
 	       ((T_REG & g_op_tab[index].type[x]) != T_REG ||
-		my_atoi(args[x] + 1) > REG_NUMBER))
+		(tmp = my_atoi(args[x] + 1)) > REG_NUMBER || tmp < 1))
 	return (FAIL);
       else if (args[x][0] <= '9' && args[x][0] >= '0' &&
 	       (T_IND & g_op_tab[index].type[x]) != T_IND)
@@ -106,7 +107,7 @@ uint8_t		get_labelname(t_label **labels, char *line)
   return (SUCCESS);
 }
 
-uint8_t		parser(char **file, t_label **labels)
+uint8_t		parser(char **file, t_label **labels, int *names_nbr)
 {
   int		x;
   int		y;
@@ -118,7 +119,11 @@ uint8_t		parser(char **file, t_label **labels)
 	{
 	  y = find_inoptab(file[x]);
 	  if (y == 16)
-	    get_labelname(labels, file[x]);
+	    {
+	      if (get_labelname(labels, file[x]) == FAIL)
+		return (my_puterr84(INV_FILE));
+	      *names_nbr += 1;
+	    }
 	  else
 	    {
 	      if (add_tolabels(labels, file[x], NULL, y) == FAIL)

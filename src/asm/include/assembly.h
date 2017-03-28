@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:43:32 2017 nathan
-** Last update Tue Mar 28 01:09:27 2017 nathan
+** Last update Tue Mar 28 01:40:51 2017 nathan
 */
 
 #ifndef ASSEMBLY_H
@@ -28,6 +28,6 @@ uint8_t	check_args(int, char **);
 uint8_t	file_to_arr(const char *, char **);
 uint8_t	check_headerspcs(int, char *);
 uint8_t	check_header(char **);
-uint8_t	parser(char **, t_label **);
+uint8_t	parser(char **, t_label **, int *);
 
 #endif

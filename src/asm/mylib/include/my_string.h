@@ -5,11 +5,12 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Thu Jan 19 15:25:04 2017 nathan
-** Last update Mon Mar 27 01:16:22 2017 nathan
+** Last update Tue Mar 28 13:07:34 2017 nathan
 */
 
 #ifndef _MY_STRING_
  #define _MY_STRING_
+#include <stdint.h>
 
 void	my_putstr(char *);
 void	my_puterr(char *);
@@ -31,6 +32,7 @@ int	my_strcontains_nonnum(char *);
 int	my_atoi(char *);
 int	get_nbrlen(int);
 int	my_charlim(char, char, char);
+uint8_t	find_intab(char *, char **);
 char	*str_isafter(int, char *);
 char	*my_revatoi(int);
 char	*my_gnl(const int);

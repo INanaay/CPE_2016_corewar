@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Tue Mar 28 01:09:56 2017 nathan
+** Last update Tue Mar 28 13:25:01 2017 nathan
 */
 
 #include <stdlib.h>
@@ -29,6 +29,52 @@ char		**epur_file(char **file)
   return (file);
 }
 
+uint8_t	check_labelexistargs(t_label **labels, char **names)
+{
+  int	x;
+  int	y;
+
+  x = 0;
+  y = 0;
+  while (labels[x])
+    {
+      while (labels[x]->args[y])
+	{
+	  if (labels[x]->args[y][1] == ':' &&
+	      find_intab(labels[x]->args[y] + 2, names) != 0)
+	    return (my_puterr84(INV_FILE));
+	  else if (labels[x]->name && labels[x]->args[y][1] == ':' &&
+		   my_strcmp(labels[x]->name, labels[x]->args[y] + 2) == 0)
+	    return (my_puterr84(INV_FILE));
+	  y++;
+	}
+      y = 0;
+      x++;
+    }
+  return (SUCCESS);
+}
+
+uint8_t	check_labelexist(t_label **labels, int names_nbr)
+{
+  char	**names;
+  int	x;
+  int	y;
+
+  x = 0;
+  y = 0;
+  names = malloc(sizeof(char *) * (names_nbr + 1));
+  names[names_nbr] = NULL;
+  while (labels[x])
+    {
+      if (labels[x]->name != NULL)
+	names[y++] = labels[x]->name;
+      x++;
+    }
+  if (y == 0)
+    names = NULL;
+  return (check_labelexistargs(labels, names));
+}
+
 uint8_t		main(int ac, char **av)
 {
   int		is_help;
@@ -36,7 +82,9 @@ uint8_t		main(int ac, char **av)
   char		**file;
   t_label	**labels;
   int		len;
+  int		names_nbr;
 
+  names_nbr = 0;
   is_help = check_args(ac, av);
   if (is_help != 1)
     return (is_help);
@@ -49,9 +97,11 @@ uint8_t		main(int ac, char **av)
   file = epur_file(file);
   labels = malloc(sizeof(t_label *) * (len = my_strtablen(file) + 1));
   labels[len - 1] = NULL;
-  if (parser(file, labels) == FAIL)
+  if (parser(file, labels, &names_nbr) == FAIL)
     return (FAIL);
-  int	x = 0;
+  if (check_labelexist(labels, names_nbr) == FAIL)
+    return (FAIL);
+  /*int	x = 0;
   int	y;
   while (labels[x])
     {
@@ -61,6 +111,6 @@ uint8_t		main(int ac, char **av)
 	printf("%s\t", labels[x]->args[y++]);
       printf("\n");
       x++;
-    }
+      }*/
   return (SUCCESS);
 }
