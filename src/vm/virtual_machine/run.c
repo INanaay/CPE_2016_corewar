@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 27 14:10:53 2017 flavian gontier
-** Last update Tue Mar 28 14:39:02 2017 anatole zeyen
+** Last update Tue Mar 28 14:53:59 2017 anatole zeyen
 */
 
 #include <stdint.h>
@@ -19,7 +19,7 @@ void	virtual_machine_write(t_vm *machine, int32_t address,
   int	count;
 
   if (address > MEM_SIZE)
-    address = adress % MEM_SIZE;
+    address = address % MEM_SIZE;
   tmp = address + n;
   if (tmp > MEM_SIZE)
   {
