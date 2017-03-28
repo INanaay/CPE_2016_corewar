@@ -5,10 +5,33 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 27 14:10:53 2017 flavian gontier
-** Last update Mon Mar 27 14:18:32 2017 flavian gontier
+** Last update Tue Mar 28 09:27:57 2017 flavian gontier
 */
 
 #include "virtual_machine.h"
+#include "libmy.h"
+
+void	virtual_machine_write(t_vm *machine, int32_t address,
+			      int8_t *data, size_t n)
+{
+  int	tmp;
+  int	count;
+
+  if (address > MEM_SIZE)
+    address = adress % MEM_SIZE;
+  tmp = address + n;
+  if (tmp > MEM_SIZE)
+  {
+    count = machine->memory - address;
+    my_memcpy(&machine->memory[address], data, count);
+    tmp = n - count;
+    my_memcpy(&machine->memory[0], data + count, n - count);
+  }
+  else
+  {
+    my_memcpy(&machine->memory[address], data, n);
+  }
+}
 
 void	run_virtual_machine(t_vm *virtual_machine)
 {

@@ -5,11 +5,16 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 12:30:23 2017 flavian gontier
-** Last update Mon Mar 27 13:30:06 2017 flavian gontier
+** Last update Tue Mar 28 10:41:25 2017 flavian gontier
 */
 
 #include "virtual_machine.h"
 #include "libmy.h"
+
+static void	write_process(t_vm *virtual_machine, t_process *process)
+{
+
+}
 
 static void	init_processes(t_arguments *arguments, t_vm *virtual_machine)
 {
@@ -26,6 +31,7 @@ static void	init_processes(t_arguments *arguments, t_vm *virtual_machine)
     process = &virtual_machine->processes[counter];
     process->id = virtual_machine->last_process_id;
     process->address = (counter + 1) * ADDRESS_CONST % MEM_SIZE;
+    process->binary = arguments->champions[counter];
     virtual_machine->last_process_id += 1;
     counter = counter + 1;
   }
