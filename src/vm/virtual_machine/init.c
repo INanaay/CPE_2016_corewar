@@ -5,15 +5,28 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 12:30:23 2017 flavian gontier
-** Last update Tue Mar 28 10:41:25 2017 flavian gontier
+** Last update Tue Mar 28 13:35:48 2017 flavian gontier
 */
 
 #include "virtual_machine.h"
 #include "libmy.h"
 
-static void	write_process(t_vm *virtual_machine, t_process *process)
+static void	copy_process(t_vm *vm, t_process *process)
 {
+  int		fd;
+  int		addr;
+  int		bytes;
+  int8_t	tmp[READ_SIZE];
 
+  fd = open(process->binary, O_RDONLY);
+  bytes = READ_SIZE;
+  addr = process->addr;
+  while (bytes == READ_SIZE)
+  {
+    bytes = read(fd, tmp, READ_SIZE);
+    virtual_machine_write(vm, addr, tmp, bytes);
+    addr += bytes;
+  }
 }
 
 static void	init_processes(t_arguments *arguments, t_vm *virtual_machine)
@@ -34,6 +47,7 @@ static void	init_processes(t_arguments *arguments, t_vm *virtual_machine)
     process->binary = arguments->champions[counter];
     virtual_machine->last_process_id += 1;
     counter = counter + 1;
+    copy_process(virtual_machine, t_process *process);
   }
 }
 

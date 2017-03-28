@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Fri Mar 24 15:39:16 2017 flavian gontier
-** Last update Mon Mar 27 23:09:15 2017 flavian gontier
+** Last update Tue Mar 28 13:34:10 2017 flavian gontier
 */
 
 #include <stdint.h>
@@ -29,7 +29,7 @@ typedef struct	s_process
   int32_t	id;
   int32_t	address;
   char		*binary;
-  t_header	*header;
+  t_header	header;
 }		t_process;
 
 typedef struct	s_vm
