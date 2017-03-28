@@ -5,14 +5,14 @@
 ## Login   <flavian.gontier@epitech.net>
 ##
 ## Started on  Sat Jan 21 00:04:28 2017 flavian gontier
-## Last update Tue Mar 28 14:53:30 2017 anatole zeyen
+## Last update Tue Mar 28 14:34:23 2017 flavian gontier
 ##
 
 CC	=	gcc
 
-CFLAGS	+=	-I inc
+CFLAGS	+=	-I inc -g3
 
-LDFLAGS	+=	-Werror -Wall -Wextra -g3
+LDFLAGS	+=	-Werror -Wall -Wextra
 
 VM_SRC	=	src/vm/lib/io/my_put.c								\
 			src/vm/lib/io/my_putstr.c							\

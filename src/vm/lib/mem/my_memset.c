@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.net>
 ** 
 ** Started on  Thu Dec 22 00:26:31 2016 flavian gontier
-** Last update Thu Jan 19 14:58:54 2017 flavian gontier
+** Last update Tue Mar 28 15:39:16 2017 flavian gontier
 */
 
 void	*my_memset(char *ptr, int len, int value)
