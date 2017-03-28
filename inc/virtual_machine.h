@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Fri Mar 24 15:39:16 2017 flavian gontier
-** Last update Tue Mar 28 14:42:55 2017 anatole zeyen
+** Last update Tue Mar 28 14:58:33 2017 anatole zeyen
 */
 
 #include <stdint.h>
@@ -43,3 +43,8 @@ typedef struct	s_vm
 }		t_vm;
 
 void		parse_arguments(int argc, char **argv, t_arguments *arguments);
+void		virtual_machine_write(t_vm *machine, int32_t address,
+				      int8_t *data, size_t n);
+void		run_virtual_machine(t_vm *virtual_machine);
+void		init_virtual_machine(t_arguments *arguments,
+				     t_vm *virtual_machine);

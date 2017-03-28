@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 27 14:10:53 2017 flavian gontier
-** Last update Tue Mar 28 14:53:59 2017 anatole zeyen
+** Last update Tue Mar 28 15:00:56 2017 anatole zeyen
 */
 
 #include <stdint.h>
@@ -23,7 +23,7 @@ void	virtual_machine_write(t_vm *machine, int32_t address,
   tmp = address + n;
   if (tmp > MEM_SIZE)
   {
-    count = machine->memory - address;
+    count = MEM_SIZE - address;
     my_memcpy(&machine->memory[address], data, count);
     tmp = n - count;
     my_memcpy(&machine->memory[0], data + count, n - count);
