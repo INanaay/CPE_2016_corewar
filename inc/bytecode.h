@@ -5,14 +5,17 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Mon Mar 27 21:52:30 2017 flavian gontier
+** Last update Tue Mar 28 14:46:18 2017 anatole zeyen
 */
 
 #include <stdint.h>
+#include <stdlib.h>
 
 # define MAGIC_VALUE 0xea83f3
 # define NAME_SIZE 128
 # define COM_SIZE 2048
+# define REG_SIZE DIR_SIZE
+# define DIR_SIZE 4
 
 typedef struct	s_header
 {
@@ -21,13 +24,6 @@ typedef struct	s_header
   int32_t	size;
   int8_t	comment[COM_SIZE + 1];
 }		t_header;
-
-typedef struct	s_instruct
-{
-  int8_t	id;
-  int8_t	param_type;
-  int8_t	params[REG_SIZE * 4];
-}		t_instruct;
 
 typedef struct	s_stream
 {
@@ -41,7 +37,7 @@ typedef struct	s_instruct
   int8_t	id;
   int8_t	params_type;
   int8_t	*params;
-}
+}		t_instruct;
 
 /*
 ** Stream functions

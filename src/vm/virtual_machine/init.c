@@ -5,9 +5,10 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 12:30:23 2017 flavian gontier
-** Last update Tue Mar 28 13:35:48 2017 flavian gontier
+** Last update Tue Mar 28 14:38:46 2017 anatole zeyen
 */
 
+#include <stdint.h>
 #include "virtual_machine.h"
 #include "libmy.h"
 

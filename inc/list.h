@@ -5,11 +5,14 @@
 ** Login   <flavian.gontier@epitech.net>
 ** 
 ** Started on  Fri Jan 27 00:33:08 2017 flavian gontier
-** Last update Sun Mar 12 19:13:24 2017 flavian gontier
+** Last update Tue Mar 28 14:41:34 2017 anatole zeyen
 */
 
 #ifndef MY_LIST_H_
 # define MY_LIST_H_
+
+#include <stdint.h>
+#include <stdlib.h>
 
 # define DEFAULT_CAPACITY 4
 

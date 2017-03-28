@@ -5,11 +5,12 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Fri Mar 24 15:39:16 2017 flavian gontier
-** Last update Tue Mar 28 13:34:10 2017 flavian gontier
+** Last update Tue Mar 28 14:42:55 2017 anatole zeyen
 */
 
 #include <stdint.h>
 #include <stdlib.h>
+#include "bytecode.h"
 
 # define ADDRESS_CONST 0x65f
 # define MAX_CODE_SIZE 8192
