@@ -5,7 +5,7 @@
 ** Login   <nathan.lebon@epitech.eu>
 ** 
 ** Started on  Mon Mar 27 17:14:31 2017 NANAA
-** Last update Tue Mar 28 11:05:44 2017 flavian gontier
+** Last update Wed Mar 29 11:06:13 2017 flavian gontier
 */
 
 #include "bytecode.h"
@@ -22,11 +22,19 @@ static void	get_stream_data(int fd, t_stream *stream)
   }
 }
 
-t_stream	*init_stream(int fd, t_stream *stream)
+void	init_stream(int8_t *data, size_t n, t_stream *stream)
 {
-  stream = malloc(sizeof(t_stream));
   if (stream == NULL)
-    return (NULL);
+    return ;
+  stream->data_count = n;
+  stream->position = 0;
+  stream->data = data;
+}
+
+void	init_file_stream(int fd, t_stream *stream)
+{
+  if (stream == NULL)
+    return ;
   stream->data_count = 0;
   stream->position = 0;
   get_stream_data(fd, stream);

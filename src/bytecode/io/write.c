@@ -5,10 +5,11 @@
 ** Login   <nathan.lebon@epitech.eu>
 ** 
 ** Started on  Mon Mar 27 17:02:20 2017 NANAA
-** Last update Mon Mar 27 21:31:46 2017 flavian gontier
+** Last update Wed Mar 29 11:46:08 2017 flavian gontier
 */
 
 #include <unistd.h>
+#include "libmy.h"
 #include "bytecode.h"
 
 int8_t		write_bytes(int fd, const void *bytes, size_t n)
@@ -23,5 +24,5 @@ int8_t		write_bytes(int fd, const void *bytes, size_t n)
   free(tmp);
   if (count != n)
     return (EXIT_ERROR);
-  return (EXIT_SUCESS);
+  return (EXIT_SUCCESS);
 }
