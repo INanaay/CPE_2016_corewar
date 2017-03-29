@@ -5,9 +5,10 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Wed Mar 29 12:17:14 2017 flavian gontier
+** Last update Wed Mar 29 12:26:04 2017 flavian gontier
 */
 
+#include "virtual_machine.h"
 #include <stdint.h>
 
 # define MAGIC_VALUE 0xea83f3
