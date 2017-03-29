@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Wed Mar 29 12:00:24 2017 flavian gontier
+** Last update Wed Mar 29 12:17:14 2017 flavian gontier
 */
 
 #include <stdint.h>
@@ -62,3 +62,11 @@ int8_t		read_int8(t_stream *stream);
 void		read_bytes(t_stream *stream, void *dest, size_t n);
 void		read_header(t_stream *stream, t_header *header);
 int		read_instruction_id(int fd, int *id);
+
+/*
+** Params functions
+*/
+int		get_params_count(int8_t params_type);
+int		get_param_type(int8_t params_type, int8_t param_index);
+int		get_params_size(int8_t params_type);
+int8_t		get_params(t_vm *virtual_machine, int addr, int8_t params_type);

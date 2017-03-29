@@ -5,8 +5,10 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Mar 28 16:52:37 2017 flavian gontier
-** Last update Wed Mar 29 04:55:38 2017 flavian gontier
+** Last update Wed Mar 29 12:15:12 2017 flavian gontier
 */
+
+#include <stdint.h>
 
 int	get_params_count(int8_t params_type)
 {
@@ -69,10 +71,8 @@ int	get_param_size(int type)
 int8_t	*get_params(t_vm *virtual_machine, int addr, int8_t paramstype)
 {
   int8_t	*result;
-  int		addr;
   int		size;
 
-  index = 0;
   size = get_params_size(paramstype);
   result = malloc(sizeof(int8_t) * size);
   my_memcpy(result, &virtual_machine->memory[addr], size);
