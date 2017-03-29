@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Mar 28 22:03:49 2017 flavian gontier
-** Last update Wed Mar 29 11:56:41 2017 flavian gontier
+** Last update Wed Mar 29 18:49:00 2017 NANAA
 */
 
 #include "bytecode.h"
@@ -18,3 +18,26 @@ void    read_header(t_stream *stream, t_header *header)
   read_bytes(stream, header->comment, sizeof(header->comment));
 }
 
+int8_t	write_header(int fd, const t_header *header)
+{
+  if (write_bytes(fd, &header->magic, sizeof(header->magic))
+      == EXIT_ERROR ||
+      write_bytes(fd, header->name, sizeof(header->name)) == EXIT_ERROR ||
+      write_bytes(fd, header->comment, sizeof(header->comment)) == EXIT_ERROR ||
+      write_bytes(fd, &header->size, sizeof(header->size)) == EXIT_ERROR)
+    return (EXIT_ERROR);
+  return (EXIT_SUCCESS);
+}
+
+int main(int ac, char **av)
+{
+  int fd;
+  t_header *header;
+
+  fd = open("caca", O_RDWONLY);
+  header = malloc(sizeof(t_header));
+  header->name = av[1];
+  header->comment = av[2];
+  header->size = 150;
+  write_header(fd, header);
+}
