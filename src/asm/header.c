@@ -5,7 +5,7 @@
 ** Login   <nathan.lebon@epitech.eu>
 ** 
 ** Started on  Wed Mar 29 15:16:53 2017 NANAA
-** Last update Wed Mar 29 16:27:46 2017 NANAA
+** Last update Wed Mar 29 18:22:34 2017 NANAA
 */
 
 #include <unistd.h>
@@ -68,6 +68,7 @@ t_header	*fill_header_comment(t_header *head, char *str)
 
 t_header	*fill_header_struct(t_header *head, char **file)
 {
+  head->magic = COREWAR_EXEC_MAGIC;
   if ((head = malloc(sizeof (t_header))) == NULL)
     return (NULL);
   if ((head = fill_header_prog_name(head, file[0])) == NULL)
