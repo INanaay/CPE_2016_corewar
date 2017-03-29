@@ -5,12 +5,12 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 27 15:18:06 2017 flavian gontier
-** Last update Tue Mar 28 10:45:24 2017 flavian gontier
+** Last update Wed Mar 29 11:35:56 2017 flavian gontier
 */
 
 #include "bytecode.h"
 
-static int8_t	*read_bytes(t_stream *stream, void *ptr, size_t n)
+static int8_t	*read_bytes(t_stream *stream, size_t n)
 {
   int8_t	*result;
   int8_t	*tmp;
