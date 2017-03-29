@@ -5,8 +5,11 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Wed Mar 29 12:26:04 2017 flavian gontier
+** Last update Wed Mar 29 12:27:30 2017 flavian gontier
 */
+
+#ifndef BYTECODE_H_
+# define BYTECODE_H_
 
 #include "virtual_machine.h"
 #include <stdint.h>
@@ -56,3 +59,5 @@ int		get_params_count(int8_t params_type);
 int		get_param_type(int8_t params_type, int8_t param_index);
 int		get_params_size(int8_t params_type);
 int8_t		get_params(t_vm *virtual_machine, int addr, int8_t params_type);
+
+#endif
