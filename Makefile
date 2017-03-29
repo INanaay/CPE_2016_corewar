@@ -5,7 +5,7 @@
 ## Login   <flavian.gontier@epitech.net>
 ##
 ## Started on  Sat Jan 21 00:04:28 2017 flavian gontier
-## Last update Tue Mar 28 14:34:23 2017 flavian gontier
+## Last update Wed Mar 29 11:30:50 2017 flavian gontier
 ##
 
 CC	=	gcc
@@ -57,9 +57,16 @@ VM_SRC	=	src/vm/lib/io/my_put.c								\
 			src/vm/lib/list/listString/listString_insert.c		\
 			src/vm/lib/list/listString/listString_init.c		\
 			src/vm/lib/list/listString/listString_expends.c		\
+			src/bytecode/io/read.c								\
+			src/bytecode/io/write.c								\
+			src/bytecode/io/utils.c								\
+			src/bytecode/parsing/header.c						\
+			src/bytecode/parsing/instruction.c					\
+			src/bytecode/parsing/params.c						\
+			src/stream/stream.c									\
 			src/vm/input/arguments.c							\
 			src/vm/virtual_machine/init.c						\
-			src/vm/virtual_machine/run.c				\
+			src/vm/virtual_machine/run.c						\
 			src/vm/main.c
 
 VM_OBJ     	=	$(VM_SRC:.c=.o)

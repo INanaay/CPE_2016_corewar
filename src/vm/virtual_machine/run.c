@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 27 14:10:53 2017 flavian gontier
-** Last update Wed Mar 29 10:57:05 2017 flavian gontier
+** Last update Wed Mar 29 11:27:30 2017 flavian gontier
 */
 
 #include <stdint.h>
@@ -38,8 +38,20 @@ void	virtual_machine_write(t_vm *machine, int32_t address,
 
 void	run_virtual_machine(t_vm *virtual_machine)
 {
-  int	index;
+  t_stream	stream;
+  t_instruct	instruction;
+  t_process	*process;
+  int		index;
 
   index = 0;
-  while (index < virtual_machine->process_coun
+  init_stream(virtual_machine->memory, MEM_SIZE, &stream);
+  while (index < virtual_machine->process_count)
+  {
+    process = &virtual_machine->processes[index];
+    read_instruction(&stream, &instruction);
+    /*
+    exec_instruction(process, &instruction);
+    */
+    index = index + 1;
+  }
 }
