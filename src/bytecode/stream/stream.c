@@ -5,17 +5,38 @@
 ** Login   <nathan.lebon@epitech.eu>
 ** 
 ** Started on  Mon Mar 27 17:14:31 2017 NANAA
-** Last update Mon Mar 27 21:36:03 2017 flavian gontier
+** Last update Wed Mar 29 11:06:13 2017 flavian gontier
 */
 
 #include "bytecode.h"
 
-t_stream	*init_stream(t_stream *stream, int8_t *data, size_t n)
+static void	get_stream_data(int fd, t_stream *stream)
 {
-  if ((stream = malloc(sizeof (stream))) == NULL)
-    return (NULL);
-  stream->data = data;
+  int	bytes;
+
+  bytes = READ_SIZE;
+  while (bytes == READ_SIZE)
+  {
+    bytes = read(fd, &stream->data[stream->data_count], READ_SIZE);
+    stream->data_count += bytes;
+  }
+}
+
+void	init_stream(int8_t *data, size_t n, t_stream *stream)
+{
+  if (stream == NULL)
+    return ;
   stream->data_count = n;
   stream->position = 0;
+  stream->data = data;
+}
+
+void	init_file_stream(int fd, t_stream *stream)
+{
+  if (stream == NULL)
+    return ;
+  stream->data_count = 0;
+  stream->position = 0;
+  get_stream_data(fd, stream);
   return (stream);
 }
