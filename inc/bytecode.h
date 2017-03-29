@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Tue Mar 28 14:46:18 2017 anatole zeyen
+** Last update Tue Mar 28 21:29:42 2017 flavian gontier
 */
 
 #include <stdint.h>
@@ -14,8 +14,20 @@
 # define MAGIC_VALUE 0xea83f3
 # define NAME_SIZE 128
 # define COM_SIZE 2048
-# define REG_SIZE DIR_SIZE
+
+/*
+** paramaters size
+*/
+# define IND_SIZE 2
 # define DIR_SIZE 4
+# define REG_SIZE DIR_SIZE
+
+/*
+** parameters masks
+*/
+# define T_REG 1
+# define T_DIR 2
+# define T_IND 3
 
 typedef struct	s_header
 {

@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 12:30:23 2017 flavian gontier
-** Last update Tue Mar 28 16:20:13 2017 flavian gontier
+** Last update Wed Mar 29 05:02:21 2017 flavian gontier
 */
 
 #include <stdint.h>
@@ -64,4 +64,5 @@ void	init_virtual_machine(t_arguments *arguments, t_vm *virtual_machine)
     exit(EXIT_ERROR);
   }
   init_processes(arguments, virtual_machine);
+  run_virtual_machine(&virtual_machine);
 }

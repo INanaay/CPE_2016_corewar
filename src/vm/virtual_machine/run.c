@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 27 14:10:53 2017 flavian gontier
-** Last update Tue Mar 28 16:20:54 2017 flavian gontier
+** Last update Wed Mar 29 10:57:05 2017 flavian gontier
 */
 
 #include <stdint.h>
@@ -38,4 +38,8 @@ void	virtual_machine_write(t_vm *machine, int32_t address,
 
 void	run_virtual_machine(t_vm *virtual_machine)
 {
+  int	index;
+
+  index = 0;
+  while (index < virtual_machine->process_coun
 }
