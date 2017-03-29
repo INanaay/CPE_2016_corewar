@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Wed Mar 29 19:14:02 2017 nathan
+** Last update Wed Mar 29 19:54:09 2017 nathan
 */
 
 /*
@@ -135,6 +135,8 @@ t_instruct	**create_instruct(t_label **labels, int len)
       tmp->id = g_op_tab[labels[x]->inst].code;
       tmp->params_type = set_paramsbits(tab_len, labels[x]->args);
       tmp->params = NULL;
+      if (tab_len == 0)
+	tmp = NULL;
       instruct[x] = tmp;
       x++;
     }
@@ -175,9 +177,7 @@ uint8_t		main(int ac, char **av)
   fd = open("testfile", O_CREAT | O_WRONLY);
   while (instruct[x] != NULL)
     {
-      printf("x: %d\n", x);
-      printf("debug:\t%d\n", instruct[x]->params_type);
-      printf("%i\n", write_bytes(fd, &instruct[x]->params_type, sizeof(int8_t)));
+      write_bytes(fd, &instruct[x]->params_type, sizeof(int8_t));
       x++;
     }
   close(fd);
