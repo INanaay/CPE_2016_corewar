@@ -5,16 +5,8 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Wed Mar 29 23:05:57 2017 nathan
+** Last update Thu Mar 30 01:28:17 2017 nathan
 */
-
-/*
-** for open
-*/
-#include <unistd.h>
-#include <sys/stat.h>
-#include <sys/types.h>
-#include <fcntl.h>
 
 #include <stdlib.h>
 #include "op.h"
@@ -86,17 +78,16 @@ uint8_t	check_labelexist(t_label **labels, int names_nbr)
 
 uint8_t		main(int ac, char **av)
 {
-  int		is_help;
+  uint8_t	is_help;
+  int		len;
+  int		names_nbr;
   char		*file_c;
   char		**file;
   t_label	**labels;
-  int		len;
-  int		names_nbr;
   t_instruct	**instruct;
 
   names_nbr = 0;
-  is_help = check_args(ac, av);
-  if (is_help != 1)
+  if ((is_help = check_args(ac, av)) != 1)
     return (is_help);
   if (file_to_arr(av[1], (&file_c)) == FAIL)
     return (FAIL);
@@ -113,34 +104,6 @@ uint8_t		main(int ac, char **av)
   if (check_labelexist(labels, names_nbr) == FAIL)
     return (FAIL);
   instruct = create_instruct(labels, len - 1);
-  int	x = 0;
-  int	y;
-  int	fd;
-  int	size;
-  int	tmp;
-  fd = open("testfile", O_CREAT | O_WRONLY);
-  while (instruct[x] != NULL)
-    {
-      y = 0;
-      len = my_strtablen(labels[x]->args);
-      write_bytes(fd, &instruct[x]->id, sizeof(int8_t));
-      write_bytes(fd, &instruct[x]->params_type, sizeof(int8_t));
-      printf("%i\n", len);
-      while (y < len)
-	{
-	  tmp = my_atoi(labels[x]->args[y] + 1);
-	  printf("typesize: %d\t %d\n", get_typesize(labels[x]->args[y]), tmp);
-	  write_bytes(fd, &tmp,
-		      sizeof(int8_t) * get_typesize(labels[x]->args[y]));
-	  y++;
-	}
-      if (x == 1)
-	{
-	  close(fd);
-	  exit(0);
-	}
-      x++;
-    }
-  close(fd);
+  write_data(labels, instruct);
   return (SUCCESS);
 }

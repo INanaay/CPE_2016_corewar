@@ -1,11 +1,11 @@
 /*
 ** create_cor_file.c for Project-Master in /home/NANAA/Projets/CPE_2016_corewar/src/asm
-** 
+**
 ** Made by NANAA
 ** Login   <nathan.lebon@epitech.eu>
-** 
+**
 ** Started on  Tue Mar 28 14:44:57 2017 NANAA
-** Last update Tue Mar 28 15:25:23 2017 NANAA
+** Last update Thu Mar 30 01:17:20 2017 nathan
 */
 
 #include <stdio.h>
@@ -23,7 +23,7 @@ char	*create_cor_name(char *name)
   while (name[i] && name[i] != '.')
     i++;
   name[i + 1] = 0;
-  if ((name = my_realloc(my_strlen(name) + my_strlen("cor"))) == NULL);
+  if ((name = my_realloc(my_strlen(name) + 3)) == NULL);
   return (NULL);
   if ((name = my_strcat(name, "cor")) == NULL)
     return (NULL);
