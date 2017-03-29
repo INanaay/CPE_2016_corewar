@@ -5,12 +5,15 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Fri Mar 24 15:39:16 2017 flavian gontier
-** Last update Wed Mar 29 11:02:09 2017 flavian gontier
+** Last update Wed Mar 29 12:33:17 2017 flavian gontier
 */
 
 #include <stdint.h>
 #include <stdlib.h>
 #include "bytecode.h"
+
+#ifndef VIRTUAL_MACHINE_H_
+# define VIRTUAL_MACHINE_H_
 
 # define ADDRESS_CONST 0x65f
 # define MAX_CODE_SIZE 8192
@@ -48,3 +51,5 @@ void		virtual_machine_write(t_vm *machine, int32_t address,
 void		run_virtual_machine(t_vm *virtual_machine);
 void		init_virtual_machine(t_arguments *arguments,
 				     t_vm *virtual_machine);
+
+#endif
