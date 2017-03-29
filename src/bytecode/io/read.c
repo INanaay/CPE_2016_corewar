@@ -5,13 +5,13 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 27 15:18:06 2017 flavian gontier
-** Last update Wed Mar 29 11:41:35 2017 flavian gontier
+** Last update Wed Mar 29 11:43:53 2017 flavian gontier
 */
 
 #include "bytecode.h"
 #include "libmy.h"
 
-static int8_t	*read_bytes(t_stream *stream, size_t n)
+static void	read_bytes(t_stream *stream, void *ptr, size_t n)
 {
   int8_t	*result;
   int8_t	*tmp;
@@ -19,6 +19,7 @@ static int8_t	*read_bytes(t_stream *stream, size_t n)
   tmp = malloc(sizeof(int8_t) * n);
   my_memcpy(tmp, &stream->data[stream->position], n);
   result = reverse_bytes(tmp, n);
+  my_memcpy(ptr, tmp, n);
   stream->position += n;
   free(tmp);
   return (result);
