@@ -5,7 +5,7 @@
 ## Login   <nathan.schwarz@epitech.eu@epitech.net>
 ##
 ## Started on  Thu Feb  2 20:38:34 2017 nathan
-## Last update Wed Mar 29 19:46:31 2017 nathan
+## Last update Wed Mar 29 20:18:04 2017 nathan
 ##
 
 CC	= 		gcc -g3
@@ -13,9 +13,10 @@ CC	= 		gcc -g3
 CFLAGS	+=		-I include
 
 SRC	=		utils/op.c				\
-			utils/write.c					\
-			init.c					\
-			parser.c				\
+			utils/write.c				\
+			utils/init.c				\
+			utils/parser.c				\
+			utils/instruct.c			\
 			main.c
 
 MYLBSRC	=		mylib/string/my_strlen.c		\

@@ -5,10 +5,14 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 **
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Wed Mar 29 15:29:59 2017 nathan
+** Last update Wed Mar 29 23:25:36 2017 nathan
 */
 
+#ifndef BYTECODE_H_
+#define BYTECODE_H_
+
 #include <stdint.h>
+#include "assembly.h"
 
 # define MAGIC_VALUE 0xea83f3
 # define NAME_SIZE 128
@@ -40,7 +44,6 @@ typedef struct	s_instruct
 ** Stream functions
 */
 t_stream	*init_stream(int fd, t_stream *stream);
-int8_t		*reverse_bytes(int8_t *bytes, size_t n);
 int8_t		write_bytes(int, const void *, size_t);
 int32_t		read_int32(t_stream *stream);
 int16_t		read_int16(t_stream *stream);
@@ -48,3 +51,7 @@ int8_t		read_int8(t_stream *stream);
 int8_t		*read_bytes(t_stream *stream, size_t n);
 int		read_header(int fd, t_header *header);
 int		read_instruction_id(int fd, int *id);
+t_instruct	**create_instruct(t_label **, int);
+int8_t		get_typesize(char *);
+
+#endif

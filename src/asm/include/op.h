@@ -5,7 +5,7 @@
 ** Login   <astek@epitech.net>
 **
 ** Started on  Mon Mar 30 11:14:31 2009 Astek
-** Last update Wed Mar 29 18:48:00 2017 nathan
+** Last update Wed Mar 29 23:01:03 2017 nathan
 */
 
 #ifndef _OP_H_
@@ -50,9 +50,9 @@ typedef struct	s_op
 /*
 ** size (in bytes)
 */
-# define REG_SIZE        4
+# define REG_SIZE        1
 # define IND_SIZE        2
-# define DIR_SIZE        REG_SIZE
+# define DIR_SIZE        4
 
 /*
 ** op_tab

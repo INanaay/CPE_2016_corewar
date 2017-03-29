@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Wed Mar 29 19:54:09 2017 nathan
+** Last update Wed Mar 29 23:05:57 2017 nathan
 */
 
 /*
@@ -84,65 +84,6 @@ uint8_t	check_labelexist(t_label **labels, int names_nbr)
   return (check_labelexistargs(labels, names));
 }
 
-int8_t		get_type(char *arg)
-{
-  if (arg[0] == 'r')
-    return (T_REG);
-  else if (arg[0] == DIRECT_CHAR)
-    return (T_DIR);
-  else
-    return (T_IND);
-}
-
-int8_t		set_paramsbits(int args_nbr, char **args)
-{
-  int8_t	byte;
-  uint8_t	scale;
-  uint8_t	x;
-  uint8_t	index;
-  int8_t	type;
-
-  byte = 0;
-  x = 0;
-  type = 0;
-  while (x < args_nbr)
-    {
-      index = 0;
-      type = get_type(args[x]);
-      scale =  6 - (x * 2);
-      byte = byte ^ (type << scale);
-      x++;
-    }
-  return (byte);
-}
-
-t_instruct	**create_instruct(t_label **labels, int len)
-{
-  t_instruct	**instruct;
-  t_instruct	*tmp;
-  int		x;
-  int		move;
-  uint8_t	tab_len;
-
-  x = 0;
-  instruct = malloc(sizeof(t_instruct *) * (len + 1));
-  instruct[len] = NULL;
-  while (labels[x])
-    {
-      tmp = malloc(sizeof(t_instruct));
-      move = 0;
-      tab_len = my_strtablen(labels[x]->args);
-      tmp->id = g_op_tab[labels[x]->inst].code;
-      tmp->params_type = set_paramsbits(tab_len, labels[x]->args);
-      tmp->params = NULL;
-      if (tab_len == 0)
-	tmp = NULL;
-      instruct[x] = tmp;
-      x++;
-    }
-  return (instruct);
-}
-
 uint8_t		main(int ac, char **av)
 {
   int		is_help;
@@ -173,11 +114,31 @@ uint8_t		main(int ac, char **av)
     return (FAIL);
   instruct = create_instruct(labels, len - 1);
   int	x = 0;
+  int	y;
   int	fd;
+  int	size;
+  int	tmp;
   fd = open("testfile", O_CREAT | O_WRONLY);
   while (instruct[x] != NULL)
     {
+      y = 0;
+      len = my_strtablen(labels[x]->args);
+      write_bytes(fd, &instruct[x]->id, sizeof(int8_t));
       write_bytes(fd, &instruct[x]->params_type, sizeof(int8_t));
+      printf("%i\n", len);
+      while (y < len)
+	{
+	  tmp = my_atoi(labels[x]->args[y] + 1);
+	  printf("typesize: %d\t %d\n", get_typesize(labels[x]->args[y]), tmp);
+	  write_bytes(fd, &tmp,
+		      sizeof(int8_t) * get_typesize(labels[x]->args[y]));
+	  y++;
+	}
+      if (x == 1)
+	{
+	  close(fd);
+	  exit(0);
+	}
       x++;
     }
   close(fd);
