@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Fri Mar 24 17:05:13 2017 nathan
-** Last update Tue Mar 28 13:26:02 2017 nathan
+** Last update Tue Mar 28 17:44:36 2017 nathan
 */
 
 #include <stdlib.h>
@@ -50,7 +50,7 @@ uint8_t		add_tolabels(t_label **labels, char *line,
   new = malloc(sizeof(t_label));
   len = my_strlen(g_op_tab[index].mnemonique);
   new->name = name;
-  new->inst = g_op_tab[index].mnemonique;
+  new->inst = index;
   new->args = my_strtowtb_sc(line + len, SEPARATOR_CHAR);
   if (check_labelargs(new->args, index) == FAIL)
     return (FAIL);

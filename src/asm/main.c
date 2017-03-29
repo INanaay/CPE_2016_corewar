@@ -5,12 +5,21 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Tue Mar 28 13:25:01 2017 nathan
+** Last update Wed Mar 29 19:14:02 2017 nathan
 */
+
+/*
+** for open
+*/
+#include <unistd.h>
+#include <sys/stat.h>
+#include <sys/types.h>
+#include <fcntl.h>
 
 #include <stdlib.h>
 #include "op.h"
 #include "assembly.h"
+#include "bytecode.h"
 #include "mylib/my_string.h"
 #include "mylib/my_mem.h"
 #include "mylib/define.h"
@@ -75,6 +84,63 @@ uint8_t	check_labelexist(t_label **labels, int names_nbr)
   return (check_labelexistargs(labels, names));
 }
 
+int8_t		get_type(char *arg)
+{
+  if (arg[0] == 'r')
+    return (T_REG);
+  else if (arg[0] == DIRECT_CHAR)
+    return (T_DIR);
+  else
+    return (T_IND);
+}
+
+int8_t		set_paramsbits(int args_nbr, char **args)
+{
+  int8_t	byte;
+  uint8_t	scale;
+  uint8_t	x;
+  uint8_t	index;
+  int8_t	type;
+
+  byte = 0;
+  x = 0;
+  type = 0;
+  while (x < args_nbr)
+    {
+      index = 0;
+      type = get_type(args[x]);
+      scale =  6 - (x * 2);
+      byte = byte ^ (type << scale);
+      x++;
+    }
+  return (byte);
+}
+
+t_instruct	**create_instruct(t_label **labels, int len)
+{
+  t_instruct	**instruct;
+  t_instruct	*tmp;
+  int		x;
+  int		move;
+  uint8_t	tab_len;
+
+  x = 0;
+  instruct = malloc(sizeof(t_instruct *) * (len + 1));
+  instruct[len] = NULL;
+  while (labels[x])
+    {
+      tmp = malloc(sizeof(t_instruct));
+      move = 0;
+      tab_len = my_strtablen(labels[x]->args);
+      tmp->id = g_op_tab[labels[x]->inst].code;
+      tmp->params_type = set_paramsbits(tab_len, labels[x]->args);
+      tmp->params = NULL;
+      instruct[x] = tmp;
+      x++;
+    }
+  return (instruct);
+}
+
 uint8_t		main(int ac, char **av)
 {
   int		is_help;
@@ -83,6 +149,7 @@ uint8_t		main(int ac, char **av)
   t_label	**labels;
   int		len;
   int		names_nbr;
+  t_instruct	**instruct;
 
   names_nbr = 0;
   is_help = check_args(ac, av);
@@ -95,22 +162,24 @@ uint8_t		main(int ac, char **av)
   if (check_header(file) == FAIL)
     return (my_puterr84(INV_FILE));
   file = epur_file(file);
-  labels = malloc(sizeof(t_label *) * (len = my_strtablen(file) + 1));
+  len = my_strtablen(file) + 1;
+  labels = malloc(sizeof(t_label *) * len);
   labels[len - 1] = NULL;
   if (parser(file, labels, &names_nbr) == FAIL)
     return (FAIL);
   if (check_labelexist(labels, names_nbr) == FAIL)
     return (FAIL);
-  /*int	x = 0;
-  int	y;
-  while (labels[x])
+  instruct = create_instruct(labels, len - 1);
+  int	x = 0;
+  int	fd;
+  fd = open("testfile", O_CREAT | O_WRONLY);
+  while (instruct[x] != NULL)
     {
-      y = 0;
-      printf("%s\t", labels[x]->inst);
-      while (y < my_strtablen(labels[x]->args))
-	printf("%s\t", labels[x]->args[y++]);
-      printf("\n");
+      printf("x: %d\n", x);
+      printf("debug:\t%d\n", instruct[x]->params_type);
+      printf("%i\n", write_bytes(fd, &instruct[x]->params_type, sizeof(int8_t)));
       x++;
-      }*/
+    }
+  close(fd);
   return (SUCCESS);
 }

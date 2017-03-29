@@ -5,7 +5,7 @@
 ** Login   <astek@epitech.net>
 **
 ** Started on  Mon Mar 30 11:14:31 2009 Astek
-** Last update Tue Mar 28 01:21:12 2017 nathan
+** Last update Wed Mar 29 18:48:00 2017 nathan
 */
 
 #ifndef _OP_H_
@@ -32,7 +32,7 @@ typedef char    args_type_t;
 
 # define T_REG           1       /* register */
 # define T_DIR           2       /* direct  (ld  #1,r1  put 1 into r1) */
-# define T_IND           4       /* indirect always relative
+# define T_IND           3       /* indirect always relative
                                    ( ld 1,r1 put what's in the address (1+pc)
                                    into r1 (4 bytes )) */
 # define T_LAB           8       /* LABEL */
@@ -64,16 +64,6 @@ extern  t_op    g_op_tab[];
 */
 # define PROG_NAME_LENGTH        128
 # define COMMENT_LENGTH          2048
-
-typedef struct	s_header
-{
-   int		magic;
-# define COREWAR_EXEC_MAGIC      0xea83f3        /* why not */
-   char		prog_name[PROG_NAME_LENGTH+1];
-   int		prog_size;
-   char		comment[COMMENT_LENGTH+1];
-}		t_header;
-
 
 /*
 ** live

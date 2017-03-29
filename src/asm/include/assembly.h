@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:43:32 2017 nathan
-** Last update Tue Mar 28 01:40:51 2017 nathan
+** Last update Tue Mar 28 17:43:17 2017 nathan
 */
 
 #ifndef ASSEMBLY_H
@@ -19,7 +19,7 @@
 typedef	struct		s_label
 {
   char			*name;
-  char			*inst;
+  uint8_t		inst;
   char			**args;
   int			size;
 }			t_label;
