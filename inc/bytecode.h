@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Wed Mar 29 12:27:30 2017 flavian gontier
+** Last update Wed Mar 29 12:38:43 2017 flavian gontier
 */
 
 #ifndef BYTECODE_H_
