@@ -5,15 +5,15 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Wed Mar 29 12:27:30 2017 flavian gontier
+** Last update Wed Mar 29 12:32:31 2017 flavian gontier
 */
-
-#ifndef BYTECODE_H_
-# define BYTECODE_H_
 
 #include "virtual_machine.h"
 #include <stdint.h>
 #include <stdlib.h>
+
+#ifndef BYTECODE_H_
+# define BYTECODE_H_
 
 # define MAGIC_VALUE 0xea83f3
 # define NAME_SIZE 128
