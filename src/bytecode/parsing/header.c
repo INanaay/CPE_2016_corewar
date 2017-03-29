@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Mar 28 22:03:49 2017 flavian gontier
-** Last update Wed Mar 29 18:49:00 2017 NANAA
+** Last update Wed Mar 29 19:17:09 2017 NANAA
 */
 
 #include "bytecode.h"
@@ -27,17 +27,4 @@ int8_t	write_header(int fd, const t_header *header)
       write_bytes(fd, &header->size, sizeof(header->size)) == EXIT_ERROR)
     return (EXIT_ERROR);
   return (EXIT_SUCCESS);
-}
-
-int main(int ac, char **av)
-{
-  int fd;
-  t_header *header;
-
-  fd = open("caca", O_RDWONLY);
-  header = malloc(sizeof(t_header));
-  header->name = av[1];
-  header->comment = av[2];
-  header->size = 150;
-  write_header(fd, header);
 }
