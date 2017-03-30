@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 27 15:18:06 2017 flavian gontier
-** Last update Thu Mar 30 23:17:49 2017 flavian gontier
+** Last update Thu Mar 30 23:22:51 2017 flavian gontier
 */
 
 #include <stdlib.h>
@@ -20,16 +20,14 @@ void	read_string(t_stream *stream, int8_t *ptr, size_t n)
 
 void	read_bytes(t_stream *stream, void *ptr, size_t n)
 {
-  int8_t	*result;
   int8_t	*tmp;
 
   tmp = malloc(sizeof(int8_t) * n);
   my_memcpy(tmp, &stream->data[stream->position], n);
-  result = reverse_bytes(tmp, n);
-  my_memcpy(ptr, result, n);
+  reverse_bytes(tmp, n);
+  my_memcpy(ptr, tmp, n);
   stream->position += n;
   free(tmp);
-  free(result);
 }
 
 int8_t		read_int8(t_stream *stream)
