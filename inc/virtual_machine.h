@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Fri Mar 24 15:39:16 2017 flavian gontier
-** Last update Wed Mar 29 20:18:24 2017 flavian gontier
+** Last update Thu Mar 30 14:59:25 2017 flavian gontier
 */
 
 #ifndef VIRTUAL_MACHINE_H_
@@ -14,7 +14,6 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include "bytecode.h"
-#include "header.h"
 
 # define ADDRESS_CONST 0x65f
 # define MAX_CODE_SIZE 8192
@@ -34,6 +33,7 @@ typedef struct	s_process
   int32_t	id;
   int32_t	address;
   char		*binary;
+  t_stream	stream;
   t_header	header;
 }		t_process;
 
