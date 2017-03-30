@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Mar 28 16:52:37 2017 flavian gontier
-** Last update Wed Mar 29 22:14:58 2017 flavian gontier
+** Last update Thu Mar 30 11:27:34 2017 flavian gontier
 */
 
 #include <stdint.h>
@@ -42,6 +42,17 @@ int	get_param_type(int8_t params_type, int8_t param_index)
   return (result);
 }
 
+int	get_param_size(int type)
+{
+  if (type == T_REG)
+    return (REG_SIZE);
+  else if (type == T_IND)
+    return (IND_SIZE);
+  else if (type == T_DIR)
+    return (DIR_SIZE);
+  return (0);
+}
+
 int	get_params_size(int8_t params_type)
 {
   int	result;
@@ -57,17 +68,6 @@ int	get_params_size(int8_t params_type)
     index = index + 1;
   }
   return (result);
-}
-
-int	get_param_size(int type)
-{
-  if (type == T_REG)
-    return (REG_SIZE);
-  else if (type == T_IND)
-    return (IND_SIZE);
-  else if (type == T_DIR)
-    return (DIR_SIZE);
-  return (0);
 }
 
 int8_t	*get_params(t_stream *stream, int addr, int8_t paramstype)
