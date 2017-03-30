@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Fri Mar 24 15:39:16 2017 flavian gontier
-** Last update Thu Mar 30 14:59:25 2017 flavian gontier
+** Last update Thu Mar 30 15:06:04 2017 flavian gontier
 */
 
 #ifndef VIRTUAL_MACHINE_H_
@@ -52,6 +52,6 @@ void		virtual_machine_write(t_vm *machine, int32_t address,
 void		run_virtual_machine(t_vm *virtual_machine);
 void		init_virtual_machine(t_arguments *arguments,
 				     t_vm *virtual_machine);
-int8_t		*get_params(t_vm *virtual_machine, int addr, int8_t paramstype);
+int8_t		*get_params(t_stream *stream, int8_t paramstype);
 
 #endif
