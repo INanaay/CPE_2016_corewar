@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Thu Mar 30 19:07:06 2017 flavian gontier
+** Last update Thu Mar 30 19:08:06 2017 flavian gontier
 */
 
 #ifndef BYTECODE_H_
@@ -78,6 +78,6 @@ int8_t		write_bytes(int fd, const void *data, size_t n);
 int		get_params_count(int8_t params_type);
 int		get_param_type(int8_t params_type, int8_t param_index);
 int		get_params_size(int8_t params_type);
-//int8_t		get_params(t_vm *virtual_machine, int addr, int8_t params_type);
+int8_t		*get_params(t_stream *stream, int8_t params_type);
 
 #endif
