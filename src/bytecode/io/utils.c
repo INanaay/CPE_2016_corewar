@@ -5,13 +5,13 @@
 ** Login   <nathan.lebon@epitech.eu>
 ** 
 ** Started on  Mon Mar 27 16:49:59 2017 NANAA
-** Last update Thu Mar 30 21:05:07 2017 flavian gontier
+** Last update Thu Mar 30 21:07:33 2017 flavian gontier
 */
 
 #include <unistd.h>
 #include "bytecode.h"
 
-void	reverse_bytes(int8_t *bytes, size_t n)
+int8_t	*reverse_bytes(int8_t *bytes, size_t n)
 {
   register int	index;
   uint8_t	*buffer;
@@ -26,4 +26,5 @@ void	reverse_bytes(int8_t *bytes, size_t n)
     buffer[n - index - 1] =  tmp;
     index = index + 1;
   }
+  return (buffer);
 }
