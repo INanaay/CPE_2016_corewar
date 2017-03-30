@@ -1,13 +1,3 @@
-##
-## Makefile for navy in /home/nathan/projects/PSU_2016_navy/NS
-##
-## Made by nathan
-## Login   <nathan.schwarz@epitech.eu@epitech.net>
-##
-## Started on  Thu Feb  2 20:38:34 2017 nathan
-## Last update Wed Mar 29 20:18:04 2017 nathan
-##
-
 CC	= 		gcc -g3
 
 CFLAGS	+=		-I include
@@ -38,7 +28,9 @@ MYLBSRC	=		mylib/string/my_strlen.c		\
 			mylib/mem/my_calloc.c			\
 			mylib/math/my_pow.c			\
 			mylib/math/my_sqrt.c			\
-			mylib/math/my_fabs.c
+			mylib/math/my_fabs.c			\
+			create_cor_file.c			\
+			header.c
 
 NAME	=		asm
 

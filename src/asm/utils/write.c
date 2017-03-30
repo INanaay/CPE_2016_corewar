@@ -5,7 +5,7 @@
 ** Login   <nathan.lebon@epitech.eu>
 **
 ** Started on  Mon Mar 27 17:02:20 2017 NANAA
-** Last update Thu Mar 30 01:23:57 2017 nathan
+** Last update Thu Mar 30 21:28:49 2017 NANAA
 */
 
 #include <unistd.h>
@@ -18,7 +18,7 @@
 #include "assembly.h"
 #include "bytecode.h"
 
-static void	reverse_bytes(const void *byte, int size)
+static void	reverse_bytes(void *byte, int size)
 {
   uint8_t	*buffer;
   uint8_t	tmp;
@@ -35,7 +35,7 @@ static void	reverse_bytes(const void *byte, int size)
     }
 }
 
-int8_t		write_bytes(int fd, const void *bytes, size_t n)
+int8_t		write_bytes(int fd, void *bytes, size_t n)
 {
   int		count;
   uint8_t	*tmp;
@@ -79,4 +79,20 @@ uint8_t		write_data(t_label **labels, t_instruct **instruct)
     }
   close(fd);
   return (SUCCESS);
+}
+
+int8_t		write_header(int fd, t_header *header)
+{
+  int8_t	error;
+  
+  error = 0;
+  reverse_bytes(header->name, sizeof(header->name));
+  reverse_bytes(header->comment, sizeof(header->comment));
+  error |= write_bytes(fd, &header->magic, sizeof(header->magic));
+  error |= write_bytes(fd, header->name, sizeof(header->name));
+  error |= write_bytes(fd, header->comment, sizeof(header->comment));
+  error |= write_bytes(fd, &header->size, sizeof(int32_t));
+  if (error == 1)
+    return (1);
+  return (0);
 }
