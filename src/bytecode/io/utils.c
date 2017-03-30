@@ -5,13 +5,13 @@
 ** Login   <nathan.lebon@epitech.eu>
 ** 
 ** Started on  Mon Mar 27 16:49:59 2017 NANAA
-** Last update Thu Mar 30 21:03:21 2017 flavian gontier
+** Last update Thu Mar 30 21:05:07 2017 flavian gontier
 */
 
 #include <unistd.h>
 #include "bytecode.h"
 
-int8_t		*reverse_bytes(int8_t *bytes, size_t n)
+void	reverse_bytes(int8_t *bytes, size_t n)
 {
   register int	index;
   uint8_t	*buffer;
@@ -22,9 +22,8 @@ int8_t		*reverse_bytes(int8_t *bytes, size_t n)
   while (index < n / 2)
   {
     tmp = buffer[index];
-    buffer[index] = buffer[size - i - 1];
-    buffer[size - i - 1] =  tmp;
-    indesx = index + 1;
+    buffer[index] = buffer[n - index - 1];
+    buffer[n - index - 1] =  tmp;
+    index = index + 1;
   }
-  return (result);
 }
