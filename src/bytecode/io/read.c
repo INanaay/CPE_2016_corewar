@@ -5,11 +5,12 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 27 15:18:06 2017 flavian gontier
-** Last update Wed Mar 29 11:59:11 2017 flavian gontier
+** Last update Wed Mar 29 20:03:33 2017 flavian gontier
 */
 
 #include "bytecode.h"
 #include "libmy.h"
+#include "header.h"
 
 void	read_bytes(t_stream *stream, void *ptr, size_t n)
 {
