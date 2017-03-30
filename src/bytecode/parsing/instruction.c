@@ -5,9 +5,10 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Wed Mar 29 02:20:51 2017 flavian gontier
-** Last update Wed Mar 29 22:42:17 2017 flavian gontier
+** Last update Thu Mar 30 11:09:27 2017 flavian gontier
 */
 
+#include "virtual_machine.h"
 #include "bytecode.h"
 
 void	read_instruction(t_process *process, t_instruct *instruct)
