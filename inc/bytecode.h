@@ -5,12 +5,13 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Thu Mar 30 11:03:25 2017 flavian gontier
+** Last update Thu Mar 30 11:05:50 2017 flavian gontier
 */
 
 #ifndef BYTECODE_H_
 # define BYTECODE_H_
 
+#include <stdlib.h>
 #include <stdint.h>
 
 # define MAGIC_VALUE 0xea83f3
