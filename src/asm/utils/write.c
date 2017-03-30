@@ -5,7 +5,7 @@
 ** Login   <nathan.lebon@epitech.eu>
 **
 ** Started on  Mon Mar 27 17:02:20 2017 NANAA
-** Last update Thu Mar 30 21:28:49 2017 NANAA
+** Last update Thu Mar 30 23:23:17 2017 nathan
 */
 
 #include <unistd.h>
@@ -51,17 +51,15 @@ int8_t		write_bytes(int fd, void *bytes, size_t n)
   return (SUCCESS);
 }
 
-uint8_t		write_data(t_label **labels, t_instruct **instruct)
+uint8_t		write_data(int fd, t_label **labels, t_instruct **instruct)
 {
   int	x;
   int	y;
-  int	fd;
   int	size;
   int	tmp;
   int	len;
 
   x = 0;
-  fd = open("testfile", O_CREAT | O_WRONLY);
   while (instruct[x] != NULL)
     {
       y = 0;
@@ -84,7 +82,7 @@ uint8_t		write_data(t_label **labels, t_instruct **instruct)
 int8_t		write_header(int fd, t_header *header)
 {
   int8_t	error;
-  
+
   error = 0;
   reverse_bytes(header->name, sizeof(header->name));
   reverse_bytes(header->comment, sizeof(header->comment));

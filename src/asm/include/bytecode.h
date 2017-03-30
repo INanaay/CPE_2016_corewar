@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 **
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Thu Mar 30 21:43:12 2017 NANAA
+** Last update Thu Mar 30 23:25:01 2017 nathan
 */
 
 #ifndef BYTECODE_H_
@@ -42,6 +42,7 @@ typedef struct	s_instruct
 /*
 ** Stream functions
 */
+
 t_stream	*init_stream(int fd, t_stream *stream);
 int8_t		write_bytes(int, void *, size_t);
 int32_t		read_int32(t_stream *stream);
@@ -52,7 +53,7 @@ int		read_header(int fd, t_header *header);
 int		read_instruction_id(int fd, int *id);
 t_instruct	**create_instruct(t_label **, int);
 int8_t		get_typesize(char *);
-uint8_t		write_data(t_label **, t_instruct **);
-
+uint8_t		write_data(int, t_label **, t_instruct **);
 t_header        *fill_header_struct(t_header *head, char **file);
+
 #endif
