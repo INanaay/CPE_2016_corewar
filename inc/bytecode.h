@@ -5,17 +5,20 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Wed Mar 29 12:38:43 2017 flavian gontier
+** Last update Thu Mar 30 11:36:11 2017 flavian gontier
 */
 
 #ifndef BYTECODE_H_
 # define BYTECODE_H_
 
-#include "virtual_machine.h"
-#include <stdint.h>
 #include <stdlib.h>
+#include <stdint.h>
 
 # define MAGIC_VALUE 0xea83f3
+
+/*
+** header params size
+*/
 # define NAME_SIZE 128
 # define COM_SIZE 2048
 
@@ -33,6 +36,13 @@
 # define T_DIR 2
 # define T_IND 3
 
+typedef struct	s_stream
+{
+  int8_t	*data;
+  int32_t	data_count;
+  int32_t	position;
+}		t_stream;
+
 typedef struct	s_header
 {
   int32_t	magic;
@@ -40,13 +50,6 @@ typedef struct	s_header
   int32_t	size;
   int8_t	comment[COM_SIZE + 1];
 }		t_header;
-
-typedef struct	s_stream
-{
-  int8_t	*data;
-  int32_t	data_count;
-  int32_t	position;
-}		t_stream;
 
 typedef struct	s_instruct
 {
@@ -58,7 +61,7 @@ typedef struct	s_instruct
 /*
 ** Stream functions
 */
-t_stream	*init_stream(int fd, t_stream *stream);
+void		init_stream(int8_t *data, size_t n, t_stream *stream);
 int8_t		*reverse_bytes(int8_t *bytes, size_t n);
 int32_t		read_int32(t_stream *stream);
 int16_t		read_int16(t_stream *stream);
@@ -67,12 +70,14 @@ void		read_bytes(t_stream *stream, void *dest, size_t n);
 void		read_header(t_stream *stream, t_header *header);
 int		read_instruction_id(int fd, int *id);
 
+int8_t		write_bytes(int fd, const void *data, size_t n);
+
 /*
 ** Params functions
 */
 int		get_params_count(int8_t params_type);
 int		get_param_type(int8_t params_type, int8_t param_index);
 int		get_params_size(int8_t params_type);
-int8_t		get_params(t_vm *virtual_machine, int addr, int8_t params_type);
+//int8_t		get_params(t_vm *virtual_machine, int addr, int8_t params_type);
 
 #endif

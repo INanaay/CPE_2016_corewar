@@ -5,10 +5,11 @@
 ** Login   <nathan.lebon@epitech.eu>
 ** 
 ** Started on  Mon Mar 27 17:14:31 2017 NANAA
-** Last update Wed Mar 29 11:06:13 2017 flavian gontier
+** Last update Thu Mar 30 11:34:41 2017 flavian gontier
 */
 
 #include "bytecode.h"
+#include "libmy.h"
 
 static void	get_stream_data(int fd, t_stream *stream)
 {
@@ -38,5 +39,4 @@ void	init_file_stream(int fd, t_stream *stream)
   stream->data_count = 0;
   stream->position = 0;
   get_stream_data(fd, stream);
-  return (stream);
 }
