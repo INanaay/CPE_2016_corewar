@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Mar 28 22:03:49 2017 flavian gontier
-** Last update Thu Mar 30 23:24:26 2017 flavian gontier
+** Last update Thu Mar 30 23:56:22 2017 flavian gontier
 */
 
 #include "bytecode.h"
@@ -15,6 +15,7 @@ void    read_header(t_stream *stream, t_header *header)
 {
   header->magic = read_int32(stream);
   read_string(stream, header->name, sizeof(header->name));
+  stream->position += 7;
   read_string(stream, header->comment, sizeof(header->comment));
   header->size = read_int32(stream);
 }
