@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Thu Mar 30 21:07:09 2017 flavian gontier
+** Last update Thu Mar 30 23:17:44 2017 flavian gontier
 */
 
 #ifndef BYTECODE_H_
@@ -66,6 +66,7 @@ int8_t		*reverse_bytes(int8_t *bytes, size_t n);
 int32_t		read_int32(t_stream *stream);
 int16_t		read_int16(t_stream *stream);
 int8_t		read_int8(t_stream *stream);
+void		read_string(t_stream *stream, int8_t *dest, size_t n);
 void		read_bytes(t_stream *stream, void *dest, size_t n);
 void		read_header(t_stream *stream, t_header *header);
 void		read_instruction(t_stream *stream, t_instruct *instruction);

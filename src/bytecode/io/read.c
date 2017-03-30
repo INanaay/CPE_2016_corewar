@@ -5,12 +5,18 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 27 15:18:06 2017 flavian gontier
-** Last update Thu Mar 30 11:04:07 2017 flavian gontier
+** Last update Thu Mar 30 23:17:49 2017 flavian gontier
 */
 
 #include <stdlib.h>
 #include "bytecode.h"
 #include "libmy.h"
+
+void	read_string(t_stream *stream, int8_t *ptr, size_t n)
+{
+  my_memcpy(ptr, &stream->data[stream->position], n);
+  stream->position += n;
+}
 
 void	read_bytes(t_stream *stream, void *ptr, size_t n)
 {
