@@ -5,25 +5,17 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Wed Mar 29 12:38:43 2017 flavian gontier
+** Last update Wed Mar 29 20:14:41 2017 flavian gontier
 */
 
-<<<<<<< HEAD
-#include "virtual_machine.h"
-#include <stdint.h>
-#include <stdlib.h>
-
-=======
->>>>>>> f9fb9fd8781139535238c82a02dd28f42292a27c
 #ifndef BYTECODE_H_
 # define BYTECODE_H_
 
-#include "virtual_machine.h"
 #include <stdint.h>
+#include "virtual_machine.h"
+#include "header.h"
 
 # define MAGIC_VALUE 0xea83f3
-# define NAME_SIZE 128
-# define COM_SIZE 2048
 
 /*
 ** paramaters size
@@ -38,14 +30,6 @@
 # define T_REG 1
 # define T_DIR 2
 # define T_IND 3
-
-typedef struct	s_header
-{
-  int32_t	magic;
-  int8_t	name[NAME_SIZE + 1];
-  int32_t	size;
-  int8_t	comment[COM_SIZE + 1];
-}		t_header;
 
 typedef struct	s_stream
 {
@@ -79,6 +63,6 @@ int		read_instruction_id(int fd, int *id);
 int		get_params_count(int8_t params_type);
 int		get_param_type(int8_t params_type, int8_t param_index);
 int		get_params_size(int8_t params_type);
-int8_t		get_params(t_vm *virtual_machine, int addr, int8_t params_type);
+//int8_t		get_params(t_vm *virtual_machine, int addr, int8_t params_type);
 
 #endif
