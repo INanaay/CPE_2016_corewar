@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Mon Mar 27 14:10:53 2017 flavian gontier
-** Last update Wed Mar 29 22:27:07 2017 flavian gontier
+** Last update Thu Mar 30 15:11:01 2017 flavian gontier
 */
 
 #include <stdint.h>
@@ -13,6 +13,7 @@
 #include <unistd.h>
 #include <fcntl.h>
 #include "virtual_machine.h"
+#include "bytecode.h"
 #include "libmy.h"
 
 void	virtual_machine_write(t_vm *machine, int32_t address,

@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 12:30:23 2017 flavian gontier
-** Last update Wed Mar 29 23:03:24 2017 flavian gontier
+** Last update Thu Mar 30 15:10:31 2017 flavian gontier
 */
 
 #include <stdint.h>
@@ -49,7 +49,7 @@ static void	init_processes(t_arguments *arguments, t_vm *virtual_machine)
     process->address = (counter + 1) * ADDRESS_CONST % MEM_SIZE;
     process->binary = arguments->champions[counter];
     memptr = &virtual_machine->memory[process->address];
-    init_stream(memptr, MEM_SIZE - address, &process->stream);
+    init_stream(memptr, MEM_SIZE - process->address, &process->stream);
     virtual_machine->last_process_id += 1;
     counter = counter + 1;
     copy_process(virtual_machine, process);
@@ -61,5 +61,5 @@ void	init_virtual_machine(t_arguments *arguments, t_vm *virtual_machine)
   virtual_machine->dump_cycles = arguments->cycle_count;
   my_memset(virtual_machine->memory, MEM_SIZE, 0);
   init_processes(arguments, virtual_machine);
-  run_virtual_machine(&virtual_machine);
+  run_virtual_machine(virtual_machine);
 }
