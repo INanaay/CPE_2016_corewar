@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Thu Mar 30 15:07:56 2017 flavian gontier
+** Last update Thu Mar 30 19:08:06 2017 flavian gontier
 */
 
 #ifndef BYTECODE_H_
@@ -68,7 +68,7 @@ int16_t		read_int16(t_stream *stream);
 int8_t		read_int8(t_stream *stream);
 void		read_bytes(t_stream *stream, void *dest, size_t n);
 void		read_header(t_stream *stream, t_header *header);
-int		read_instruction_id(int fd, int *id);
+void		read_instruction(t_stream *stream, t_instruction *instruct);
 
 int8_t		write_bytes(int fd, const void *data, size_t n);
 
