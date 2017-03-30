@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Thu Mar 30 11:13:21 2017 flavian gontier
+** Last update Thu Mar 30 11:34:39 2017 flavian gontier
 */
 
 #ifndef BYTECODE_H_
@@ -61,7 +61,7 @@ typedef struct	s_instruct
 /*
 ** Stream functions
 */
-t_stream	*init_stream(int fd, t_stream *stream);
+void		init_stream(int fd, t_stream *stream);
 int8_t		*reverse_bytes(int8_t *bytes, size_t n);
 int32_t		read_int32(t_stream *stream);
 int16_t		read_int16(t_stream *stream);
