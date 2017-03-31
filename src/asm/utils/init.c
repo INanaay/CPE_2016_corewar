@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Mon Mar 27 14:52:31 2017 nathan
-** Last update Mon Mar 27 14:57:30 2017 nathan
+** Last update Fri Mar 31 15:58:53 2017 NANAA
 */
 
 #include <stdint.h>
@@ -66,8 +66,6 @@ uint8_t check_headerspcs(int index, char *line)
 	return (FAIL);
       index++;
     }
-  if (line[index + 1] == '"')
-    return (FAIL);
   return (SUCCESS);
 }
 
