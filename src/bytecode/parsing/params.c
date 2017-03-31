@@ -5,14 +5,14 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Mar 28 16:52:37 2017 flavian gontier
-** Last update Thu Mar 30 11:29:06 2017 flavian gontier
+** Last update Fri Mar 31 11:14:08 2017 flavian gontier
 */
 
 #include <stdint.h>
 #include "virtual_machine.h"
 #include "libmy.h"
 
-int	get_params_count(int8_t params_type)
+int		get_params_count(int8_t params_type)
 {
   int		count;
   int		scale;
@@ -70,7 +70,7 @@ int	get_params_size(int8_t params_type)
   return (result);
 }
 
-int8_t	*get_params(t_stream *stream, int8_t paramstype)
+int8_t		*get_params(t_stream *stream, int8_t paramstype)
 {
   int8_t	*result;
   int		size;
