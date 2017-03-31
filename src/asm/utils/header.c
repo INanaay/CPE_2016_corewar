@@ -5,7 +5,7 @@
 ** Login   <nathan.lebon@epitech.eu>
 **
 ** Started on  Wed Mar 29 15:16:53 2017 NANAA
-** Last update Fri Mar 31 13:04:32 2017 NANAA
+** Last update Fri Mar 31 19:03:56 2017 NANAA
 */
 
 #include <unistd.h>
@@ -13,8 +13,6 @@
 #include "assembly.h"
 #include "op.h"
 #include "bytecode.h"
-
-/* tu donne la ligne ou il y a le .name*/
 
 static t_header       	*fill_header_prog_name(t_header *head, char *str)
 {
