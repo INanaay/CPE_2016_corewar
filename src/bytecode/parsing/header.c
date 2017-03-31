@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Mar 28 22:03:49 2017 flavian gontier
-** Last update Fri Mar 31 10:18:54 2017 flavian gontier
+** Last update Fri Mar 31 10:51:35 2017 flavian gontier
 */
 
 #include "bytecode.h"
@@ -16,6 +16,7 @@ void    read_header(t_stream *stream, t_header *header)
   int	position;
 
   position = stream->position;
+  printf("%d\n", position);
   my_memcpy(header, &stream->data[position], sizeof(t_header));
   reverse_bytes(&header->magic, sizeof(header->magic));
   //reverse_bytes(&header->name, sizeof(header->name));
