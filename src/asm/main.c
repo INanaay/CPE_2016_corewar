@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Fri Mar 31 18:23:45 2017 nathan
+** Last update Fri Mar 31 18:53:01 2017 nathan
 */
 
 #include <stdlib.h>
@@ -76,6 +76,13 @@ uint8_t	check_labelexist(t_label **labels, int names_nbr)
   return (check_labelexistargs(labels, names));
 }
 
+char		**advance_fileptr(char **file)
+{
+  while (*file != NULL && **file == COMMENT_CHAR)
+      *file++;
+  return (file);
+}
+
 uint8_t		main(int ac, char **av)
 {
   uint8_t	is_help;
@@ -93,7 +100,7 @@ uint8_t		main(int ac, char **av)
     return (is_help);
   if (file_to_arr(av[1], (&file_c)) == FAIL)
     return (FAIL);
-  if ((file = my_strtowtb_sc(file_c, '\n')) == NULL)
+  if ((file = advance_fileptr(my_strtowtb_sc(file_c, '\n'))) == NULL)
     return (my_puterr84(MEM_FAIL));
   if (check_header(file) == FAIL)
     return (my_puterr84(INV_FILE));
