@@ -5,7 +5,7 @@
 ** Login   <nathan.lebon@epitech.eu>
 **
 ** Started on  Mon Mar 27 17:02:20 2017 NANAA
-** Last update Fri Mar 31 13:42:02 2017 nathan
+** Last update Fri Mar 31 13:09:40 2017 NANAA
 */
 
 #include <unistd.h>
@@ -88,8 +88,8 @@ int8_t		write_header(int fd, t_header *header)
   reverse_bytes(header->comment, sizeof(header->comment));
   error |= write_bytes(fd, &header->magic, sizeof(header->magic));
   error |= write_bytes(fd, header->name, sizeof(header->name));
-  error |= write_bytes(fd, header->comment, sizeof(header->comment));
   error |= write_bytes(fd, &header->size, sizeof(int32_t));
+  error |= write_bytes(fd, header->comment, sizeof(header->comment));
   if (error == 1)
     return (1);
   return (0);

@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 **
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Fri Mar 31 13:47:56 2017 nathan
+** Last update Fri Mar 31 13:14:37 2017 NANAA
 */
 
 #ifndef BYTECODE_H_
@@ -14,7 +14,7 @@
 #include <stdint.h>
 #include "assembly.h"
 # define MAGIC_VALUE 0xea83f3
-# define NAME_SIZE 128 + 5
+# define NAME_SIZE 128 + 3
 # define COM_SIZE 2048 + 5
 
 typedef struct	s_header

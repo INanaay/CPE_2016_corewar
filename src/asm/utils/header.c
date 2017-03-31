@@ -5,10 +5,11 @@
 ** Login   <nathan.lebon@epitech.eu>
 **
 ** Started on  Wed Mar 29 15:16:53 2017 NANAA
-** Last update Fri Mar 31 13:47:36 2017 nathan
+** Last update Fri Mar 31 13:04:32 2017 NANAA
 */
 
 #include <unistd.h>
+#include "mylib/my_string.h"
 #include "assembly.h"
 #include "op.h"
 #include "bytecode.h"
@@ -46,27 +47,17 @@ static t_header	*fill_header_comment(t_header *head, char *str)
   int		i;
   int		len;
   int		pos;
-  int		j;
 
-  j = 0;
   i = 0;
   len = 0;
-  while (j < COM_SIZE + 1)
-    head->comment[j++] = 0;
-  while (str[i] && str[i] != '"')
+  while (str[i] != '"')
     i++;
   pos = i + 1;
-  i++;
-  len = 0;
-  while (str[i] && str[i] != '"')
-    {
-      i++;
-      len++;
-    }
+  len = my_strlen(str + pos) - 1;
   if (len > COMMENT_LENGTH)
     return (NULL);
   len = 0;
-  while (str[pos] && str[pos] != '"')
+  while (str[pos] != '"')
     head->comment[len++] = str[pos++];
   return (head);
 }
