@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 29 20:12:18 2017 nathan
-** Last update Fri Mar 31 17:03:46 2017 nathan
+** Last update Fri Mar 31 18:24:28 2017 nathan
 */
 
 #include <stdint.h>
@@ -14,10 +14,12 @@
 #include "bytecode.h"
 #include "mylib/my_string.h"
 
-int8_t		get_typesize(char *arg)
+int8_t		get_typesize(char *arg, int index)
 {
   if (arg[0] == 'r')
     return (REG_SIZE);
+  else if (arg[0] == DIRECT_CHAR && index >= 8 && index <= 14)
+    return (2);
   else if (arg[0] == DIRECT_CHAR)
     return (DIR_SIZE);
   else
@@ -68,21 +70,15 @@ int	get_headersize(t_label **labels)
   size = 0;
   while (labels[x] != NULL)
     {
-      size += 2;
+      if (labels[x]->inst == 0 || labels[x]->inst == 8 ||
+	  labels[x]->inst == 11 || labels[x]->inst == 14)
+	size += 1;
+      else
+	size += 2;
+      tmp = 0;
       while (y != my_strtablen(labels[x]->args))
 	{
-	  tmp = 0;
-	  tmp += get_typesize(labels[x]->args[y++]);
-	  if (labels[x]->inst == 9 ||
-	      labels[x]->inst == 10 || labels[x]->inst == 13)
-	    tmp = tmp / 2;
-	  else if (labels[x]->inst == 0 || labels[x]->inst == 8 ||
-		   labels[x]->inst == 11 || labels[x]->inst == 14)
-	    {
-	      tmp -= 1;
-	      if (labels[x]->inst == 0)
-		tmp += 3;
-	    }
+	  tmp += get_typesize(labels[x]->args[y++], labels[x]->inst);
 	}
       size += tmp;
       y = 0;

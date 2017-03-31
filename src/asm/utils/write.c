@@ -5,7 +5,7 @@
 ** Login   <nathan.lebon@epitech.eu>
 **
 ** Started on  Mon Mar 27 17:02:20 2017 NANAA
-** Last update Fri Mar 31 13:09:40 2017 NANAA
+** Last update Fri Mar 31 18:21:25 2017 nathan
 */
 
 #include <unistd.h>
@@ -70,7 +70,8 @@ uint8_t		write_data(int fd, t_label **labels, t_instruct **instruct)
 	{
 	  tmp = my_atoi(labels[x]->args[y] + 1);
 	  write_bytes(fd, &tmp,
-		      sizeof(int8_t) * get_typesize(labels[x]->args[y]));
+		      sizeof(int8_t) * get_typesize(labels[x]->args[y],
+						    labels[x]->inst));
 	  y++;
 	}
       x++;
