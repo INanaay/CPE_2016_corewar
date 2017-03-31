@@ -5,7 +5,7 @@
 ** Login   <nathan.lebon@epitech.eu>
 **
 ** Started on  Tue Mar 28 14:44:57 2017 NANAA
-** Last update Fri Mar 31 17:10:14 2017 nathan
+** Last update Fri Mar 31 18:43:22 2017 nathan
 */
 
 #include <stdio.h>
@@ -28,7 +28,6 @@ static char	*create_cor_name(char *name)
       while (*name != '/')
 	name++;
     }
-  name++;
   while (name[i] && name[i] != '.')
     i++;
   name[i + 1] = 0;
