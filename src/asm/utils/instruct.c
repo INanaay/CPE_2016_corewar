@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 29 20:12:18 2017 nathan
-** Last update Fri Mar 31 15:17:21 2017 nathan
+** Last update Fri Mar 31 17:03:46 2017 nathan
 */
 
 #include <stdint.h>
@@ -68,7 +68,7 @@ int	get_headersize(t_label **labels)
   size = 0;
   while (labels[x] != NULL)
     {
-      size += 3;
+      size += 2;
       while (y != my_strtablen(labels[x]->args))
 	{
 	  tmp = 0;
@@ -76,6 +76,13 @@ int	get_headersize(t_label **labels)
 	  if (labels[x]->inst == 9 ||
 	      labels[x]->inst == 10 || labels[x]->inst == 13)
 	    tmp = tmp / 2;
+	  else if (labels[x]->inst == 0 || labels[x]->inst == 8 ||
+		   labels[x]->inst == 11 || labels[x]->inst == 14)
+	    {
+	      tmp -= 1;
+	      if (labels[x]->inst == 0)
+		tmp += 3;
+	    }
 	}
       size += tmp;
       y = 0;

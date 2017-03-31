@@ -1,11 +1,11 @@
 /*
 ** create_cor_file.c for Project-Master in /home/NANAA/Projets/CPE_2016_corewar/src/asm
-** 
+**
 ** Made by NANAA
 ** Login   <nathan.lebon@epitech.eu>
-** 
+**
 ** Started on  Tue Mar 28 14:44:57 2017 NANAA
-** Last update Thu Mar 30 13:41:53 2017 NANAA
+** Last update Fri Mar 31 17:10:14 2017 nathan
 */
 
 #include <stdio.h>
@@ -18,13 +18,17 @@
 #include "mylib/my_string.h"
 #include "mylib/my_mem.h"
 
-# define EXIT_ERROR 1
-
 static char	*create_cor_name(char *name)
 {
   int	i;
 
   i = 0;
+  if (my_strcontains(name, '/') >= 1)
+    {
+      while (*name != '/')
+	name++;
+    }
+  name++;
   while (name[i] && name[i] != '.')
     i++;
   name[i + 1] = 0;
@@ -42,6 +46,6 @@ int	create_core_file(char *path)
   name = create_cor_name(path);
   fd = open(name, O_CREAT | O_RDWR, 0666);
   if (fd == -1)
-    return (EXIT_ERROR);
+    return (1);
   return (fd);
 }
