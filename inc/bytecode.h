@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Thu Mar 30 23:17:44 2017 flavian gontier
+** Last update Fri Mar 31 10:27:17 2017 flavian gontier
 */
 
 #ifndef BYTECODE_H_
@@ -46,9 +46,9 @@ typedef struct	s_stream
 typedef struct	s_header
 {
   int32_t	magic;
-  int8_t	name[NAME_SIZE + 1];
+  int8_t	name[NAME_SIZE];
   int32_t	size;
-  int8_t	comment[COM_SIZE + 1];
+  int8_t	comment[COM_SIZE];
 }		t_header;
 
 typedef struct	s_instruct
