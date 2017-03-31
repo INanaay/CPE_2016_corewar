@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:43:32 2017 nathan
-** Last update Thu Mar 30 11:42:19 2017 NANAA
+** Last update Fri Mar 31 13:34:03 2017 nathan
 */
 
 #ifndef ASSEMBLY_H
@@ -21,7 +21,6 @@ typedef	struct		s_label
   char			*name;
   uint8_t		inst;
   char			**args;
-  int			size;
 }			t_label;
 
 uint8_t	check_args(int, char **);

@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Thu Mar 30 23:23:32 2017 nathan
+** Last update Fri Mar 31 13:49:54 2017 nathan
 */
 
 #include <stdlib.h>
@@ -105,10 +105,10 @@ uint8_t		main(int ac, char **av)
     return (FAIL);
   if (check_labelexist(labels, names_nbr) == FAIL)
     return (FAIL);
-  header = fill_header_struct(header, file);
+  header = fill_header_struct(header, file, labels);
   fd = create_core_file(av[1]);
   instruct = create_instruct(labels, len - 1);
-  if (write_header(fd, header) == 1)
+  if (write_header(fd, header, labels) == 1)
     return (FAIL);
   write_data(fd, labels, instruct);
   return (SUCCESS);

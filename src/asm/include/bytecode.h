@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 **
 ** Started on  Sat Mar 25 11:41:43 2017 flavian gontier
-** Last update Thu Mar 30 23:25:01 2017 nathan
+** Last update Fri Mar 31 13:47:56 2017 nathan
 */
 
 #ifndef BYTECODE_H_
@@ -54,6 +54,7 @@ int		read_instruction_id(int fd, int *id);
 t_instruct	**create_instruct(t_label **, int);
 int8_t		get_typesize(char *);
 uint8_t		write_data(int, t_label **, t_instruct **);
-t_header        *fill_header_struct(t_header *head, char **file);
+t_header        *fill_header_struct(t_header *head, char **file, t_label **);
+int		get_headersize(t_label **);
 
 #endif

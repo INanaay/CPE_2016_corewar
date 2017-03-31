@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Fri Mar 24 17:05:13 2017 nathan
-** Last update Tue Mar 28 17:44:36 2017 nathan
+** Last update Fri Mar 31 13:34:07 2017 nathan
 */
 
 #include <stdlib.h>
@@ -54,7 +54,6 @@ uint8_t		add_tolabels(t_label **labels, char *line,
   new->args = my_strtowtb_sc(line + len, SEPARATOR_CHAR);
   if (check_labelargs(new->args, index) == FAIL)
     return (FAIL);
-  new->size = 0;
   labels[count++] = new;
   return (SUCCESS);
 }

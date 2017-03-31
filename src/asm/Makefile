@@ -7,6 +7,8 @@ SRC	=		utils/op.c				\
 			utils/init.c				\
 			utils/parser.c				\
 			utils/instruct.c			\
+			utils/create_cor_file.c			\
+			utils/header.c				\
 			main.c
 
 MYLBSRC	=		mylib/string/my_strlen.c		\
@@ -28,9 +30,7 @@ MYLBSRC	=		mylib/string/my_strlen.c		\
 			mylib/mem/my_calloc.c			\
 			mylib/math/my_pow.c			\
 			mylib/math/my_sqrt.c			\
-			mylib/math/my_fabs.c			\
-			create_cor_file.c			\
-			header.c
+			mylib/math/my_fabs.c
 
 NAME	=		asm
 

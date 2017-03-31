@@ -5,20 +5,21 @@
 ** Login   <nathan.lebon@epitech.eu>
 **
 ** Started on  Wed Mar 29 15:16:53 2017 NANAA
-** Last update Thu Mar 30 01:15:41 2017 nathan
+** Last update Fri Mar 31 13:47:36 2017 nathan
 */
 
 #include <unistd.h>
 #include "assembly.h"
 #include "op.h"
+#include "bytecode.h"
 
 /* tu donne la ligne ou il y a le .name*/
 
-t_header       	*fill_header_prog_name(t_header *head, char *str)
+static t_header       	*fill_header_prog_name(t_header *head, char *str)
 {
-  int		i;
-  int		len;
-  int		pos;
+  int			i;
+  int			len;
+  int			pos;
 
   i = 0;
   len = 0;
@@ -36,18 +37,22 @@ t_header       	*fill_header_prog_name(t_header *head, char *str)
     return (NULL);
   len = 0;
   while (str[pos] && str[pos] != '"')
-    head->prog_name[len++] = str[pos++];
+    head->name[len++] = str[pos++];
   return (head);
 }
 
-t_header	*fill_header_comment(t_header *head, char *str)
+static t_header	*fill_header_comment(t_header *head, char *str)
 {
   int		i;
   int		len;
   int		pos;
+  int		j;
 
+  j = 0;
   i = 0;
   len = 0;
+  while (j < COM_SIZE + 1)
+    head->comment[j++] = 0;
   while (str[i] && str[i] != '"')
     i++;
   pos = i + 1;
@@ -66,14 +71,16 @@ t_header	*fill_header_comment(t_header *head, char *str)
   return (head);
 }
 
-t_header	*fill_header_struct(t_header *head, char **file)
+t_header	*fill_header_struct(t_header *head, char **file,
+				    t_label **labels)
 {
-  head->magic = COREWAR_EXEC_MAGIC;
-  if ((head = malloc(sizeof (t_header))) == NULL)
+  if ((head = malloc(sizeof(t_header))) == NULL)
     return (NULL);
+  head->magic = MAGIC_VALUE;
   if ((head = fill_header_prog_name(head, file[0])) == NULL)
     return (NULL);
   if ((head = fill_header_comment(head, file[1])) == NULL)
     return (NULL);
+  head->size = get_headersize(labels);
   return (head);
 }

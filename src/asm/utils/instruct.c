@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 29 20:12:18 2017 nathan
-** Last update Wed Mar 29 22:37:38 2017 nathan
+** Last update Fri Mar 31 13:48:50 2017 nathan
 */
 
 #include <stdint.h>
@@ -54,6 +54,26 @@ int8_t		set_paramsbits(int args_nbr, char **args)
       x++;
     }
   return (byte);
+}
+
+int	get_headersize(t_label **labels)
+{
+  int	size;
+  int	x;
+  int	y;
+
+  x = 0;
+  y = 0;
+  size = 0;
+  while (labels[x] != NULL)
+    {
+      size += 1;
+      while (labels[x]->args[y] != NULL)
+	size += get_typesize(labels[x]->args[y++]);
+      y = 0;
+      x++;
+    }
+  return (size);
 }
 
 t_instruct	**create_instruct(t_label **labels, int len)
