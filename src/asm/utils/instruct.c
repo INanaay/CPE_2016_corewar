@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 29 20:12:18 2017 nathan
-** Last update Fri Mar 31 13:48:50 2017 nathan
+** Last update Fri Mar 31 14:09:54 2017 nathan
 */
 
 #include <stdint.h>
@@ -61,6 +61,7 @@ int	get_headersize(t_label **labels)
   int	size;
   int	x;
   int	y;
+  int	tmp;
 
   x = 0;
   y = 0;
@@ -69,10 +70,18 @@ int	get_headersize(t_label **labels)
     {
       size += 1;
       while (labels[x]->args[y] != NULL)
-	size += get_typesize(labels[x]->args[y++]);
+	{
+	  tmp = 0;
+	  tmp += get_typesize(labels[x]->args[y++]);
+	  if (labels[x]->inst == 10 ||
+	      labels[x]->inst == 11 || labels[x]->inst == 14)
+	    tmp = tmp / 2;
+	}
+      size += tmp;
       y = 0;
       x++;
     }
+  printf("%i\n", size);
   return (size);
 }
 
