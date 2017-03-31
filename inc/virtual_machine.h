@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Fri Mar 24 15:39:16 2017 flavian gontier
-** Last update Thu Mar 30 15:06:04 2017 flavian gontier
+** Last update Fri Mar 31 14:10:50 2017 flavian gontier
 */
 
 #ifndef VIRTUAL_MACHINE_H_
@@ -32,6 +32,7 @@ typedef struct	s_process
 {
   int32_t	id;
   int32_t	address;
+  int32_t	remains_cycles;
   char		*binary;
   t_stream	stream;
   t_header	header;
