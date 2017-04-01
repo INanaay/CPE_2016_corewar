@@ -5,7 +5,7 @@
 ** Login   <nathan.lebon@epitech.eu>
 **
 ** Started on  Mon Mar 27 17:02:20 2017 NANAA
-** Last update Fri Mar 31 18:21:25 2017 nathan
+** Last update Sat Apr  1 20:32:50 2017 nathan
 */
 
 #include <unistd.h>
@@ -38,7 +38,6 @@ static void	reverse_bytes(void *byte, int size)
 int8_t		write_bytes(int fd, void *bytes, size_t n)
 {
   int		count;
-  uint8_t	*tmp;
   void		*e;
 
   if (fd <= 0)
@@ -51,27 +50,48 @@ int8_t		write_bytes(int fd, void *bytes, size_t n)
   return (SUCCESS);
 }
 
-uint8_t		write_data(int fd, t_label **labels, t_instruct **instruct)
+void		write_replace(int fd, t_replace to_replace, t_replacer *re)
+{
+  int		x;
+  int16_t	result;
+
+  x = 0;
+  while (my_strcmp(to_replace.name, re->replacer[x].name) != 0)
+    x++;
+  result = re->replacer[x].index - to_replace.index;
+  write_bytes(fd, &result, sizeof(result));
+}
+
+uint8_t		write_data(int fd, t_label **labels, t_instruct **instruct,
+			   t_replacer *re)
 {
   int	x;
   int	y;
   int	size;
   int	tmp;
   int	len;
+  int	z;
+  int	ptmp;
 
   x = 0;
+  z = 0;
   while (instruct[x] != NULL)
     {
       y = 0;
+      ptmp = instruct[x]->id;
       len = my_strtablen(labels[x]->args);
       write_bytes(fd, &instruct[x]->id, sizeof(int8_t));
-      write_bytes(fd, &instruct[x]->params_type, sizeof(int8_t));
+      if (ptmp != 1 && ptmp != 9 && ptmp != 12 && ptmp != 13)
+	write_bytes(fd, &instruct[x]->params_type, sizeof(int8_t));
       while (y < len)
 	{
 	  tmp = my_atoi(labels[x]->args[y] + 1);
-	  write_bytes(fd, &tmp,
-		      sizeof(int8_t) * get_typesize(labels[x]->args[y],
-						    labels[x]->inst));
+	  if (my_strcontains(labels[x]->args[y], ':') == 1)
+	    write_replace(fd, re->to_replace[z++], re);
+	  else
+	    write_bytes(fd, &tmp,
+			sizeof(int8_t) * get_typesize(labels[x]->args[y],
+						      labels[x]->inst));
 	  y++;
 	}
       x++;

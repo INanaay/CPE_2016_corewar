@@ -9,6 +9,7 @@ SRC	=		utils/op.c				\
 			utils/instruct.c			\
 			utils/create_cor_file.c			\
 			utils/header.c				\
+			utils/replace_labels.c			\
 			main.c
 
 MYLBSRC	=		mylib/string/my_strlen.c		\

@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Fri Mar 31 18:53:01 2017 nathan
+** Last update Sat Apr  1 20:00:37 2017 nathan
 */
 
 #include <stdlib.h>
@@ -94,6 +94,7 @@ uint8_t		main(int ac, char **av)
   t_label	**labels;
   t_instruct	**instruct;
   t_header	*header;
+  t_replacer	*replacer;
 
   names_nbr = 0;
   if ((is_help = check_args(ac, av)) != 1)
@@ -113,10 +114,11 @@ uint8_t		main(int ac, char **av)
   if (check_labelexist(labels, names_nbr) == FAIL)
     return (FAIL);
   header = fill_header_struct(header, file, labels);
-  fd = create_core_file(av[1]);
+  fd = create_cor_file(av[1]);
   instruct = create_instruct(labels, len - 1);
+  replacer = replace_labels(labels, names_nbr, my_strtablen(file));
   if (write_header(fd, header) == 1)
     return (FAIL);
-  write_data(fd, labels, instruct);
+  write_data(fd, labels, instruct, replacer);
   return (SUCCESS);
 }

@@ -5,7 +5,7 @@
 ** Login   <nathan.lebon@epitech.eu>
 **
 ** Started on  Tue Mar 28 14:44:57 2017 NANAA
-** Last update Fri Mar 31 18:43:22 2017 nathan
+** Last update Sat Apr  1 18:16:50 2017 nathan
 */
 
 #include <stdio.h>
@@ -23,11 +23,8 @@ static char	*create_cor_name(char *name)
   int	i;
 
   i = 0;
-  if (my_strcontains(name, '/') >= 1)
-    {
-      while (*name != '/')
-	name++;
-    }
+  while (my_strcontains(name, '/') >= 1)
+    name++;
   while (name[i] && name[i] != '.')
     i++;
   name[i + 1] = 0;
@@ -37,7 +34,7 @@ static char	*create_cor_name(char *name)
   return (name);
 }
 
-int	create_core_file(char *path)
+int	create_cor_file(char *path)
 {
   int	fd;
   char	*name;

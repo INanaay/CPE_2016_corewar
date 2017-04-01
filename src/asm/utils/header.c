@@ -5,10 +5,11 @@
 ** Login   <nathan.lebon@epitech.eu>
 **
 ** Started on  Wed Mar 29 15:16:53 2017 NANAA
-** Last update Fri Mar 31 19:03:56 2017 NANAA
+** Last update Sat Apr  1 17:37:52 2017 nathan
 */
 
 #include <unistd.h>
+#include <stdlib.h>
 #include "mylib/my_string.h"
 #include "assembly.h"
 #include "op.h"
