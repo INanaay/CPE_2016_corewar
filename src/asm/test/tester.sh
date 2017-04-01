@@ -1,4 +1,5 @@
-rm my_test abel_test *.cor
+rm my_test abel_test
+rm *.cor
 ../asm $1
 ../asm2 $2
 var0=${1%%??}
