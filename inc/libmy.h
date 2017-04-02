@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.net>
 **
 ** Started on  Fri Jan 20 20:32:15 2017 flavian gontier
-** Last update Mon Mar 27 13:59:54 2017 flavian gontier
+** Last update Sun Apr 02 23:40:53 2017 flavian gontier
 */
 
 #ifndef LIBMY_H_
@@ -14,7 +14,6 @@
 #include <stdlib.h>
 #include <unistd.h>
 #include <stdint.h>
-#include "list.h"
 
 # define EXIT_SUCCESS 0
 # define EXIT_ERROR 84

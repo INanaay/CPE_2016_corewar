@@ -5,7 +5,7 @@
 ## Login   <flavian.gontier@epitech.net>
 ##
 ## Started on  Sat Jan 21 00:04:28 2017 flavian gontier
-## Last update Sun Apr  2 23:08:49 2017 nathan
+## Last update Sun Apr 02 23:40:30 2017 flavian gontier
 ##
 
 CC	=	gcc
@@ -47,16 +47,6 @@ VM_SRC	=	corewar/lib/io/my_put.c					\
 		corewar/lib/string/my_tabdup.c				\
 		corewar/lib/string/my_tabelem.c				\
 		corewar/lib/string/my_get_base.c				\
-		corewar/lib/list/listInt32/listInt32_add.c		\
-		corewar/lib/list/listInt32/listInt32_remove.c		\
-		corewar/lib/list/listInt32/listInt32_insert.c		\
-		corewar/lib/list/listInt32/listInt32_init.c		\
-		corewar/lib/list/listInt32/listInt32_expends.c		\
-		corewar/lib/list/listString/listString_add.c		\
-		corewar/lib/list/listString/listString_remove.c		\
-		corewar/lib/list/listString/listString_insert.c		\
-		corewar/lib/list/listString/listString_init.c		\
-		corewar/lib/list/listString/listString_expends.c		\
 		bytecode/io/read.c					\
 		bytecode/io/write.c					\
 		bytecode/io/utils.c					\
