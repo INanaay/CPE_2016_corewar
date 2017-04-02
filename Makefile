@@ -5,7 +5,7 @@
 ## Login   <flavian.gontier@epitech.net>
 ##
 ## Started on  Sat Jan 21 00:04:28 2017 flavian gontier
-## Last update Fri Mar 31 14:05:46 2017 flavian gontier
+## Last update Sun Apr 02 16:27:21 2017 flavian gontier
 ##
 
 CC	=	gcc
@@ -68,6 +68,8 @@ VM_SRC	=	src/vm/lib/io/my_put.c								\
 			src/vm/virtual_machine/init.c						\
 			src/vm/virtual_machine/run.c						\
 			src/vm/virtual_machine/exec.c						\
+			src/vm/virtual_machine/utils.c						\
+			src/vm/virtual_machine/handlers/alive.c				\
 			src/vm/main.c
 
 VM_OBJ     	=	$(VM_SRC:.c=.o)

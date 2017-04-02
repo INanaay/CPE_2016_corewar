@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 12:30:23 2017 flavian gontier
-** Last update Fri Mar 31 12:19:58 2017 flavian gontier
+** Last update Sun Apr 02 17:12:55 2017 flavian gontier
 */
 
 #include <stdint.h>
@@ -31,6 +31,30 @@ static void	copy_process(t_vm *vm, t_process *process)
   }
 }
 
+static void	init_process(t_vm *virtual_machine, t_arguments *arguments,
+			     int index, t_process *process)
+{
+  t_stream	*file_stream;
+  int8_t	*start;
+  int		addr;
+
+  process->id = virtual_machine->last_process_id;
+  addr = (index * ADDRESS_CONST) % MEM_SIZE;
+  process->address = addr;
+  process->cycle_to_die = CYCLE_TO_DIE;
+  process->cycles_remaining = 0;
+  process->binary = arguments->champions[index];
+  init_file_stream(process->binary);
+  start = &virtual_machine->memory[addr];
+  init_stream(start, MEM_SIZE - addr, &process->stream);
+  copy_process(virtual_machine, process);
+  read_header(&process->stream, &process->header);
+  printf("=======HEADER=======\n");
+  printf("name: %s\n", process->header.name);
+  printf("comment: %s\n", process->header.comment);
+  printf("====================\n");
+}
+
 static void	init_processes(t_arguments *arguments, t_vm *virtual_machine)
 {
   int		counter;
@@ -45,15 +69,9 @@ static void	init_processes(t_arguments *arguments, t_vm *virtual_machine)
   while (counter < virtual_machine->process_count)
   {
     process = &virtual_machine->processes[counter];
-    process->id = virtual_machine->last_process_id;
-    process->address = (counter + 1) * ADDRESS_CONST % MEM_SIZE;
-    process->binary = arguments->champions[counter];
-    memptr = &virtual_machine->memory[process->address];
-    init_stream(memptr, MEM_SIZE - process->address, &process->stream);
-    process->stream.position += sizeof(t_header);
+    init_process(virtual_machine, arguments, counter, process);
     virtual_machine->last_process_id += 1;
     counter = counter + 1;
-    copy_process(virtual_machine, process);
   }
 }
 
