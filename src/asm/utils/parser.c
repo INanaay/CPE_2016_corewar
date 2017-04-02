@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Fri Mar 24 17:05:13 2017 nathan
-** Last update Sun Apr  2 17:52:42 2017 nathan
+** Last update Sun Apr  2 18:26:35 2017 nathan
 */
 
 #include <stdlib.h>
@@ -58,34 +58,32 @@ uint8_t		add_tolabels(t_label **labels, char *line,
   return (SUCCESS);
 }
 
-uint8_t	find_inoptab(char *line)
+uint8_t	find_inoptab(char *l)
 {
   int		x;
   int		len;
-  int		len2;
+  int		ln;
   uint8_t	y;
 
-  y = 0;
+  y = -1;
   x = -1;
-  len = my_strlen(line);
-  while (y < 16)
+  len = my_strlen(l);
+  while (++y < 16)
     {
-      len2 = my_strlen(g_op_tab[y].mnemonique);
-      if (my_strcmp(g_op_tab[y].mnemonique, line) == len - len2)
+      ln = my_strlen(g_op_tab[y].mnemonique);
+      if (my_strcmp(g_op_tab[y].mnemonique, l) == len - ln)
 	{
-	  if (line[len2] == '%' || (line[len2] <= '9' && line[len2] >= '0') ||
-	      line[len2] == 'r')
+	  if (l[ln] == '%' || (l[ln] <= '9' && l[ln] >= '0') || l[ln] == 'r')
 	    {
-	      if (my_strcontains(line, ':') >= 1)
+	      if (my_strcontains(l, ':') >= 1)
 		{
-		  while (line[++x] != ':');
-		  if (line[x - 1] != '%')
+		  while (l[++x] != ':');
+		  if (l[x - 1] != '%')
 		    return (16);
 		}
 	      return (y);
 	    }
 	}
-      y++;
     }
   return (y);
 }

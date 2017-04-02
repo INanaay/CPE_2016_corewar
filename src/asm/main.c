@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Sun Apr  2 17:52:25 2017 nathan
+** Last update Sun Apr  2 18:26:05 2017 nathan
 */
 
 #include <stdlib.h>
@@ -44,9 +44,6 @@ uint8_t	check_labelexistargs(t_label **labels, char **names)
 	{
 	  if (labels[x]->args[y][1] == ':' &&
 	      find_intab(labels[x]->args[y] + 2, names) != 0)
-	    return (my_puterr84(INV_FILE));
-	  else if (labels[x]->name && labels[x]->args[y][1] == ':' &&
-		   my_strcmp(labels[x]->name, labels[x]->args[y] + 2) == 0)
 	    return (my_puterr84(INV_FILE));
 	  y++;
 	}
