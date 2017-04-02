@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Mon Mar 27 14:52:31 2017 nathan
-** Last update Sun Apr  2 15:14:48 2017 nathan
+** Last update Sun Apr  2 16:42:06 2017 nathan
 */
 
 #include <stdint.h>
@@ -24,7 +24,7 @@
 char		**advance_fileptr(char **file)
 {
   while (*file != NULL && **file == COMMENT_CHAR)
-      *file++;
+      *file = *file + 1;
   return (file);
 }
 
@@ -40,7 +40,7 @@ uint8_t	check_args(int ac, char **av)
       return (SUCCESS);
     }
   else if ((len = my_strlen(av[1])) < 3 ||
-	   av[1][len - 1] != 's' && av[1][len - 2] != '.')
+	   (av[1][len - 1] != 's' && av[1][len - 2] != '.'))
     return (my_puterr84(ARG_ERR));
   return (1);
 }

@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 29 20:12:18 2017 nathan
-** Last update Sat Apr  1 19:53:01 2017 nathan
+** Last update Sun Apr  2 16:38:50 2017 nathan
 */
 
 #include <stdint.h>
@@ -41,7 +41,6 @@ int8_t		set_paramsbits(int args_nbr, char **args)
   int8_t	byte;
   uint8_t	scale;
   uint8_t	x;
-  uint8_t	index;
   int8_t	type;
 
   byte = 0;
@@ -49,7 +48,6 @@ int8_t		set_paramsbits(int args_nbr, char **args)
   type = 0;
   while (x < args_nbr)
     {
-      index = 0;
       type = get_type(args[x]);
       scale =  6 - (x * 2);
       byte = byte ^ (type << scale);
@@ -90,7 +88,6 @@ t_instruct	**create_instruct(t_label **labels, int len)
   t_instruct	**instruct;
   t_instruct	*tmp;
   int		x;
-  int		move;
   uint8_t	tab_len;
 
   x = 0;
@@ -99,7 +96,6 @@ t_instruct	**create_instruct(t_label **labels, int len)
   while (labels[x])
     {
       tmp = malloc(sizeof(t_instruct));
-      move = 0;
       tab_len = my_strtablen(labels[x]->args);
       tmp->id = g_op_tab[labels[x]->inst].code;
       tmp->params_type = set_paramsbits(tab_len, labels[x]->args);

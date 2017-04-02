@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Sun Feb 12 01:56:52 2017 nathan
-** Last update Sun Feb 12 02:23:16 2017 nathan
+** Last update Sun Apr  2 16:40:15 2017 nathan
 */
 
 #include "mylib/my_math.h"
@@ -19,6 +19,5 @@ float	my_sqrt(float nbr, int index)
   result = nbr - my_pow(index, 2);
   if (result >= 0)
     return (my_sqrt(nbr, index + 1));
-  else if (result <= 0)
-    return (index);
+  return (index);
 }

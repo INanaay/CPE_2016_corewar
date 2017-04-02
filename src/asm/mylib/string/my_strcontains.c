@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Thu Jan 19 16:23:27 2017 nathan
-** Last update Thu Mar 23 16:18:25 2017 nathan
+** Last update Sun Apr  2 16:42:30 2017 nathan
 */
 
 #include "mylib/my_string.h"
@@ -48,8 +48,8 @@ int	my_strcontains_nonalpha(char *str)
   while (str[x])
     {
       if (str[x] < '0' ||
-	  str[x] > '9' && str[x] < 'A' ||
-	  str[x] > 'Z' && str[x] < 'a' ||
+	  (str[x] > '9' && str[x] < 'A') ||
+	  (str[x] > 'Z' && str[x] < 'a') ||
 	  str[x] > 'z')
 	return (1);
       x++;

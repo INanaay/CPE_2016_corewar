@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Sun Apr  2 16:27:17 2017 nathan
+** Last update Sun Apr  2 16:38:35 2017 nathan
 */
 
 #include <stdlib.h>
@@ -86,6 +86,7 @@ int8_t		next(char **file, t_label **labels, char *filename,
   int		len;
   int		fd;
 
+  header = NULL;
   len = my_strtablen(file) + 1;
   if (parser(file, labels, &names_nbr) == FAIL)
     return (FAIL);
@@ -102,7 +103,7 @@ int8_t		next(char **file, t_label **labels, char *filename,
   return (SUCCESS);
 }
 
-uint8_t		main(int ac, char **av)
+int		main(int ac, char **av)
 {
   uint8_t	is_help;
   int		len;

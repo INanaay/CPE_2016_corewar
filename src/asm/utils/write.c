@@ -5,7 +5,7 @@
 ** Login   <nathan.lebon@epitech.eu>
 **
 ** Started on  Mon Mar 27 17:02:20 2017 NANAA
-** Last update Sun Apr  2 16:26:05 2017 nathan
+** Last update Sun Apr  2 16:37:30 2017 nathan
 */
 
 #include <unistd.h>
@@ -37,7 +37,7 @@ static void	reverse_bytes(void *byte, int size)
 
 int8_t		write_bytes(int fd, void *bytes, size_t n)
 {
-  int		count;
+  uint		count;
   void		*e;
 
   if (fd <= 0)

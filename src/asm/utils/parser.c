@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Fri Mar 24 17:05:13 2017 nathan
-** Last update Fri Mar 31 13:34:07 2017 nathan
+** Last update Sun Apr  2 16:41:38 2017 nathan
 */
 
 #include <stdlib.h>
@@ -71,7 +71,7 @@ uint8_t	find_inoptab(char *line)
       len2 = my_strlen(g_op_tab[y].mnemonique);
       if (my_strcmp(g_op_tab[y].mnemonique, line) == len - len2)
 	{
-	  if (line[len2] == '%' || line[len2] <= '9' && line[len2] >= '0' ||
+	  if (line[len2] == '%' || (line[len2] <= '9' && line[len2] >= '0') ||
 	      line[len2] == 'r')
 	  return (y);
 	}

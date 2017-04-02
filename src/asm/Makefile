@@ -1,4 +1,4 @@
-CC	= 		gcc -g3
+CC	= 		gcc -g3 -Wall -Wextra
 
 CFLAGS	+=		-I include
 
