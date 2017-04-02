@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Fri Mar 31 23:13:16 2017 nathan
-** Last update Sat Apr  1 19:30:58 2017 nathan
+** Last update Sun Apr  2 16:12:27 2017 nathan
 */
 
 #include <stdlib.h>
@@ -14,7 +14,8 @@
 #include "bytecode.h"
 #include "assembly.h"
 
-uint8_t	fill_to_replace(t_label *label, t_replace *to_replace, int size, int z)
+uint8_t	fill_to_replace(t_label *label, t_replace *to_replace,
+			int size, int z)
 {
   int	y;
   int	len;
@@ -55,7 +56,7 @@ int		get_size_line(t_label *label)
   return (size);
 }
 
-int		find_toreplacenbr(t_label **labels)
+int		find_torenbr(t_label **labels)
 {
   int		x;
   int		y;
@@ -79,37 +80,42 @@ int		find_toreplacenbr(t_label **labels)
   return (count + 1);
 }
 
-t_replacer	*replace_labels(t_label **labels, int name_nbr, int tablen)
+int		set_replacer(int y, int size, t_label *label,
+			     t_replace *replacer)
+{
+  if (label->name != NULL)
+    {
+      replacer[y].name = label->name;
+      replacer[y].index = size;
+      return (y + 1);
+    }
+  return (y);
+}
+
+t_replacer	*replace_labels(t_label **labels, int name_nbr, int y)
 {
   t_replacer	*replacement;
   t_replace	*to_replace;
   t_replace	*replacer;
   int		x;
-  int		y;
   int		z;
   int		tore_len;
   int		size;
 
   replacement = malloc(sizeof(t_replacer));
-  to_replace = malloc(sizeof(t_replace) * (tore_len = find_toreplacenbr(labels)));
+  to_replace = malloc(sizeof(t_replace) * (tore_len = find_torenbr(labels)));
   replacer = malloc(sizeof(t_replace) * (name_nbr + 1));
   replacement->size_to = tore_len;
   replacement->size_re = name_nbr;
-  x = 0;
+  x = -1;
   y = 0;
   size = 0;
   z = 0;
-  while (labels[x])
+  while (labels[++x])
     {
-      if (labels[x]->name != NULL)
-	{
-	  replacer[y].name = labels[x]->name;
-	  replacer[y].index = size;
-	  y++;
-	}
+      y = set_replacer(y, size, labels[x], replacer);
       z = fill_to_replace(labels[x], &to_replace[z], size, z);
       size += get_size_line(labels[x]);
-      x++;
     }
   replacement->to_replace = to_replace;
   replacement->replacer = replacer;
