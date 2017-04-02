@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sun Apr 02 14:30:40 2017 flavian gontier
-** Last update Sun Apr 02 18:30:24 2017 flavian gontier
+** Last update Sun Apr 02 23:17:31 2017 flavian gontier
 */
 
 #include "libmy.h"
@@ -21,7 +21,6 @@ void	alive_handler(t_vm *virtual_machine, t_instruct *instruction)
   process = get_process_by_id(virtual_machine, id);
   if (process == NULL)
   {
-    printf("that's gave me wrong id\n");
     return ;
   }
   process->cycle_to_die = CYCLE_TO_DIE;

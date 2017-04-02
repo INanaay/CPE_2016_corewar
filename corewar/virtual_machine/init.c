@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 12:30:23 2017 flavian gontier
-** Last update Sun Apr 02 22:09:38 2017 flavian gontier
+** Last update Sun Apr 02 23:17:44 2017 flavian gontier
 */
 
 #include <stdint.h>
@@ -48,10 +48,6 @@ static void	init_process(t_vm *virtual_machine, t_arguments *arguments,
   start = &virtual_machine->memory[addr];
   init_stream(start, MEM_SIZE - addr, &process->stream);
   copy_process(virtual_machine, process);
-  printf("=======HEADER=======\n");
-  printf("name: %s\n", process->header.name);
-  printf("comment: %s\n", process->header.comment);
-  printf("====================\n");
 }
 
 static void	init_processes(t_arguments *arguments, t_vm *virtual_machine)
