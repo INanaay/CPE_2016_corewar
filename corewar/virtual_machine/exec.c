@@ -13,7 +13,7 @@
 #include "bytecode.h"
 #include <stdlib.h>
 
-static const t_keyvalue	handlers[] =
+static const t_keyvalue	g_handlers[] =
 {
   {1, &alive_handler},
   {0, NULL}
@@ -24,10 +24,10 @@ t_handler get_handler(int instruct_id)
   int		index;
 
   index = 0;
-  while (handlers[index].key != 0)
+  while (g_handlers[index].key != 0)
   {
-    if (handlers[index].key == instruct_id)
-      return (handlers[index].value);
+    if (g_handlers[index].key == instruct_id)
+      return (g_handlers[index].value);
     index = index + 1;
   }
   return (NULL);
