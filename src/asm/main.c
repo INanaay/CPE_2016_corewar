@@ -5,10 +5,11 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Sun Apr  2 15:37:48 2017 nathan
+** Last update Sun Apr  2 16:27:17 2017 nathan
 */
 
 #include <stdlib.h>
+#include <unistd.h>
 #include "op.h"
 #include "assembly.h"
 #include "bytecode.h"
@@ -97,6 +98,7 @@ int8_t		next(char **file, t_label **labels, char *filename,
   if (write_header(fd, header) == 1)
     return (FAIL);
   write_data(fd, labels, instruct, replacer);
+  close(fd);
   return (SUCCESS);
 }
 

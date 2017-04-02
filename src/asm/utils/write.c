@@ -5,7 +5,7 @@
 ** Login   <nathan.lebon@epitech.eu>
 **
 ** Started on  Mon Mar 27 17:02:20 2017 NANAA
-** Last update Sun Apr  2 15:37:43 2017 nathan
+** Last update Sun Apr  2 16:26:05 2017 nathan
 */
 
 #include <unistd.h>
@@ -62,42 +62,35 @@ void		write_replace(int fd, t_replace to_replace, t_replacer *re)
   write_bytes(fd, &result, sizeof(result));
 }
 
-uint8_t		write_data(int fd, t_label **labels, t_instruct **instruct,
+void		write_data(int fd, t_label **labels, t_instruct **instruct,
 			   t_replacer *re)
 {
   int	x;
   int	y;
-  int	size;
-  int	tmp;
-  int	len;
   int	z;
+  int	len;
   int	ptmp;
 
-  x = 0;
+  x = -1;
   z = 0;
-  while (instruct[x] != NULL)
+  while (instruct[++x] != NULL)
     {
-      y = 0;
+      y = -1;
       ptmp = instruct[x]->id;
       len = my_strtablen(labels[x]->args);
       write_bytes(fd, &instruct[x]->id, sizeof(int8_t));
       if (ptmp != 1 && ptmp != 9 && ptmp != 12 && ptmp != 13)
 	write_bytes(fd, &instruct[x]->params_type, sizeof(int8_t));
-      while (y < len)
+      while (++y < len)
 	{
-	  tmp = my_atoi(labels[x]->args[y] + 1);
+	  ptmp = my_atoi(labels[x]->args[y] + 1);
 	  if (my_strcontains(labels[x]->args[y], ':') == 1)
 	    write_replace(fd, re->to_replace[z++], re);
 	  else
-	    write_bytes(fd, &tmp,
-			sizeof(int8_t) * get_typesize(labels[x]->args[y],
-						      labels[x]->inst));
-	  y++;
+	    write_bytes(fd, &ptmp, sizeof(int8_t) *
+			get_typesize(labels[x]->args[y], labels[x]->inst));
 	}
-      x++;
     }
-  close(fd);
-  return (SUCCESS);
 }
 
 int8_t		write_header(int fd, t_header *header)
