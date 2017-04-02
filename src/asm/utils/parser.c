@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Fri Mar 24 17:05:13 2017 nathan
-** Last update Sun Apr  2 19:10:27 2017 nathan
+** Last update Sun Apr  2 19:31:40 2017 nathan
 */
 
 #include <stdlib.h>
@@ -74,8 +74,9 @@ uint8_t	find_inoptab(char *l)
       if (my_strcmp(g_op_tab[y].mnemonique, l) == len - ln)
 	{
 	  if (l[ln] == '%' || (l[ln] <= '9' && l[ln] >= '0') || l[ln] == 'r'
-	      || l[ln] == ':')
+	      || l[ln] == ':' || l[ln] == '-')
 	    {
+	      printf("%c\n", l[ln]);
 	      if (my_strcontains(l, ':') >= 1)
 		{
 		  while (l[++x] != ':');
@@ -135,7 +136,7 @@ uint8_t		parser(char **file, t_label **labels, int *names_nbr)
 	    {
 	      if (get_labelname(labels, file[x]) == FAIL)
 		{
-		  printf("here\n");
+		  printf("here: %s\n", file[x]);
 		  return (FAIL);
 		}
 	      *names_nbr += 1;
