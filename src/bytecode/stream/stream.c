@@ -5,9 +5,12 @@
 ** Login   <nathan.lebon@epitech.eu>
 ** 
 ** Started on  Mon Mar 27 17:14:31 2017 NANAA
-** Last update Sun Apr 02 17:12:33 2017 flavian gontier
+** Last update Sun Apr 02 17:18:41 2017 flavian gontier
 */
 
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include "bytecode.h"
 #include "libmy.h"
 
