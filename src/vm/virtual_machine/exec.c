@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Fri Mar 31 12:50:40 2017 flavian gontier
-** Last update Fri Mar 31 15:28:52 2017 flavian gontier
+** Last update Sun Apr 02 16:35:34 2017 flavian gontier
 */
 
 #include "libmy.h"
@@ -13,10 +13,9 @@
 #include "bytecode.h"
 #include <stdlib.h>
 
-
-t_keyvalue	handlers[] =
+static const t_keyvalue	handlers[] =
 {
-  {1, &alive_andler},
+  {1, &alive_handler},
   /*
      {2, &ld_handler},
      {3, &st_handler},
@@ -33,23 +32,22 @@ t_keyvalue	handlers[] =
      {14, &lldi_handler},
      {15, &lfork_handler},
      {16, &aff_handler}
-     */
+   */
   {0, NULL}
 };
 
-int	get_handler_index(int instruct_id)
+t_handler get_handler(int instruct_id)
 {
-  int	index;
-  //void	*handlers(t_instruct *instruction);
+  int		index;
 
   index = 0;
-  while (handlers[index].id != 0)
+  while (handlers[index].key != 0)
   {
-    if (handlers[index].id ==  instruct_id)
-      return (index);
+    if (handlers[index].key == instruct_id)
+      return (handlers[index].value);
     index = index + 1;
   }
-  return (0);
+  return (NULL);
 }
 
 int	remains_cycle(int cycles_remaining)
@@ -60,12 +58,11 @@ int	remains_cycle(int cycles_remaining)
 void	exec_instruction(t_process *process, t_vm *vm, t_instruct *instruction)
 {
   int		index;
-  void		*handler(t_instruct *instruction);
+  t_handler	handler;
 
-  if (remains_cycle(process->remains_cycles))
+  if (remains_cycle(process->cycles_remaining))
     return ;
-  index = get_handler_index(instruction->id);
-  handler = handlers[index].func;
+  handler = get_handler(instruction->id);
   if (handler != NULL)
-    handler(&instruction);
+    handler(vm, instruction);
 }

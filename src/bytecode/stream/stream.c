@@ -5,9 +5,12 @@
 ** Login   <nathan.lebon@epitech.eu>
 ** 
 ** Started on  Mon Mar 27 17:14:31 2017 NANAA
-** Last update Thu Mar 30 11:34:41 2017 flavian gontier
+** Last update Sun Apr 02 17:18:41 2017 flavian gontier
 */
 
+#include <fcntl.h>
+#include <sys/stat.h>
+#include <sys/types.h>
 #include "bytecode.h"
 #include "libmy.h"
 
@@ -32,8 +35,13 @@ void	init_stream(int8_t *data, size_t n, t_stream *stream)
   stream->data = data;
 }
 
-void	init_file_stream(int fd, t_stream *stream)
+void	init_file_stream(char *filepath, t_stream *stream)
 {
+  int	fd;
+
+  fd = open(filepath, O_RDONLY);
+  if (fd == -1)
+    return ;
   if (stream == NULL)
     return ;
   stream->data_count = 0;
