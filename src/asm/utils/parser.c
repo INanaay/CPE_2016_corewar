@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Fri Mar 24 17:05:13 2017 nathan
-** Last update Sun Apr  2 18:26:35 2017 nathan
+** Last update Sun Apr  2 19:10:27 2017 nathan
 */
 
 #include <stdlib.h>
@@ -73,18 +73,20 @@ uint8_t	find_inoptab(char *l)
       ln = my_strlen(g_op_tab[y].mnemonique);
       if (my_strcmp(g_op_tab[y].mnemonique, l) == len - ln)
 	{
-	  if (l[ln] == '%' || (l[ln] <= '9' && l[ln] >= '0') || l[ln] == 'r')
+	  if (l[ln] == '%' || (l[ln] <= '9' && l[ln] >= '0') || l[ln] == 'r'
+	      || l[ln] == ':')
 	    {
 	      if (my_strcontains(l, ':') >= 1)
 		{
 		  while (l[++x] != ':');
-		  if (l[x - 1] != '%')
+		  if (l[x - 1] != '%' && l[x - 1] != ',' && x != ln)
 		    return (16);
 		}
 	      return (y);
 	    }
 	}
     }
+  printf("%s\t%i\n", l, y);
   return (y);
 }
 
@@ -107,10 +109,13 @@ uint8_t		get_labelname(t_label **labels, char *line)
     }
   if (x == len)
     return (my_puterr84(INV_FILE));
+  printf("test0\n");
   if ((y = find_inoptab(line + x + 1)) == 16)
     return (my_puterr84(INV_FILE));
+  printf("test1\n");
   if (add_tolabels(labels, line + x + 1, line, y) == FAIL)
     return (my_puterr84(INV_FILE));
+  printf("test2\n");
   return (SUCCESS);
 }
 
@@ -119,16 +124,20 @@ uint8_t		parser(char **file, t_label **labels, int *names_nbr)
   int		x;
   int		y;
 
-  x = 2;
-  while (file[x])
+  x = 1;
+  while (file[++x])
     {
+      printf("%s\n", file[x]);
       if (file[x][0] != 0)
 	{
 	  y = find_inoptab(file[x]);
 	  if (y == 16)
 	    {
 	      if (get_labelname(labels, file[x]) == FAIL)
-		return (my_puterr84(INV_FILE));
+		{
+		  printf("here\n");
+		  return (FAIL);
+		}
 	      *names_nbr += 1;
 	    }
 	  else
@@ -137,7 +146,6 @@ uint8_t		parser(char **file, t_label **labels, int *names_nbr)
 		return (my_puterr84(INV_FILE));
 	    }
 	}
-      x++;
     }
   return (SUCCESS);
 }

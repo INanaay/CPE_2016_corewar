@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Sun Apr  2 18:26:05 2017 nathan
+** Last update Sun Apr  2 18:35:36 2017 nathan
 */
 
 #include <stdlib.h>
@@ -87,8 +87,10 @@ int8_t		next(char **file, t_label **labels, char *filename,
   len = my_strtablen(file) + 1;
   if (parser(file, labels, &names_nbr) == FAIL)
     return (FAIL);
+  printf("parser\n");
   if (check_labelexist(labels, names_nbr) == FAIL)
     return (FAIL);
+  printf("labelexist\n");
   header = fill_header_struct(header, file, labels);
   fd = create_cor_file(filename);
   instruct = create_instruct(labels, len - 1);
@@ -114,10 +116,12 @@ int		main(int ac, char **av)
     return (is_help);
   if (file_to_arr(av[1], (&file_c)) == FAIL)
     return (FAIL);
+  printf("fille_to_arr\n");
   if ((file = advance_fileptr(my_strtowtb_sc(file_c, '\n'))) == NULL)
     return (my_puterr84(MEM_FAIL));
   if (check_header(file) == FAIL)
     return (my_puterr84(INV_FILE));
+  printf("header\n");
   file = epur_file(file);
   len = my_strtablen(file) + 1;
   labels = malloc(sizeof(t_label *) * len);

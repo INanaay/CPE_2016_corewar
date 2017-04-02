@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Mon Mar 27 14:52:31 2017 nathan
-** Last update Sun Apr  2 16:42:06 2017 nathan
+** Last update Sun Apr  2 18:40:44 2017 nathan
 */
 
 #include <stdint.h>
@@ -23,8 +23,8 @@
 
 char		**advance_fileptr(char **file)
 {
-  while (*file != NULL && **file == COMMENT_CHAR)
-      *file = *file + 1;
+  while (*file != NULL && (**file == COMMENT_CHAR || **file == 0))
+    *file++;
   return (file);
 }
 
