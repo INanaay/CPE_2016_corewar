@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Sun Apr  2 15:15:47 2017 nathan
+** Last update Sun Apr  2 15:37:48 2017 nathan
 */
 
 #include <stdlib.h>
@@ -76,18 +76,38 @@ uint8_t	check_labelexist(t_label **labels, int names_nbr)
   return (check_labelexistargs(labels, names));
 }
 
+int8_t		next(char **file, t_label **labels, char *filename,
+		     int names_nbr)
+{
+  t_header	*header;
+  t_instruct	**instruct;
+  t_replacer	*replacer;
+  int		len;
+  int		fd;
+
+  len = my_strtablen(file) + 1;
+  if (parser(file, labels, &names_nbr) == FAIL)
+    return (FAIL);
+  if (check_labelexist(labels, names_nbr) == FAIL)
+    return (FAIL);
+  header = fill_header_struct(header, file, labels);
+  fd = create_cor_file(filename);
+  instruct = create_instruct(labels, len - 1);
+  replacer = replace_labels(labels, names_nbr, my_strtablen(file));
+  if (write_header(fd, header) == 1)
+    return (FAIL);
+  write_data(fd, labels, instruct, replacer);
+  return (SUCCESS);
+}
+
 uint8_t		main(int ac, char **av)
 {
   uint8_t	is_help;
   int		len;
   int		names_nbr;
-  int		fd;
   char		*file_c;
   char		**file;
   t_label	**labels;
-  t_instruct	**instruct;
-  t_header	*header;
-  t_replacer	*replacer;
 
   names_nbr = 0;
   if ((is_help = check_args(ac, av)) != 1)
@@ -102,16 +122,7 @@ uint8_t		main(int ac, char **av)
   len = my_strtablen(file) + 1;
   labels = malloc(sizeof(t_label *) * len);
   labels[len - 1] = NULL;
-  if (parser(file, labels, &names_nbr) == FAIL)
+  if (next(file, labels, av[1], names_nbr) == FAIL)
     return (FAIL);
-  if (check_labelexist(labels, names_nbr) == FAIL)
-    return (FAIL);
-  header = fill_header_struct(header, file, labels);
-  fd = create_cor_file(av[1]);
-  instruct = create_instruct(labels, len - 1);
-  replacer = replace_labels(labels, names_nbr, my_strtablen(file));
-  if (write_header(fd, header) == 1)
-    return (FAIL);
-  write_data(fd, labels, instruct, replacer);
   return (SUCCESS);
 }
