@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Fri Mar 24 17:05:13 2017 nathan
-** Last update Sun Apr  2 16:41:38 2017 nathan
+** Last update Sun Apr  2 17:52:42 2017 nathan
 */
 
 #include <stdlib.h>
@@ -60,11 +60,13 @@ uint8_t		add_tolabels(t_label **labels, char *line,
 
 uint8_t	find_inoptab(char *line)
 {
+  int		x;
   int		len;
   int		len2;
   uint8_t	y;
 
   y = 0;
+  x = -1;
   len = my_strlen(line);
   while (y < 16)
     {
@@ -73,7 +75,15 @@ uint8_t	find_inoptab(char *line)
 	{
 	  if (line[len2] == '%' || (line[len2] <= '9' && line[len2] >= '0') ||
 	      line[len2] == 'r')
-	  return (y);
+	    {
+	      if (my_strcontains(line, ':') >= 1)
+		{
+		  while (line[++x] != ':');
+		  if (line[x - 1] != '%')
+		    return (16);
+		}
+	      return (y);
+	    }
 	}
       y++;
     }
