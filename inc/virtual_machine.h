@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Fri Mar 24 15:39:16 2017 flavian gontier
-** Last update Wed Mar 29 20:18:24 2017 flavian gontier
+** Last update Fri Mar 31 14:03:42 2017 flavian gontier
 */
 
 #ifndef VIRTUAL_MACHINE_H_
@@ -45,6 +45,12 @@ typedef struct	s_vm
   t_process	*processes;
   int8_t	memory[MEM_SIZE];
 }		t_vm;
+
+typedef struct	s_keyvalue
+{
+  int32_t	id;
+  void		*(func(t_instruct *));
+}
 
 void		parse_arguments(int argc, char **argv, t_arguments *arguments);
 void		virtual_machine_write(t_vm *machine, int32_t address,

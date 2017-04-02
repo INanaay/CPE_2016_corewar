@@ -5,17 +5,17 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Wed Mar 29 02:20:51 2017 flavian gontier
-** Last update Thu Mar 30 11:26:42 2017 flavian gontier
+** Last update Thu Mar 30 19:10:12 2017 flavian gontier
 */
 
 #include "virtual_machine.h"
 #include "bytecode.h"
 
-void	read_instruction(t_process *process, t_instruct *instruct)
+void	read_instruction(t_stream *stream, t_instruct *instruct)
 {
-  instruct->id = read_int8(&process->stream);
-  instruct->params_type = read_int8(&process->stream);
-  instruct->params = get_params(&process->stream, instruct->params_type);
+  instruct->id = read_int8(stream);
+  instruct->params_type = read_int8(stream);
+  instruct->params = get_params(stream, instruct->params_type);
 }
 
 
