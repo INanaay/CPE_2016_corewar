@@ -5,93 +5,94 @@
 ## Login   <flavian.gontier@epitech.net>
 ##
 ## Started on  Sat Jan 21 00:04:28 2017 flavian gontier
-## Last update Sun Apr 02 22:18:55 2017 flavian gontier
+## Last update Sun Apr  2 23:08:49 2017 nathan
 ##
 
 CC	=	gcc
 
-CFLAGS	+=	-I inc -g3
+CFLAGS	+=	-I inc
 
 LDFLAGS	+=	-Werror -Wall -Wextra
 
-VM_SRC	=	src/vm/lib/io/my_put.c					\
-		src/vm/lib/io/my_putstr.c				\
-		src/vm/lib/io/my_puterr.c				\
-		src/vm/lib/io/my_putconcat.c				\
-		src/vm/lib/io/my_read_file.c				\
-		src/vm/lib/io/get_next_line.c				\
-		src/vm/lib/mem/my_calloc.c				\
-		src/vm/lib/mem/my_realloc.c				\
-		src/vm/lib/mem/my_memset.c				\
-		src/vm/lib/mem/my_memcpy.c				\
-		src/vm/lib/mem/my_freetab.c				\
-		src/vm/lib/string/my_atoi.c				\
-		src/vm/lib/string/my_linedup.c				\
-		src/vm/lib/string/my_strncmp.c				\
-		src/vm/lib/string/my_strcmp.c				\
-		src/vm/lib/string/my_strcat.c				\
-		src/vm/lib/string/my_strcpy.c				\
-		src/vm/lib/string/my_strncpy.c				\
-		src/vm/lib/string/my_strindex.c				\
-		src/vm/lib/string/my_strsplit.c				\
-		src/vm/lib/string/my_strcontains.c			\
-		src/vm/lib/string/my_strisalphanum.c			\
-		src/vm/lib/string/my_strisnum.c				\
-		src/vm/lib/string/my_strdup.c				\
-		src/vm/lib/string/my_strndup.c				\
-		src/vm/lib/string/my_len.c				\
-		src/vm/lib/string/my_strlen.c				\
-		src/vm/lib/string/my_strtab.c				\
-		src/vm/lib/string/my_tabdim.c				\
-		src/vm/lib/string/my_tabncpy.c				\
-		src/vm/lib/string/my_tabdup.c				\
-		src/vm/lib/string/my_tabelem.c				\
-		src/vm/lib/string/my_get_base.c				\
-		src/vm/lib/list/listInt32/listInt32_add.c		\
-		src/vm/lib/list/listInt32/listInt32_remove.c		\
-		src/vm/lib/list/listInt32/listInt32_insert.c		\
-		src/vm/lib/list/listInt32/listInt32_init.c		\
-		src/vm/lib/list/listInt32/listInt32_expends.c		\
-		src/vm/lib/list/listString/listString_add.c		\
-		src/vm/lib/list/listString/listString_remove.c		\
-		src/vm/lib/list/listString/listString_insert.c		\
-		src/vm/lib/list/listString/listString_init.c		\
-		src/vm/lib/list/listString/listString_expends.c		\
-		src/bytecode/io/read.c					\
-		src/bytecode/io/write.c					\
-		src/bytecode/io/utils.c					\
-		src/bytecode/parsing/header.c				\
-		src/bytecode/parsing/instruction.c			\
-		src/bytecode/parsing/params.c				\
-		src/bytecode/stream/stream.c				\
-		src/vm/input/arguments.c				\
-		src/vm/virtual_machine/init.c				\
-		src/vm/virtual_machine/run.c				\
-		src/vm/virtual_machine/exec.c				\
-		src/vm/virtual_machine/utils.c					\
-		src/vm/virtual_machine/handlers/alive.c			\
-		src/vm/main.c
+VM_SRC	=	corewar/lib/io/my_put.c					\
+		corewar/lib/io/my_putstr.c				\
+		corewar/lib/io/my_puterr.c				\
+		corewar/lib/io/my_putconcat.c				\
+		corewar/lib/io/my_read_file.c				\
+		corewar/lib/io/get_next_line.c				\
+		corewar/lib/mem/my_calloc.c				\
+		corewar/lib/mem/my_realloc.c				\
+		corewar/lib/mem/my_memset.c				\
+		corewar/lib/mem/my_memcpy.c				\
+		corewar/lib/mem/my_freetab.c				\
+		corewar/lib/string/my_atoi.c				\
+		corewar/lib/string/my_linedup.c				\
+		corewar/lib/string/my_strncmp.c				\
+		corewar/lib/string/my_strcmp.c				\
+		corewar/lib/string/my_strcat.c				\
+		corewar/lib/string/my_strcpy.c				\
+		corewar/lib/string/my_strncpy.c				\
+		corewar/lib/string/my_strindex.c				\
+		corewar/lib/string/my_strsplit.c				\
+		corewar/lib/string/my_strcontains.c			\
+		corewar/lib/string/my_strisalphanum.c			\
+		corewar/lib/string/my_strisnum.c				\
+		corewar/lib/string/my_strdup.c				\
+		corewar/lib/string/my_strndup.c				\
+		corewar/lib/string/my_len.c				\
+		corewar/lib/string/my_strlen.c				\
+		corewar/lib/string/my_strtab.c				\
+		corewar/lib/string/my_tabdim.c				\
+		corewar/lib/string/my_tabncpy.c				\
+		corewar/lib/string/my_tabdup.c				\
+		corewar/lib/string/my_tabelem.c				\
+		corewar/lib/string/my_get_base.c				\
+		corewar/lib/list/listInt32/listInt32_add.c		\
+		corewar/lib/list/listInt32/listInt32_remove.c		\
+		corewar/lib/list/listInt32/listInt32_insert.c		\
+		corewar/lib/list/listInt32/listInt32_init.c		\
+		corewar/lib/list/listInt32/listInt32_expends.c		\
+		corewar/lib/list/listString/listString_add.c		\
+		corewar/lib/list/listString/listString_remove.c		\
+		corewar/lib/list/listString/listString_insert.c		\
+		corewar/lib/list/listString/listString_init.c		\
+		corewar/lib/list/listString/listString_expends.c		\
+		bytecode/io/read.c					\
+		bytecode/io/write.c					\
+		bytecode/io/utils.c					\
+		bytecode/parsing/header.c				\
+		bytecode/parsing/instruction.c			\
+		bytecode/parsing/params.c				\
+		bytecode/stream/stream.c				\
+		corewar/input/arguments.c				\
+		corewar/virtual_machine/init.c				\
+		corewar/virtual_machine/run.c				\
+		corewar/virtual_machine/exec.c				\
+		corewar/virtual_machine/utils.c				\
+		corewar/virtual_machine/handlers/alive.c			\
+		corewar/main.c
 
 VM_OBJ	=	$(VM_SRC:.c=.o)
 
 VM_NAME	=	corewar
 
-ASM_NAME=	asm
-
 RM	=	rm -f
 
-all:		$(VM_NAME) $(ASM_NAME)
+all:		$(VM_NAME) asm_build
 
 $(VM_NAME):	$(VM_OBJ)
-		$(CC) $(CFLAGS) $(LDFLAGS) $(VM_OBJ) -o $(VM_NAME)
+		$(CC) $(CFLAGS) $(LDFLAGS) $(VM_OBJ) -o corewar/$(VM_NAME)
 
-$(ASM_NAME):	make -C asm
+asm_build:
+		$(MAKE) -C asm
 
 clean:
 		$(RM) $(VM_OBJ)
+		$(MAKE) -C asm clean
 
 fclean:		clean
-		$(RM) $(VM_NAME)
+		$(RM) corewar/$(VM_NAME)
+		$(MAKE) -C asm fclean
 
 re:		fclean all
 
