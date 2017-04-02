@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Fri Mar 24 17:05:13 2017 nathan
-** Last update Sun Apr  2 20:06:55 2017 nathan
+** Last update Sun Apr  2 20:26:02 2017 nathan
 */
 
 #include <stdlib.h>
@@ -62,12 +62,10 @@ uint8_t	find_inoptab(char *l)
 {
   int		x;
   int		len;
-  int		ln;
+  uint8_t	ln;
   uint8_t	y;
 
-  y = -1;
-  x = -1;
-  len = my_strlen(l);
+  (1) ? (y = -1, x = -1, len = my_strlen(l)) : 0;
   while (++y < 16)
     {
       ln = my_strlen(g_op_tab[y].mnemonique);
@@ -80,7 +78,7 @@ uint8_t	find_inoptab(char *l)
 		{
 		  while (l[++x] != ':');
 		  if (l[x - 1] != '%' && l[x - 1] != ',' &&
-		      find_inoptab(l+x+1) != 16)
+		      find_inoptab(l + x + 1) != 16)
 		    return (16);
 		}
 	      return (y);

@@ -5,9 +5,10 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Sun Jan 22 04:00:42 2017 nathan
-** Last update Thu Feb  2 22:22:14 2017 nathan
+** Last update Sun Apr  2 21:07:57 2017 nathan
 */
 
+#include <stdint.h>
 #include <stdlib.h>
 #include "mylib/my_string.h"
 #include "mylib/my_math.h"
@@ -17,7 +18,7 @@ int	my_atoi(char *str)
   int	x;
   int	len;
   int	minus;
-  int	result;
+  long	result;
 
   x = 0;
   minus = 0;
@@ -33,6 +34,8 @@ int	my_atoi(char *str)
   while (len != - 1)
     result += (str[x++] - 48) * my_pow(10, len--);
   result = (minus % 2 == 0) ? result : - result;
+  if (result >= INT32_MAX || result <= INT32_MIN)
+    return (INT32_MAX);
   return (result);
 }
 

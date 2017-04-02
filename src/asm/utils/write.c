@@ -5,7 +5,7 @@
 ** Login   <nathan.lebon@epitech.eu>
 **
 ** Started on  Mon Mar 27 17:02:20 2017 NANAA
-** Last update Sun Apr  2 16:37:30 2017 nathan
+** Last update Sun Apr  2 21:23:03 2017 nathan
 */
 
 #include <unistd.h>
@@ -69,10 +69,9 @@ void		write_data(int fd, t_label **labels, t_instruct **instruct,
   int	y;
   int	z;
   int	len;
-  int	ptmp;
+  long	ptmp;
 
-  x = -1;
-  z = 0;
+  (1) ? (x = -1, z = 0) : 0;
   while (instruct[++x] != NULL)
     {
       y = -1;
@@ -83,12 +82,14 @@ void		write_data(int fd, t_label **labels, t_instruct **instruct,
 	write_bytes(fd, &instruct[x]->params_type, sizeof(int8_t));
       while (++y < len)
 	{
-	  ptmp = my_atoi(labels[x]->args[y] + 1);
 	  if (my_strcontains(labels[x]->args[y], ':') == 1)
 	    write_replace(fd, re->to_replace[z++], re);
 	  else
-	    write_bytes(fd, &ptmp, sizeof(int8_t) *
-			get_typesize(labels[x]->args[y], labels[x]->inst));
+	    {
+	      ptmp = my_atoi(labels[x]->args[y] + 1);
+	      write_bytes(fd, &ptmp, sizeof(int8_t) *
+			  get_typesize(labels[x]->args[y], labels[x]->inst));
+	    }
 	}
     }
 }
