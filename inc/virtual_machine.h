@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Fri Mar 24 15:39:16 2017 flavian gontier
-** Last update Fri Mar 31 14:03:42 2017 flavian gontier
+** Last update Sun Apr 02 11:48:03 2017 flavian gontier
 */
 
 #ifndef VIRTUAL_MACHINE_H_
@@ -14,7 +14,6 @@
 #include <stdint.h>
 #include <stdlib.h>
 #include "bytecode.h"
-#include "header.h"
 
 # define ADDRESS_CONST 0x65f
 # define MAX_CODE_SIZE 8192
@@ -33,7 +32,9 @@ typedef struct	s_process
 {
   int32_t	id;
   int32_t	address;
+  int32_t	remains_cycles;
   char		*binary;
+  t_stream	stream;
   t_header	header;
 }		t_process;
 
@@ -58,6 +59,6 @@ void		virtual_machine_write(t_vm *machine, int32_t address,
 void		run_virtual_machine(t_vm *virtual_machine);
 void		init_virtual_machine(t_arguments *arguments,
 				     t_vm *virtual_machine);
-int8_t		*get_params(t_vm *virtual_machine, int addr, int8_t paramstype);
+int8_t		*get_params(t_stream *stream, int8_t paramstype);
 
 #endif

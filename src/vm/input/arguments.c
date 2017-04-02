@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Wed Mar 22 22:33:07 2017 flavian gontier
-** Last update Tue Mar 28 16:02:12 2017 flavian gontier
+** Last update Thu Mar 30 21:27:56 2017 flavian gontier
 */
 
 #include "libmy.h"
@@ -117,6 +117,7 @@ void	get_champions(int argc, char **argv, int index,  t_arguments *arguments)
 
   tmp = 0;
   count = argc - index;
+  printf("[arguments] champion count: %d\n", count);
   if (count == 0)
   {
     my_puterr("ERROR: no champion given.\n");
@@ -126,6 +127,7 @@ void	get_champions(int argc, char **argv, int index,  t_arguments *arguments)
   arguments->champion_count = count;
   while (index < argc)
   {
+    printf("[arguments] champion (n°%d): %s\n", tmp, argv[index]);
     arguments->champions[tmp] = my_strdup(argv[index]);
     tmp = tmp + 1;
     index = index + 1;

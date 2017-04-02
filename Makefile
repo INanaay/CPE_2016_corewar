@@ -5,7 +5,7 @@
 ## Login   <flavian.gontier@epitech.net>
 ##
 ## Started on  Sat Jan 21 00:04:28 2017 flavian gontier
-## Last update Wed Mar 29 19:58:43 2017 flavian gontier
+## Last update Fri Mar 31 14:05:46 2017 flavian gontier
 ##
 
 CC	=	gcc
@@ -14,7 +14,7 @@ CFLAGS	+=	-I inc -g3
 
 LDFLAGS	+=	-Werror -Wall -Wextra
 
-VM_SRC	=		src/vm/lib/io/my_put.c								\
+VM_SRC	=	src/vm/lib/io/my_put.c								\
 			src/vm/lib/io/my_putstr.c							\
 			src/vm/lib/io/my_puterr.c							\
 			src/vm/lib/io/my_putconcat.c						\
@@ -63,10 +63,11 @@ VM_SRC	=		src/vm/lib/io/my_put.c								\
 			src/bytecode/parsing/header.c						\
 			src/bytecode/parsing/instruction.c					\
 			src/bytecode/parsing/params.c						\
-			src/stream/stream.c									\
+			src/bytecode/stream/stream.c						\
 			src/vm/input/arguments.c							\
 			src/vm/virtual_machine/init.c						\
 			src/vm/virtual_machine/run.c						\
+			src/vm/virtual_machine/exec.c						\
 			src/vm/main.c
 
 VM_OBJ     	=	$(VM_SRC:.c=.o)
