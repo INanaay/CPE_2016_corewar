@@ -5,7 +5,7 @@
 ** Login   <nathan.lebon@epitech.eu>
 **
 ** Started on  Mon Mar 27 17:02:20 2017 NANAA
-** Last update Sun Apr  2 21:23:03 2017 nathan
+** Last update Sun Apr  2 23:25:37 2017 nathan
 */
 
 #include <unistd.h>
@@ -69,16 +69,15 @@ void		write_data(int fd, t_label **labels, t_instruct **instruct,
   int	y;
   int	z;
   int	len;
-  long	ptmp;
+  long	tmp;
 
   (1) ? (x = -1, z = 0) : 0;
   while (instruct[++x] != NULL)
     {
       y = -1;
-      ptmp = instruct[x]->id;
       len = my_strtablen(labels[x]->args);
       write_bytes(fd, &instruct[x]->id, sizeof(int8_t));
-      if (ptmp != 1 && ptmp != 9 && ptmp != 12 && ptmp != 13)
+      if ((tmp = instruct[x]->id) != 1 && tmp != 9 && tmp != 12 && tmp != 13)
 	write_bytes(fd, &instruct[x]->params_type, sizeof(int8_t));
       while (++y < len)
 	{
@@ -86,8 +85,8 @@ void		write_data(int fd, t_label **labels, t_instruct **instruct,
 	    write_replace(fd, re->to_replace[z++], re);
 	  else
 	    {
-	      ptmp = my_atoi(labels[x]->args[y] + 1);
-	      write_bytes(fd, &ptmp, sizeof(int8_t) *
+	      tmp = my_atoi(labels[x]->args[y] + 1);
+	      write_bytes(fd, &tmp, sizeof(int8_t) *
 			  get_typesize(labels[x]->args[y], labels[x]->inst));
 	    }
 	}
