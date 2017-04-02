@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:17:11 2017 nathan
-** Last update Sun Apr  2 12:43:52 2017 nathan
+** Last update Sun Apr  2 15:15:47 2017 nathan
 */
 
 #include <stdlib.h>
@@ -74,13 +74,6 @@ uint8_t	check_labelexist(t_label **labels, int names_nbr)
   if (y == 0)
     names = NULL;
   return (check_labelexistargs(labels, names));
-}
-
-char		**advance_fileptr(char **file)
-{
-  while (*file != NULL && **file == COMMENT_CHAR)
-      *file++;
-  return (file);
 }
 
 uint8_t		main(int ac, char **av)

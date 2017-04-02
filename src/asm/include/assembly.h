@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Wed Mar 22 13:43:32 2017 nathan
-** Last update Sat Apr  1 18:08:01 2017 nathan
+** Last update Sun Apr  2 15:15:30 2017 nathan
 */
 
 #ifndef ASSEMBLY_H
@@ -44,6 +44,7 @@ uint8_t		file_to_arr(const char *, char **);
 uint8_t		check_headerspcs(int, char *);
 uint8_t		check_header(char **);
 uint8_t		parser(char **, t_label **, int *);
+char		**advance_fileptr(char **);
 int		create_cor_file(char *);
 t_replacer	*replace_labels(t_label **, int, int);
 

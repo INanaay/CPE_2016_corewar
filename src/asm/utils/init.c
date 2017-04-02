@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Mon Mar 27 14:52:31 2017 nathan
-** Last update Sun Apr  2 12:51:42 2017 nathan
+** Last update Sun Apr  2 15:14:48 2017 nathan
 */
 
 #include <stdint.h>
@@ -20,6 +20,13 @@
 #include "mylib/define.h"
 #include "mylib/my_string.h"
 #include "mylib/my_mem.h"
+
+char		**advance_fileptr(char **file)
+{
+  while (*file != NULL && **file == COMMENT_CHAR)
+      *file++;
+  return (file);
+}
 
 uint8_t	check_args(int ac, char **av)
 {
@@ -79,7 +86,6 @@ uint8_t	check_header(char **file)
     file[0]++;
   while (file[1][0] == ' ' || file[1][0] == '\t')
     file[1]++;
-  printf("%s\n%s\n", file[0], file[1]);
   values[0] = my_strcmp(NAME_CMD_STRING, file[0]);
   values[1] = my_strlen(file[0]) - 5;
   values[2] = my_strcmp(COMMENT_CMD_STRING, file[1]);
