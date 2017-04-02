@@ -5,7 +5,7 @@
 ** Login   <nathan.schwarz@epitech.eu@epitech.net>
 **
 ** Started on  Mon Mar 27 14:52:31 2017 nathan
-** Last update Fri Mar 31 18:47:56 2017 nathan
+** Last update Sun Apr  2 12:51:42 2017 nathan
 */
 
 #include <stdint.h>
@@ -75,6 +75,11 @@ uint8_t	check_header(char **file)
 
   if (my_strtablen(file) < 2)
     return (FAIL);
+  while (file[0][0] == ' ' || file[0][0] == '\t')
+    file[0]++;
+  while (file[1][0] == ' ' || file[1][0] == '\t')
+    file[1]++;
+  printf("%s\n%s\n", file[0], file[1]);
   values[0] = my_strcmp(NAME_CMD_STRING, file[0]);
   values[1] = my_strlen(file[0]) - 5;
   values[2] = my_strcmp(COMMENT_CMD_STRING, file[1]);
