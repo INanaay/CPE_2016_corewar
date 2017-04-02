@@ -5,7 +5,7 @@
 ** Login   <nathan.lebon@epitech.eu>
 ** 
 ** Started on  Sat Mar 25 14:05:18 2017 NANAA
-** Last update Sat Mar 25 14:53:50 2017 NANAA
+** Last update Sun Apr  2 11:49:47 2017 anatole zeyen
 */
 #include <fcntl.h>
 
@@ -19,8 +19,8 @@ unsigned int		my_reverse_int(unsigned int nb)
   c1 = nb & 255;
   c2 = (nb >> 8) & 255;
   c3 = (nb >> 16) & 255;
-  c4 = (nb >> 24) & 255;   
-  return (c1 << 24) + (c2 << 16) + (c3 << 8) + c4;  
+  c4 = (nb >> 24) & 255;
+  return (c1 << 24) + (c2 << 16) + (c3 << 8) + c4;
 }
 
 unsigned short		my_reverse_short(unsigned short nb)
