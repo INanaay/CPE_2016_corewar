@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Fri Mar 24 15:39:16 2017 flavian gontier
-** Last update Sun Apr 02 22:15:12 2017 flavian gontier
+** Last update Sun Apr 02 23:34:23 2017 flavian gontier
 */
 
 #ifndef VIRTUAL_MACHINE_H_
@@ -70,7 +70,7 @@ void		init_virtual_machine(t_arguments *arguments,
 				     t_vm *virtual_machine);
 t_process	*get_process_by_id(t_vm *virtual_machine, int id);
 int8_t		*get_params(t_stream *stream, int8_t paramstype);
-
+void		get_help(int argc, char **argv, int index);
 /*
 ** Handlers
 */
