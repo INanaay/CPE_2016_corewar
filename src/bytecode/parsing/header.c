@@ -5,29 +5,17 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Mar 28 22:03:49 2017 flavian gontier
-** Last update Sun Apr 02 16:58:53 2017 flavian gontier
+** Last update Sun Apr 02 17:26:37 2017 flavian gontier
 */
 
 #include "bytecode.h"
 #include "libmy.h"
 
-void    read_header(t_stream *stream, t_header *header)
+void    read_header(int fd, t_header *header)
 {
-  int	position;
-
-  position = stream->position;
-  printf("%d\n", position);
-  my_memcpy(header, &stream->data[position], sizeof(t_header));
+  read(fd, header, sizeof(t_header));
   reverse_bytes(&header->magic, sizeof(header->magic));
-  //reverse_bytes(&header->name, sizeof(header->name));
-  //reverse_bytes(&header->comment, sizeof(header->comment));
   reverse_bytes(&header->size, sizeof(header->size));
-  /*
-  read_string(stream, header->name, sizeof(header->name));
-  stream->position += 6;
-  read_string(stream, header->comment, sizeof(header->comment));
-  header->size = read_int32(stream);
-  */
 }
 
 int8_t		write_header(int fd, const t_header *header)
