@@ -1,11 +1,11 @@
 /*
 ** read.c for corewar in /home/flavian.gontier/Tek1/C_Prog_Elem/CPE_2016_corewar/src/bytecode
-** 
+**
 ** Made by flavian gontier
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
-** 
+**
 ** Started on  Mon Mar 27 15:18:06 2017 flavian gontier
-** Last update Thu Mar 30 23:22:51 2017 flavian gontier
+** Last update Sun Apr  2 23:16:12 2017 nathan
 */
 
 #include <stdlib.h>
@@ -53,4 +53,3 @@ int32_t		read_int32(t_stream *stream)
   read_bytes(stream, &result, sizeof(int32_t));
   return (result);
 }
-
