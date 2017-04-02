@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Fri Mar 31 12:50:40 2017 flavian gontier
-** Last update Sun Apr 02 16:35:34 2017 flavian gontier
+** Last update Sun Apr 02 23:24:54 2017 flavian gontier
 */
 
 #include "libmy.h"
@@ -16,23 +16,6 @@
 static const t_keyvalue	handlers[] =
 {
   {1, &alive_handler},
-  /*
-     {2, &ld_handler},
-     {3, &st_handler},
-     {4, &add_handler},
-     {5, &sub_handler},
-     {6, &and_handler},
-     {7, &or_handler},
-     {8, &xor_handler},
-     {9, &zjump_handler},
-     {10, &ldi_handler},
-     {11, &sti_handler},
-     {12, &fork_handler},
-     {13, &lld_handler},
-     {14, &lldi_handler},
-     {15, &lfork_handler},
-     {16, &aff_handler}
-   */
   {0, NULL}
 };
 
