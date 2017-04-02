@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Fri Mar 24 15:39:16 2017 flavian gontier
-** Last update Sun Apr 02 16:37:53 2017 flavian gontier
+** Last update Sun Apr 02 17:16:58 2017 flavian gontier
 */
 
 #ifndef VIRTUAL_MACHINE_H_
@@ -74,7 +74,6 @@ int8_t		*get_params(t_stream *stream, int8_t paramstype);
 /*
 ** Handlers
 */
-
 # define ALIVE_CYCLES 5
 
 void		alive_handler(t_vm *virtual_machine, t_instruct *instruction);
