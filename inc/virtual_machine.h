@@ -5,11 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Fri Mar 24 15:39:16 2017 flavian gontier
-<<<<<<< HEAD
-** Last update Sun Apr 02 11:48:03 2017 flavian gontier
-=======
-** Last update Sun Apr 02 17:16:58 2017 flavian gontier
->>>>>>> 0ec95e24ef7328d0fe07e0c6e8eddf69f4cc451a
+** Last update Sun Apr 02 22:15:12 2017 flavian gontier
 */
 
 #ifndef VIRTUAL_MACHINE_H_

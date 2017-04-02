@@ -5,7 +5,7 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Sat Mar 25 12:30:23 2017 flavian gontier
-** Last update Sun Apr 02 17:12:55 2017 flavian gontier
+** Last update Sun Apr 02 22:09:38 2017 flavian gontier
 */
 
 #include <stdint.h>
@@ -44,11 +44,10 @@ static void	init_process(t_vm *virtual_machine, t_arguments *arguments,
   process->cycle_to_die = CYCLE_TO_DIE;
   process->cycles_remaining = 0;
   process->binary = arguments->champions[index];
-  init_file_stream(process->binary);
+  read_header(process->binary, &process->header);
   start = &virtual_machine->memory[addr];
   init_stream(start, MEM_SIZE - addr, &process->stream);
   copy_process(virtual_machine, process);
-  read_header(&process->stream, &process->header);
   printf("=======HEADER=======\n");
   printf("name: %s\n", process->header.name);
   printf("comment: %s\n", process->header.comment);

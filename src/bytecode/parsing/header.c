@@ -5,26 +5,21 @@
 ** Login   <flavian.gontier@epitech.eu@epitech.net>
 ** 
 ** Started on  Tue Mar 28 22:03:49 2017 flavian gontier
-<<<<<<< HEAD
-** Last update Sun Apr 02 11:52:58 2017 flavian gontier
-=======
-** Last update Sun Apr 02 17:26:37 2017 flavian gontier
->>>>>>> 0ec95e24ef7328d0fe07e0c6e8eddf69f4cc451a
+** Last update Sun Apr 02 22:13:37 2017 flavian gontier
 */
 
+#include <sys/types.h>
+#include <sys/stat.h>
+#include <fcntl.h>
 #include "bytecode.h"
 #include "libmy.h"
 
-void    read_header(int fd, t_header *header)
+void    read_header(char *filepath, t_header *header)
 {
-<<<<<<< HEAD
-  int	position;
+  int	fd;
 
-  position = stream->position;
-  my_memcpy(header, &stream->data[position], sizeof(t_header));
-=======
+  fd = open(filepath, O_RDONLY);
   read(fd, header, sizeof(t_header));
->>>>>>> 0ec95e24ef7328d0fe07e0c6e8eddf69f4cc451a
   reverse_bytes(&header->magic, sizeof(header->magic));
   reverse_bytes(&header->size, sizeof(header->size));
 }
